@@ -250,8 +250,10 @@ class _UpdateBeyondersPageWidgetState extends State<UpdateBeyondersPageWidget> {
                                               child: SizedBox(
                                                 width: 50.0,
                                                 height: 50.0,
-                                                child: SpinKitSpinningCircle(
-                                                  color: Color(0xFFE2B841),
+                                                child: SpinKitFadingCube(
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .primary,
                                                   size: 50.0,
                                                 ),
                                               ),

@@ -27,3 +27,18 @@ String newCustomFunction(int accessRole) {
 String? newCustomFunction2() {
   return "";
 }
+
+int convertAccessRoleToInt(AccessRoleModelStruct accessModel) {
+  return accessModel.id;
+}
+
+int getSelectedIdAccessRoleByStringValue(String value) {
+  if (value == 'General Manager') {
+    return 1;
+  } else if (value == 'Senior') {
+    return 2;
+  } else if (value == 'Middle') {
+    return 3;
+  } else
+    return 4;
+}

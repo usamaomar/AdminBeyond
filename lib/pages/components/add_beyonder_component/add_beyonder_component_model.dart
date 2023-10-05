@@ -1,3 +1,5 @@
+import '/backend/api_requests/api_calls.dart';
+import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -5,6 +7,8 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import '/flutter_flow/upload_data.dart';
+import '/custom_code/actions/index.dart' as actions;
+import '/flutter_flow/custom_functions.dart' as functions;
 import 'add_beyonder_component_widget.dart' show AddBeyonderComponentWidget;
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -18,10 +22,14 @@ class AddBeyonderComponentModel
 
   int selectedAccessRoleId = 0;
 
-  String ser = '';
+  AccessRoleModelStruct? accessModel;
+  void updateAccessModelStruct(Function(AccessRoleModelStruct) updateFn) =>
+      updateFn(accessModel ??= AccessRoleModelStruct());
 
   ///  State fields for stateful widgets in this component.
 
+  // Stores action output result for [Custom Action - uploadeImagePth] action in Text widget.
+  dynamic? uplodeApiCall;
   bool isDataUploading = false;
   FFUploadedFile uploadedLocalFile =
       FFUploadedFile(bytes: Uint8List.fromList([]));
@@ -49,6 +57,8 @@ class AddBeyonderComponentModel
   // State field(s) for DropDown widget.
   String? dropDownValue;
   FormFieldController<String>? dropDownValueController;
+  // Stores action output result for [Backend Call - API (RegisterUserApi)] action in Button widget.
+  ApiCallResponse? registerUserApiResult;
 
   /// Initialization and disposal methods.
 

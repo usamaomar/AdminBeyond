@@ -1,3 +1,5 @@
+import '/backend/api_requests/api_calls.dart';
+import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -5,6 +7,8 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import '/flutter_flow/upload_data.dart';
+import '/custom_code/actions/index.dart' as actions;
+import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -116,17 +120,50 @@ class _AddBeyonderComponentWidgetState
                                 size: 36.0,
                               ),
                             ),
-                            Text(
-                              FFLocalizations.of(context).getText(
-                                'xv1gmp99' /* Add Beyonder */,
-                              ),
-                              style: FlutterFlowTheme.of(context)
-                                  .titleLarge
-                                  .override(
-                                    fontFamily: 'Outfit',
-                                    color: FlutterFlowTheme.of(context)
-                                        .primaryText,
+                            InkWell(
+                              splashColor: Colors.transparent,
+                              focusColor: Colors.transparent,
+                              hoverColor: Colors.transparent,
+                              highlightColor: Colors.transparent,
+                              onTap: () async {
+                                _model.uplodeApiCall =
+                                    await actions.uploadeImagePth(
+                                  _model.uploadedLocalFile,
+                                  FFAppState().userModel.token,
+                                  'https://beyond.api.matterhr.com/api/v1/Uploud/Create',
+                                );
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(
+                                    content: Text(
+                                      getJsonField(
+                                        _model.uplodeApiCall,
+                                        r'''$''',
+                                      ).toString(),
+                                      style: TextStyle(
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryText,
+                                      ),
+                                    ),
+                                    duration: Duration(milliseconds: 4000),
+                                    backgroundColor:
+                                        FlutterFlowTheme.of(context).secondary,
                                   ),
+                                );
+
+                                setState(() {});
+                              },
+                              child: Text(
+                                FFLocalizations.of(context).getText(
+                                  'xv1gmp99' /* Add Beyonder */,
+                                ),
+                                style: FlutterFlowTheme.of(context)
+                                    .titleLarge
+                                    .override(
+                                      fontFamily: 'Outfit',
+                                      color: FlutterFlowTheme.of(context)
+                                          .primaryText,
+                                    ),
+                              ),
                             ),
                             Expanded(
                               child: Row(
@@ -778,12 +815,8 @@ class _AddBeyonderComponentWidgetState
                                     .accessRoleModelList
                                     .map((e) => e.name)
                                     .toList(),
-                                onChanged: (val) async {
-                                  setState(() => _model.dropDownValue = val);
-                                  setState(() {
-                                    _model.ser = _model.dropDownValue!;
-                                  });
-                                },
+                                onChanged: (val) =>
+                                    setState(() => _model.dropDownValue = val),
                                 width: 300.0,
                                 height: 50.0,
                                 textStyle:
@@ -822,7 +855,67 @@ class _AddBeyonderComponentWidgetState
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             FFButtonWidget(
-                              onPressed: () async {},
+                              onPressed: () async {
+                                if (_model.dropDownValue == null ||
+                                    _model.dropDownValue == '') {
+                                  _model.registerUserApiResult =
+                                      await RegisterUserApiCall.call(
+                                    firstName: _model.textController1.text,
+                                    lastName: _model.textController2.text,
+                                    email: _model.textController3.text,
+                                    password: _model.textController5.text,
+                                    confirmPassword:
+                                        _model.textController6.text,
+                                    phoneNumber: _model.textController4.text,
+                                    activateUser: _model.switchValue,
+                                    accessRole: functions
+                                        .getSelectedIdAccessRoleByStringValue(
+                                            _model.dropDownValue!),
+                                    token: FFAppState().userModel.token,
+                                  );
+                                  if (!(_model
+                                          .registerUserApiResult?.succeeded ??
+                                      true)) {
+                                    ScaffoldMessenger.of(context).showSnackBar(
+                                      SnackBar(
+                                        content: Text(
+                                          RegisterUserApiCall.errorMessage(
+                                            (_model.registerUserApiResult
+                                                    ?.jsonBody ??
+                                                ''),
+                                          ).toString(),
+                                          style: TextStyle(
+                                            color: FlutterFlowTheme.of(context)
+                                                .primaryText,
+                                          ),
+                                        ),
+                                        duration: Duration(milliseconds: 4000),
+                                        backgroundColor:
+                                            FlutterFlowTheme.of(context)
+                                                .secondary,
+                                      ),
+                                    );
+                                  }
+                                } else {
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    SnackBar(
+                                      content: Text(
+                                        'Select acceess type',
+                                        style: TextStyle(
+                                          color: FlutterFlowTheme.of(context)
+                                              .primaryText,
+                                        ),
+                                      ),
+                                      duration: Duration(milliseconds: 4000),
+                                      backgroundColor:
+                                          FlutterFlowTheme.of(context)
+                                              .secondary,
+                                    ),
+                                  );
+                                }
+
+                                setState(() {});
+                              },
                               text: FFLocalizations.of(context).getText(
                                 'zh0vlh8e' /* Add */,
                               ),
