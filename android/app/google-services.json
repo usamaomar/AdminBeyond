@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "366788228499",
+    "project_id": "beyoundtest",
+    "storage_bucket": "beyoundtest.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:366788228499:android:1e004e134b770c5a07e466",
+        "android_client_info": {
+          "package_name": "com.mycompany.beyondadmin.usamadev"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA-ptfxRO7V5isYl71Wkoh_8MOsn4-MS6k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
