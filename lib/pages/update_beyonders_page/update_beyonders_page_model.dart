@@ -7,10 +7,10 @@ import '/pages/components/add_beyonder_component/add_beyonder_component_widget.d
 import '/pages/components/set_supervisor_component/set_supervisor_component_widget.dart';
 import '/pages/components/side/side_widget.dart';
 import '/pages/components/update_beyonder_component/update_beyonder_component_widget.dart';
-import '/flutter_flow/custom_functions.dart' as functions;
 import 'update_beyonders_page_widget.dart' show UpdateBeyondersPageWidget;
 import 'package:aligned_dialog/aligned_dialog.dart';
 import 'package:data_table_2/data_table_2.dart';
+import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -21,24 +21,20 @@ class UpdateBeyondersPageModel
     extends FlutterFlowModel<UpdateBeyondersPageWidget> {
   ///  Local state fields for this page.
 
-  List<dynamic> listOfAllUseresLocal = [];
-  void addToListOfAllUseresLocal(dynamic item) =>
-      listOfAllUseresLocal.add(item);
-  void removeFromListOfAllUseresLocal(dynamic item) =>
-      listOfAllUseresLocal.remove(item);
-  void removeAtIndexFromListOfAllUseresLocal(int index) =>
-      listOfAllUseresLocal.removeAt(index);
-  void insertAtIndexInListOfAllUseresLocal(int index, dynamic item) =>
-      listOfAllUseresLocal.insert(index, item);
-  void updateListOfAllUseresLocalAtIndex(
-          int index, Function(dynamic) updateFn) =>
-      listOfAllUseresLocal[index] = updateFn(listOfAllUseresLocal[index]);
+  List<dynamic> listOfUseres = [];
+  void addToListOfUseres(dynamic item) => listOfUseres.add(item);
+  void removeFromListOfUseres(dynamic item) => listOfUseres.remove(item);
+  void removeAtIndexFromListOfUseres(int index) => listOfUseres.removeAt(index);
+  void insertAtIndexInListOfUseres(int index, dynamic item) =>
+      listOfUseres.insert(index, item);
+  void updateListOfUseresAtIndex(int index, Function(dynamic) updateFn) =>
+      listOfUseres[index] = updateFn(listOfUseres[index]);
 
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
   // Stores action output result for [Backend Call - API (getAllUseres)] action in UpdateBeyondersPage widget.
-  ApiCallResponse? initPageGetAllUseresApi;
+  ApiCallResponse? apiResultAllUseresCall;
   // Model for Side component.
   late SideModel sideModel;
   // State field(s) for TextField widget.
