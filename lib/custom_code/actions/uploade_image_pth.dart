@@ -17,8 +17,8 @@ Future<dynamic> uploadeImagePth(
   headersParams['Authorization'] = 'Bearer $token';
   Response response;
   FormData formData = FormData.fromMap({
-    "file": await MultipartFile.fromFile(imagePath.name ?? '',
-        filename: "file.path"),
+    "file": await MultipartFile.fromBytes(imagePath.bytes?.toList() ?? [],
+        filename: "file.png"),
   });
   response = await Dio().post(
     uploadUrl,

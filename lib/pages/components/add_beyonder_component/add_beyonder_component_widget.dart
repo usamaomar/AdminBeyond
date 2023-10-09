@@ -120,50 +120,17 @@ class _AddBeyonderComponentWidgetState
                                 size: 36.0,
                               ),
                             ),
-                            InkWell(
-                              splashColor: Colors.transparent,
-                              focusColor: Colors.transparent,
-                              hoverColor: Colors.transparent,
-                              highlightColor: Colors.transparent,
-                              onTap: () async {
-                                _model.uplodeApiCall =
-                                    await actions.uploadeImagePth(
-                                  _model.uploadedLocalFile,
-                                  FFAppState().userModel.token,
-                                  'https://beyond.api.matterhr.com/api/v1/Uploud/Create',
-                                );
-                                ScaffoldMessenger.of(context).showSnackBar(
-                                  SnackBar(
-                                    content: Text(
-                                      getJsonField(
-                                        _model.uplodeApiCall,
-                                        r'''$''',
-                                      ).toString(),
-                                      style: TextStyle(
-                                        color: FlutterFlowTheme.of(context)
-                                            .primaryText,
-                                      ),
-                                    ),
-                                    duration: Duration(milliseconds: 4000),
-                                    backgroundColor:
-                                        FlutterFlowTheme.of(context).secondary,
-                                  ),
-                                );
-
-                                setState(() {});
-                              },
-                              child: Text(
-                                FFLocalizations.of(context).getText(
-                                  'xv1gmp99' /* Add Beyonder */,
-                                ),
-                                style: FlutterFlowTheme.of(context)
-                                    .titleLarge
-                                    .override(
-                                      fontFamily: 'Outfit',
-                                      color: FlutterFlowTheme.of(context)
-                                          .primaryText,
-                                    ),
+                            Text(
+                              FFLocalizations.of(context).getText(
+                                'xv1gmp99' /* Add Beyonder */,
                               ),
+                              style: FlutterFlowTheme.of(context)
+                                  .titleLarge
+                                  .override(
+                                    fontFamily: 'Outfit',
+                                    color: FlutterFlowTheme.of(context)
+                                        .primaryText,
+                                  ),
                             ),
                             Expanded(
                               child: Row(
@@ -307,6 +274,20 @@ class _AddBeyonderComponentWidgetState
                                             return;
                                           }
                                         }
+
+                                        _model.uplodeApiCall =
+                                            await actions.uploadeImagePth(
+                                          _model.uploadedLocalFile,
+                                          FFAppState().userModel.token,
+                                          'https://beyond.api.matterhr.com/api/v1/Uploud/Create',
+                                        );
+                                        setState(() {
+                                          _model.myUploadedImagePath =
+                                              getJsonField(
+                                            _model.uplodeApiCall,
+                                            r'''$.data''',
+                                          ).toString();
+                                        });
 
                                         setState(() {});
                                       },
@@ -856,8 +837,8 @@ class _AddBeyonderComponentWidgetState
                           children: [
                             FFButtonWidget(
                               onPressed: () async {
-                                if (_model.dropDownValue == null ||
-                                    _model.dropDownValue == '') {
+                                if (_model.dropDownValue != null &&
+                                    _model.dropDownValue != '') {
                                   _model.registerUserApiResult =
                                       await RegisterUserApiCall.call(
                                     firstName: _model.textController1.text,
@@ -873,9 +854,11 @@ class _AddBeyonderComponentWidgetState
                                             _model.dropDownValue!),
                                     token: FFAppState().userModel.token,
                                   );
-                                  if (!(_model
+                                  if ((_model
                                           .registerUserApiResult?.succeeded ??
                                       true)) {
+                                    context.safePop();
+                                  } else {
                                     ScaffoldMessenger.of(context).showSnackBar(
                                       SnackBar(
                                         content: Text(
@@ -885,8 +868,7 @@ class _AddBeyonderComponentWidgetState
                                                 ''),
                                           ).toString(),
                                           style: TextStyle(
-                                            color: FlutterFlowTheme.of(context)
-                                                .primaryText,
+                                            color: Colors.white,
                                           ),
                                         ),
                                         duration: Duration(milliseconds: 4000),
@@ -896,14 +878,32 @@ class _AddBeyonderComponentWidgetState
                                       ),
                                     );
                                   }
+
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    SnackBar(
+                                      content: Text(
+                                        RegisterUserApiCall.messages(
+                                          (_model.registerUserApiResult
+                                                  ?.jsonBody ??
+                                              ''),
+                                        ).toString(),
+                                        style: TextStyle(
+                                          color: Colors.white,
+                                        ),
+                                      ),
+                                      duration: Duration(milliseconds: 4000),
+                                      backgroundColor:
+                                          FlutterFlowTheme.of(context)
+                                              .secondary,
+                                    ),
+                                  );
                                 } else {
                                   ScaffoldMessenger.of(context).showSnackBar(
                                     SnackBar(
                                       content: Text(
                                         'Select acceess type',
                                         style: TextStyle(
-                                          color: FlutterFlowTheme.of(context)
-                                              .primaryText,
+                                          color: Colors.white,
                                         ),
                                       ),
                                       duration: Duration(milliseconds: 4000),

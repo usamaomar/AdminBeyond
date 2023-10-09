@@ -42,3 +42,10 @@ int getSelectedIdAccessRoleByStringValue(String value) {
   } else
     return 4;
 }
+
+bool filterListByTextSearch(
+  String currentTitle,
+  String searchText,
+) {
+  return currentTitle.contains(searchText);
+}

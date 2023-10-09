@@ -12,15 +12,33 @@ import 'update_beyonders_page_widget.dart' show UpdateBeyondersPageWidget;
 import 'package:aligned_dialog/aligned_dialog.dart';
 import 'package:data_table_2/data_table_2.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
 class UpdateBeyondersPageModel
     extends FlutterFlowModel<UpdateBeyondersPageWidget> {
+  ///  Local state fields for this page.
+
+  List<dynamic> listOfAllUseresLocal = [];
+  void addToListOfAllUseresLocal(dynamic item) =>
+      listOfAllUseresLocal.add(item);
+  void removeFromListOfAllUseresLocal(dynamic item) =>
+      listOfAllUseresLocal.remove(item);
+  void removeAtIndexFromListOfAllUseresLocal(int index) =>
+      listOfAllUseresLocal.removeAt(index);
+  void insertAtIndexInListOfAllUseresLocal(int index, dynamic item) =>
+      listOfAllUseresLocal.insert(index, item);
+  void updateListOfAllUseresLocalAtIndex(
+          int index, Function(dynamic) updateFn) =>
+      listOfAllUseresLocal[index] = updateFn(listOfAllUseresLocal[index]);
+
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
+  // Stores action output result for [Backend Call - API (getAllUseres)] action in UpdateBeyondersPage widget.
+  ApiCallResponse? initPageGetAllUseresApi;
   // Model for Side component.
   late SideModel sideModel;
   // State field(s) for TextField widget.
