@@ -30,14 +30,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
 
     _model.textController1 ??= TextEditingController();
     _model.textController2 ??= TextEditingController();
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {
-          _model.textController1?.text = FFLocalizations.of(context).getText(
-            '1cajl1fs' /* usamaomarsoftware@gmail.com */,
-          );
-          _model.textController2?.text = FFLocalizations.of(context).getText(
-            'a6y7sr5r' /* password */,
-          );
-        }));
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override

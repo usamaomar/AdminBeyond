@@ -162,17 +162,9 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Email',
       'ar': 'البريد الألكتروني',
     },
-    '1cajl1fs': {
-      'en': 'usamaomarsoftware@gmail.com',
-      'ar': '',
-    },
     'bqk9giez': {
       'en': 'Password',
       'ar': 'كلمة السر',
-    },
-    'a6y7sr5r': {
-      'en': 'password',
-      'ar': '',
     },
     'i7fxagal': {
       'en': 'Login',
