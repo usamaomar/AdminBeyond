@@ -211,13 +211,14 @@ class _EditTeamComponentWidgetState extends State<EditTeamComponentWidget> {
                               onPressed: () async {
                                 _model.updateTeamResponse =
                                     await UpdateTeamNameApiCall.call(
-                                  name: widget.teamName,
+                                  name: _model.textController.text,
                                   id: widget.id,
+                                  token: FFAppState().userModel.token,
                                 );
                                 if ((_model.updateTeamResponse?.succeeded ??
                                     true)) {
+                                  _model.updatePage(() {});
                                   context.safePop();
-                                  setState(() {});
                                 } else {
                                   ScaffoldMessenger.of(context).showSnackBar(
                                     SnackBar(

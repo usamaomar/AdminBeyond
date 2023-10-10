@@ -289,6 +289,39 @@ class _TeamsWidgetState extends State<TeamsWidget> {
                                               );
                                             },
                                           ).then((value) => setState(() {}));
+
+                                          _model.apiResultso0 =
+                                              await GetAllTeamsApiCall.call(
+                                            token: FFAppState().userModel.token,
+                                            pageSize: 1000,
+                                          );
+                                          if ((_model
+                                                  .apiResultso01?.succeeded ??
+                                              true)) {
+                                            setState(() {
+                                              _model.originalListOfTeam =
+                                                  getJsonField(
+                                                (_model.apiResultso01
+                                                        ?.jsonBody ??
+                                                    ''),
+                                                r'''$.data''',
+                                                true,
+                                              )!
+                                                      .toList()
+                                                      .cast<dynamic>();
+                                              _model.listOfTeam = getJsonField(
+                                                (_model.apiResultso01
+                                                        ?.jsonBody ??
+                                                    ''),
+                                                r'''$.data''',
+                                                true,
+                                              )!
+                                                  .toList()
+                                                  .cast<dynamic>();
+                                            });
+                                          }
+
+                                          setState(() {});
                                         },
                                       ),
                                     ),
@@ -560,6 +593,45 @@ class _TeamsWidgetState extends State<TeamsWidget> {
                                                                 ).then((value) =>
                                                                     setState(
                                                                         () {}));
+
+                                                                _model.apiResultso01 =
+                                                                    await GetAllTeamsApiCall
+                                                                        .call(
+                                                                  token: FFAppState()
+                                                                      .userModel
+                                                                      .token,
+                                                                  pageSize:
+                                                                      1000,
+                                                                );
+                                                                if ((_model
+                                                                        .apiResultso01
+                                                                        ?.succeeded ??
+                                                                    true)) {
+                                                                  setState(() {
+                                                                    _model
+                                                                        .originalListOfTeam = getJsonField(
+                                                                      (_model.apiResultso01
+                                                                              ?.jsonBody ??
+                                                                          ''),
+                                                                      r'''$.data''',
+                                                                      true,
+                                                                    )!
+                                                                        .toList()
+                                                                        .cast<dynamic>();
+                                                                    _model
+                                                                        .listOfTeam = getJsonField(
+                                                                      (_model.apiResultso01
+                                                                              ?.jsonBody ??
+                                                                          ''),
+                                                                      r'''$.data''',
+                                                                      true,
+                                                                    )!
+                                                                        .toList()
+                                                                        .cast<dynamic>();
+                                                                  });
+                                                                }
+
+                                                                setState(() {});
                                                               },
                                                               child: Icon(
                                                                 Icons

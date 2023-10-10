@@ -51,6 +51,10 @@ class TeamsModel extends FlutterFlowModel<TeamsWidget> {
   // State field(s) for TextField widget.
   TextEditingController? textController;
   String? Function(BuildContext, String?)? textControllerValidator;
+  // Stores action output result for [Backend Call - API (GetAllTeamsApi)] action in IconButton widget.
+  ApiCallResponse? apiResultso0;
+  // Stores action output result for [Backend Call - API (GetAllTeamsApi)] action in Icon widget.
+  ApiCallResponse? apiResultso01;
 
   /// Initialization and disposal methods.
 

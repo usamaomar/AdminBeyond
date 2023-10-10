@@ -143,14 +143,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Phone Number',
       'ar': 'رقم الهاتف',
     },
-    '9ypxnj08': {
-      'en': 'Update Beyonder',
-      'ar': 'تعديل البيوندر',
-    },
-    'r079cbq0': {
-      'en': 'Assign Supervisor',
-      'ar': 'تعيين المشرف',
-    },
     'wa8ey22l': {
       'en': 'Home',
       'ar': '',

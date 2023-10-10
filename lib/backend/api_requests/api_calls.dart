@@ -181,6 +181,59 @@ class UpdateTeamNameApiCall {
       );
 }
 
+class AddTeamNameCall {
+  static Future<ApiCallResponse> call({
+    String? name = '',
+    String? token = '',
+  }) {
+    final ffApiRequestBody = '''
+{
+"name": "${name}"  
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'addTeamName',
+      apiUrl:
+          'https://beyond.api.matterhr.com/api/v1/Teams/Post?token=${token}',
+      callType: ApiCallType.POST,
+      headers: {
+        'Authorization': 'Bearer  ${token}',
+      },
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+    );
+  }
+
+  static dynamic refreshToken(dynamic response) => getJsonField(
+        response,
+        r'''$.data.refreshToken''',
+      );
+  static dynamic token(dynamic response) => getJsonField(
+        response,
+        r'''$.data.token''',
+      );
+  static dynamic status(dynamic response) => getJsonField(
+        response,
+        r'''$.status''',
+      );
+  static dynamic succeeded(dynamic response) => getJsonField(
+        response,
+        r'''$.succeeded''',
+      );
+  static dynamic messages(dynamic response) => getJsonField(
+        response,
+        r'''$.messages''',
+      );
+  static dynamic errorMessage(dynamic response) => getJsonField(
+        response,
+        r'''$.errors''',
+      );
+}
+
 class GetMyUserCall {
   static Future<ApiCallResponse> call({
     String? token = '',
