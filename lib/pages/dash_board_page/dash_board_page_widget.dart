@@ -25,6 +25,8 @@ class _DashBoardPageWidgetState extends State<DashBoardPageWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => DashBoardPageModel());
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override

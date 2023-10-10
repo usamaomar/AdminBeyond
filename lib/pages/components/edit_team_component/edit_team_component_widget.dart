@@ -41,6 +41,7 @@ class _EditTeamComponentWidgetState extends State<EditTeamComponentWidget> {
     _model = createModel(context, () => EditTeamComponentModel());
 
     _model.textController ??= TextEditingController(text: widget.teamName);
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
