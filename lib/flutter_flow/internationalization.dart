@@ -247,10 +247,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Platform Navigation',
       'ar': 'شاشة التحكم',
     },
-    'p6x6bnqu': {
-      'en': 'Dashboard',
-      'ar': '',
-    },
     '5ogcyy9t': {
       'en': 'Teams',
       'ar': '',
@@ -510,14 +506,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Update Team',
       'ar': 'تعديل فريق',
     },
-    'qh3ngelq': {
-      'en': 'Team Name',
-      'ar': 'اسم الفريق',
-    },
-    'opqxgo0j': {
-      'en': '',
-      'ar': '',
-    },
     '0fleqr5y': {
       'en': 'Update',
       'ar': 'تعديل',
@@ -529,17 +517,9 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'View Team',
       'ar': 'مشاهدة فريق',
     },
-    'hflyxf3d': {
-      'en': 'Team Name',
-      'ar': 'اسم الفريق',
-    },
     '6vyekdb0': {
       'en': 'First Name',
       'ar': 'الاسم الاول',
-    },
-    'ml2efavv': {
-      'en': '',
-      'ar': '',
     },
     'j8dlyoa2': {
       'en': 'Close',

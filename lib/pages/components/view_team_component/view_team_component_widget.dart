@@ -11,7 +11,12 @@ import 'view_team_component_model.dart';
 export 'view_team_component_model.dart';
 
 class ViewTeamComponentWidget extends StatefulWidget {
-  const ViewTeamComponentWidget({Key? key}) : super(key: key);
+  const ViewTeamComponentWidget({
+    Key? key,
+    required this.teamName,
+  }) : super(key: key);
+
+  final String? teamName;
 
   @override
   _ViewTeamComponentWidgetState createState() =>
@@ -32,12 +37,7 @@ class _ViewTeamComponentWidgetState extends State<ViewTeamComponentWidget> {
     super.initState();
     _model = createModel(context, () => ViewTeamComponentModel());
 
-    _model.textController ??= TextEditingController();
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {
-          _model.textController?.text = FFLocalizations.of(context).getText(
-            'ml2efavv' /*  */,
-          );
-        }));
+    _model.textController ??= TextEditingController(text: widget.teamName);
   }
 
   @override
@@ -144,10 +144,7 @@ class _ViewTeamComponentWidgetState extends State<ViewTeamComponentWidget> {
                                 readOnly: true,
                                 obscureText: false,
                                 decoration: InputDecoration(
-                                  labelText:
-                                      FFLocalizations.of(context).getText(
-                                    'hflyxf3d' /* Team Name */,
-                                  ),
+                                  labelText: widget.teamName,
                                   labelStyle:
                                       FlutterFlowTheme.of(context).labelMedium,
                                   hintText: FFLocalizations.of(context).getText(

@@ -7,8 +7,10 @@ import '/pages/components/add_team_component/add_team_component_widget.dart';
 import '/pages/components/edit_team_component/edit_team_component_widget.dart';
 import '/pages/components/side/side_widget.dart';
 import '/pages/components/view_team_component/view_team_component_widget.dart';
+import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:aligned_dialog/aligned_dialog.dart';
 import 'package:data_table_2/data_table_2.dart';
+import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -127,6 +129,44 @@ class _TeamsWidgetState extends State<TeamsWidget> {
                                           30.0, 0.0, 20.0, 0.0),
                                       child: TextFormField(
                                         controller: _model.textController,
+                                        onChanged: (_) => EasyDebounce.debounce(
+                                          '_model.textController',
+                                          Duration(milliseconds: 400),
+                                          () async {
+                                            if (_model.textController.text !=
+                                                    null &&
+                                                _model.textController.text !=
+                                                    '') {
+                                              setState(() {
+                                                _model.listOfTeam = functions
+                                                    .filterListAndReturnByTextSearch(
+                                                        _model
+                                                            .originalListOfTeam
+                                                            .toList(),
+                                                        _model.listOfTeam
+                                                            .toList(),
+                                                        _model.textController
+                                                            .text)
+                                                    .toList()
+                                                    .cast<dynamic>();
+                                              });
+                                            } else {
+                                              setState(() {
+                                                _model.listOfTeam = functions
+                                                    .filterListAndReturnByTextSearch(
+                                                        _model
+                                                            .originalListOfTeam
+                                                            .toList(),
+                                                        _model.listOfTeam
+                                                            .toList(),
+                                                        _model.textController
+                                                            .text)
+                                                    .toList()
+                                                    .cast<dynamic>();
+                                              });
+                                            }
+                                          },
+                                        ),
                                         obscureText: false,
                                         decoration: InputDecoration(
                                           labelStyle:
@@ -351,8 +391,10 @@ class _TeamsWidgetState extends State<TeamsWidget> {
                                                             listLocalItem) =>
                                                         [
                                                           Text(
-                                                            listLocalIndex
-                                                                .toString(),
+                                                            getJsonField(
+                                                              listLocalItem,
+                                                              r'''$.id''',
+                                                            ).toString(),
                                                             style: FlutterFlowTheme
                                                                     .of(context)
                                                                 .bodyMedium,
@@ -425,7 +467,13 @@ class _TeamsWidgetState extends State<TeamsWidget> {
                                                                           width:
                                                                               double.infinity,
                                                                           child:
-                                                                              ViewTeamComponentWidget(),
+                                                                              ViewTeamComponentWidget(
+                                                                            teamName:
+                                                                                getJsonField(
+                                                                              listLocalItem,
+                                                                              r'''$.name''',
+                                                                            ).toString(),
+                                                                          ),
                                                                         ),
                                                                       ),
                                                                     );
@@ -494,7 +542,17 @@ class _TeamsWidgetState extends State<TeamsWidget> {
                                                                           width:
                                                                               double.infinity,
                                                                           child:
-                                                                              EditTeamComponentWidget(),
+                                                                              EditTeamComponentWidget(
+                                                                            teamName:
+                                                                                getJsonField(
+                                                                              listLocalItem,
+                                                                              r'''$.name''',
+                                                                            ).toString(),
+                                                                            id: getJsonField(
+                                                                              listLocalItem,
+                                                                              r'''$.id''',
+                                                                            ),
+                                                                          ),
                                                                         ),
                                                                       ),
                                                                     );

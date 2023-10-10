@@ -127,6 +127,60 @@ class RegisterUserApiCall {
       );
 }
 
+class UpdateTeamNameApiCall {
+  static Future<ApiCallResponse> call({
+    String? name = '',
+    int? id,
+    String? token = '',
+  }) {
+    final ffApiRequestBody = '''
+{
+"id": ${id} ,
+"name": "${name}"  
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'UpdateTeamNameApi',
+      apiUrl: 'https://beyond.api.matterhr.com/api/v1/Teams/Put?token=${token}',
+      callType: ApiCallType.PUT,
+      headers: {
+        'Authorization': 'Bearer  ${token}',
+      },
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+    );
+  }
+
+  static dynamic refreshToken(dynamic response) => getJsonField(
+        response,
+        r'''$.data.refreshToken''',
+      );
+  static dynamic token(dynamic response) => getJsonField(
+        response,
+        r'''$.data.token''',
+      );
+  static dynamic status(dynamic response) => getJsonField(
+        response,
+        r'''$.status''',
+      );
+  static dynamic succeeded(dynamic response) => getJsonField(
+        response,
+        r'''$.succeeded''',
+      );
+  static dynamic messages(dynamic response) => getJsonField(
+        response,
+        r'''$.messages''',
+      );
+  static dynamic errorMessage(dynamic response) => getJsonField(
+        response,
+        r'''$.errors''',
+      );
+}
+
 class GetMyUserCall {
   static Future<ApiCallResponse> call({
     String? token = '',
@@ -282,7 +336,7 @@ class GetAllTeamsApiCall {
   }) {
     return ApiManager.instance.makeApiCall(
       callName: 'GetAllTeamsApi',
-      apiUrl: 'https://beyond.api.matterhr.com/api/v1/User/GetAllTeams',
+      apiUrl: 'https://beyond.api.matterhr.com/api/v1/Teams/GetAllTeams',
       callType: ApiCallType.GET,
       headers: {
         'Authorization': 'Bearer  ${token}',

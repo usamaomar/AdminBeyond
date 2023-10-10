@@ -1,3 +1,4 @@
+import '/backend/api_requests/api_calls.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -11,7 +12,14 @@ import 'edit_team_component_model.dart';
 export 'edit_team_component_model.dart';
 
 class EditTeamComponentWidget extends StatefulWidget {
-  const EditTeamComponentWidget({Key? key}) : super(key: key);
+  const EditTeamComponentWidget({
+    Key? key,
+    required this.teamName,
+    required this.id,
+  }) : super(key: key);
+
+  final String? teamName;
+  final int? id;
 
   @override
   _EditTeamComponentWidgetState createState() =>
@@ -32,12 +40,7 @@ class _EditTeamComponentWidgetState extends State<EditTeamComponentWidget> {
     super.initState();
     _model = createModel(context, () => EditTeamComponentModel());
 
-    _model.textController ??= TextEditingController();
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {
-          _model.textController?.text = FFLocalizations.of(context).getText(
-            'opqxgo0j' /*  */,
-          );
-        }));
+    _model.textController ??= TextEditingController(text: widget.teamName);
   }
 
   @override
@@ -146,10 +149,7 @@ class _EditTeamComponentWidgetState extends State<EditTeamComponentWidget> {
                                   decoration: InputDecoration(
                                     labelStyle: FlutterFlowTheme.of(context)
                                         .labelMedium,
-                                    hintText:
-                                        FFLocalizations.of(context).getText(
-                                      'qh3ngelq' /* Team Name */,
-                                    ),
+                                    hintText: widget.teamName,
                                     hintStyle: FlutterFlowTheme.of(context)
                                         .labelMedium,
                                     enabledBorder: OutlineInputBorder(
@@ -208,8 +208,35 @@ class _EditTeamComponentWidgetState extends State<EditTeamComponentWidget> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             FFButtonWidget(
-                              onPressed: () {
-                                print('Button pressed ...');
+                              onPressed: () async {
+                                _model.updateTeamResponse =
+                                    await UpdateTeamNameApiCall.call(
+                                  name: widget.teamName,
+                                  id: widget.id,
+                                );
+                                if ((_model.updateTeamResponse?.succeeded ??
+                                    true)) {
+                                  context.safePop();
+                                  setState(() {});
+                                } else {
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    SnackBar(
+                                      content: Text(
+                                        'Errorr',
+                                        style: TextStyle(
+                                          color: FlutterFlowTheme.of(context)
+                                              .error,
+                                        ),
+                                      ),
+                                      duration: Duration(milliseconds: 4000),
+                                      backgroundColor:
+                                          FlutterFlowTheme.of(context)
+                                              .secondary,
+                                    ),
+                                  );
+                                }
+
+                                setState(() {});
                               },
                               text: FFLocalizations.of(context).getText(
                                 '0fleqr5y' /* Update */,
