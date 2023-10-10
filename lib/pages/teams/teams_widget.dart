@@ -1,3 +1,4 @@
+import '/backend/api_requests/api_calls.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -6,10 +7,10 @@ import '/pages/components/add_team_component/add_team_component_widget.dart';
 import '/pages/components/edit_team_component/edit_team_component_widget.dart';
 import '/pages/components/side/side_widget.dart';
 import '/pages/components/view_team_component/view_team_component_widget.dart';
-import '/flutter_flow/random_data_util.dart' as random_data;
 import 'package:aligned_dialog/aligned_dialog.dart';
 import 'package:data_table_2/data_table_2.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -32,6 +33,32 @@ class _TeamsWidgetState extends State<TeamsWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => TeamsModel());
+
+    // On page load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      _model.apiResultAllTeamCall = await GetAllTeamsApiCall.call(
+        token: FFAppState().userModel.token,
+        pageSize: 1000,
+      );
+      if ((_model.apiResultAllTeamCall?.succeeded ?? true)) {
+        setState(() {
+          _model.originalListOfTeam = getJsonField(
+            (_model.apiResultAllTeamCall?.jsonBody ?? ''),
+            r'''$.data''',
+            true,
+          )!
+              .toList()
+              .cast<dynamic>();
+          _model.listOfTeam = getJsonField(
+            (_model.apiResultAllTeamCall?.jsonBody ?? ''),
+            r'''$.data''',
+            true,
+          )!
+              .toList()
+              .cast<dynamic>();
+        });
+      }
+    });
 
     _model.textController ??= TextEditingController();
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {
@@ -239,16 +266,12 @@ class _TeamsWidgetState extends State<TeamsWidget> {
                                     Expanded(
                                       child: Builder(
                                         builder: (context) {
-                                          final testTitle = List.generate(
-                                              random_data.randomInteger(0, 10),
-                                              (index) =>
-                                                  random_data.randomString(
-                                                    0,
-                                                    10,
-                                                    true,
-                                                    false,
-                                                    false,
-                                                  )).toList().take(10).toList();
+                                          final listLocal = _model.listOfTeam
+                                              .map((e) => getJsonField(
+                                                    e,
+                                                    r'''$''',
+                                                  ))
+                                              .toList();
                                           return DataTable2(
                                             columns: [
                                               DataColumn2(
@@ -322,178 +345,178 @@ class _TeamsWidgetState extends State<TeamsWidget> {
                                                 ),
                                               ),
                                             ],
-                                            rows: testTitle
-                                                .mapIndexed((testTitleIndex,
-                                                        testTitleItem) =>
-                                                    [
-                                                      Text(
-                                                        random_data.randomName(
-                                                            true, false),
-                                                        style:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .bodyMedium,
-                                                      ),
-                                                      Text(
-                                                        random_data.randomName(
-                                                            false, true),
-                                                        style:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .bodyMedium,
-                                                      ),
-                                                      Text(
-                                                        random_data.randomName(
-                                                            true, true),
-                                                        style:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .bodyMedium,
-                                                      ),
-                                                      Builder(
-                                                        builder: (context) =>
-                                                            InkWell(
-                                                          splashColor: Colors
-                                                              .transparent,
-                                                          focusColor: Colors
-                                                              .transparent,
-                                                          hoverColor: Colors
-                                                              .transparent,
-                                                          highlightColor: Colors
-                                                              .transparent,
-                                                          onTap: () async {
-                                                            await showAlignedDialog(
-                                                              context: context,
-                                                              isGlobal: true,
-                                                              avoidOverflow:
-                                                                  false,
-                                                              targetAnchor:
-                                                                  AlignmentDirectional(
-                                                                          0.0,
-                                                                          0.0)
-                                                                      .resolve(
-                                                                          Directionality.of(
-                                                                              context)),
-                                                              followerAnchor:
-                                                                  AlignmentDirectional(
-                                                                          0.0,
-                                                                          0.0)
-                                                                      .resolve(
-                                                                          Directionality.of(
-                                                                              context)),
-                                                              builder:
-                                                                  (dialogContext) {
-                                                                return Material(
-                                                                  color: Colors
-                                                                      .transparent,
-                                                                  child:
-                                                                      GestureDetector(
-                                                                    onTap: () => _model
-                                                                            .unfocusNode
-                                                                            .canRequestFocus
-                                                                        ? FocusScope.of(context).requestFocus(_model
-                                                                            .unfocusNode)
-                                                                        : FocusScope.of(context)
-                                                                            .unfocus(),
-                                                                    child:
-                                                                        Container(
-                                                                      height: double
-                                                                          .infinity,
-                                                                      width: double
-                                                                          .infinity,
-                                                                      child:
-                                                                          ViewTeamComponentWidget(),
-                                                                    ),
-                                                                  ),
-                                                                );
-                                                              },
-                                                            ).then((value) =>
-                                                                setState(
-                                                                    () {}));
-                                                          },
-                                                          child: Icon(
-                                                            Icons
-                                                                .remove_red_eye,
-                                                            color: FlutterFlowTheme
+                                            rows: (listLocal as Iterable)
+                                                .mapIndexed(
+                                                    (listLocalIndex,
+                                                            listLocalItem) =>
+                                                        [
+                                                          Text(
+                                                            listLocalIndex
+                                                                .toString(),
+                                                            style: FlutterFlowTheme
                                                                     .of(context)
-                                                                .secondaryText,
-                                                            size: 24.0,
+                                                                .bodyMedium,
                                                           ),
-                                                        ),
-                                                      ),
-                                                      Builder(
-                                                        builder: (context) =>
-                                                            InkWell(
-                                                          splashColor: Colors
-                                                              .transparent,
-                                                          focusColor: Colors
-                                                              .transparent,
-                                                          hoverColor: Colors
-                                                              .transparent,
-                                                          highlightColor: Colors
-                                                              .transparent,
-                                                          onTap: () async {
-                                                            await showAlignedDialog(
-                                                              context: context,
-                                                              isGlobal: true,
-                                                              avoidOverflow:
-                                                                  false,
-                                                              targetAnchor:
-                                                                  AlignmentDirectional(
-                                                                          0.0,
-                                                                          0.0)
-                                                                      .resolve(
-                                                                          Directionality.of(
-                                                                              context)),
-                                                              followerAnchor:
-                                                                  AlignmentDirectional(
-                                                                          0.0,
-                                                                          0.0)
-                                                                      .resolve(
-                                                                          Directionality.of(
-                                                                              context)),
-                                                              builder:
-                                                                  (dialogContext) {
-                                                                return Material(
-                                                                  color: Colors
-                                                                      .transparent,
-                                                                  child:
-                                                                      GestureDetector(
-                                                                    onTap: () => _model
-                                                                            .unfocusNode
-                                                                            .canRequestFocus
-                                                                        ? FocusScope.of(context).requestFocus(_model
-                                                                            .unfocusNode)
-                                                                        : FocusScope.of(context)
-                                                                            .unfocus(),
-                                                                    child:
-                                                                        Container(
-                                                                      height:
-                                                                          800.0,
-                                                                      width: double
-                                                                          .infinity,
-                                                                      child:
-                                                                          EditTeamComponentWidget(),
-                                                                    ),
-                                                                  ),
-                                                                );
-                                                              },
-                                                            ).then((value) =>
-                                                                setState(
-                                                                    () {}));
-                                                          },
-                                                          child: Icon(
-                                                            Icons.edit_square,
-                                                            color: FlutterFlowTheme
+                                                          Text(
+                                                            getJsonField(
+                                                              listLocalItem,
+                                                              r'''$.name''',
+                                                            ).toString(),
+                                                            style: FlutterFlowTheme
                                                                     .of(context)
-                                                                .secondaryText,
-                                                            size: 24.0,
+                                                                .bodyMedium,
                                                           ),
-                                                        ),
-                                                      ),
-                                                    ]
-                                                        .map((c) => DataCell(c))
-                                                        .toList())
+                                                          Text(
+                                                            getJsonField(
+                                                              listLocalItem,
+                                                              r'''$.membersCount''',
+                                                            ).toString(),
+                                                            style: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .bodyMedium,
+                                                          ),
+                                                          Builder(
+                                                            builder:
+                                                                (context) =>
+                                                                    InkWell(
+                                                              splashColor: Colors
+                                                                  .transparent,
+                                                              focusColor: Colors
+                                                                  .transparent,
+                                                              hoverColor: Colors
+                                                                  .transparent,
+                                                              highlightColor:
+                                                                  Colors
+                                                                      .transparent,
+                                                              onTap: () async {
+                                                                await showAlignedDialog(
+                                                                  context:
+                                                                      context,
+                                                                  isGlobal:
+                                                                      true,
+                                                                  avoidOverflow:
+                                                                      false,
+                                                                  targetAnchor: AlignmentDirectional(
+                                                                          0.0,
+                                                                          0.0)
+                                                                      .resolve(
+                                                                          Directionality.of(
+                                                                              context)),
+                                                                  followerAnchor: AlignmentDirectional(
+                                                                          0.0,
+                                                                          0.0)
+                                                                      .resolve(
+                                                                          Directionality.of(
+                                                                              context)),
+                                                                  builder:
+                                                                      (dialogContext) {
+                                                                    return Material(
+                                                                      color: Colors
+                                                                          .transparent,
+                                                                      child:
+                                                                          GestureDetector(
+                                                                        onTap: () => _model.unfocusNode.canRequestFocus
+                                                                            ? FocusScope.of(context).requestFocus(_model.unfocusNode)
+                                                                            : FocusScope.of(context).unfocus(),
+                                                                        child:
+                                                                            Container(
+                                                                          height:
+                                                                              double.infinity,
+                                                                          width:
+                                                                              double.infinity,
+                                                                          child:
+                                                                              ViewTeamComponentWidget(),
+                                                                        ),
+                                                                      ),
+                                                                    );
+                                                                  },
+                                                                ).then((value) =>
+                                                                    setState(
+                                                                        () {}));
+                                                              },
+                                                              child: Icon(
+                                                                Icons
+                                                                    .remove_red_eye,
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .secondaryText,
+                                                                size: 24.0,
+                                                              ),
+                                                            ),
+                                                          ),
+                                                          Builder(
+                                                            builder:
+                                                                (context) =>
+                                                                    InkWell(
+                                                              splashColor: Colors
+                                                                  .transparent,
+                                                              focusColor: Colors
+                                                                  .transparent,
+                                                              hoverColor: Colors
+                                                                  .transparent,
+                                                              highlightColor:
+                                                                  Colors
+                                                                      .transparent,
+                                                              onTap: () async {
+                                                                await showAlignedDialog(
+                                                                  context:
+                                                                      context,
+                                                                  isGlobal:
+                                                                      true,
+                                                                  avoidOverflow:
+                                                                      false,
+                                                                  targetAnchor: AlignmentDirectional(
+                                                                          0.0,
+                                                                          0.0)
+                                                                      .resolve(
+                                                                          Directionality.of(
+                                                                              context)),
+                                                                  followerAnchor: AlignmentDirectional(
+                                                                          0.0,
+                                                                          0.0)
+                                                                      .resolve(
+                                                                          Directionality.of(
+                                                                              context)),
+                                                                  builder:
+                                                                      (dialogContext) {
+                                                                    return Material(
+                                                                      color: Colors
+                                                                          .transparent,
+                                                                      child:
+                                                                          GestureDetector(
+                                                                        onTap: () => _model.unfocusNode.canRequestFocus
+                                                                            ? FocusScope.of(context).requestFocus(_model.unfocusNode)
+                                                                            : FocusScope.of(context).unfocus(),
+                                                                        child:
+                                                                            Container(
+                                                                          height:
+                                                                              800.0,
+                                                                          width:
+                                                                              double.infinity,
+                                                                          child:
+                                                                              EditTeamComponentWidget(),
+                                                                        ),
+                                                                      ),
+                                                                    );
+                                                                  },
+                                                                ).then((value) =>
+                                                                    setState(
+                                                                        () {}));
+                                                              },
+                                                              child: Icon(
+                                                                Icons
+                                                                    .edit_square,
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .secondaryText,
+                                                                size: 24.0,
+                                                              ),
+                                                            ),
+                                                          ),
+                                                        ]
+                                                            .map((c) =>
+                                                                DataCell(c))
+                                                            .toList())
                                                 .map((e) => DataRow(cells: e))
                                                 .toList(),
                                             headingRowColor:

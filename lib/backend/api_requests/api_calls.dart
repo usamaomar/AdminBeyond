@@ -275,6 +275,80 @@ class GetAllUseresCall {
       );
 }
 
+class GetAllTeamsApiCall {
+  static Future<ApiCallResponse> call({
+    String? token = '',
+    int? pageSize = 10000,
+  }) {
+    return ApiManager.instance.makeApiCall(
+      callName: 'GetAllTeamsApi',
+      apiUrl: 'https://beyond.api.matterhr.com/api/v1/User/GetAllTeams',
+      callType: ApiCallType.GET,
+      headers: {
+        'Authorization': 'Bearer  ${token}',
+      },
+      params: {
+        'token': token,
+        'PageSize': 10000,
+        'PageNumber': 1,
+      },
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+    );
+  }
+
+  static dynamic ids(dynamic response) => getJsonField(
+        response,
+        r'''$.data[:].id''',
+        true,
+      );
+  static dynamic id(dynamic response) => getJsonField(
+        response,
+        r'''$.data[:].id''',
+        true,
+      );
+  static dynamic name(dynamic response) => getJsonField(
+        response,
+        r'''$.data[:].name''',
+        true,
+      );
+  static dynamic membersCount(dynamic response) => getJsonField(
+        response,
+        r'''$.data[:].membersCount''',
+        true,
+      );
+  static dynamic isActives(dynamic response) => getJsonField(
+        response,
+        r'''$.data[:].isActive''',
+      );
+  static dynamic emailConfirmeds(dynamic response) => getJsonField(
+        response,
+        r'''$.data[:].emailConfirmed''',
+      );
+  static dynamic phoneNumbers(dynamic response) => getJsonField(
+        response,
+        r'''$.data[:].phoneNumber''',
+      );
+  static dynamic profilePictureDataUrls(dynamic response) => getJsonField(
+        response,
+        r'''$.data[:].profilePictureDataUrl''',
+      );
+  static dynamic accessRoles(dynamic response) => getJsonField(
+        response,
+        r'''$.data[:].accessRole''',
+      );
+  static dynamic dataListObject(dynamic response) => getJsonField(
+        response,
+        r'''$.data''',
+      );
+  static dynamic succeeded(dynamic response) => getJsonField(
+        response,
+        r'''$.succeeded''',
+      );
+}
+
 class ApiPagingParams {
   int nextPageNumber = 0;
   int numItems = 0;

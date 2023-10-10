@@ -49,3 +49,15 @@ bool filterListByTextSearch(
 ) {
   return currentTitle.contains(searchText);
 }
+
+List<dynamic> filterListAndReturnByTextSearch(
+  List<dynamic> originalListOfUseres,
+  List<dynamic> listOfUseres,
+  String searchText,
+) {
+  return searchText.isEmpty
+      ? originalListOfUseres
+      : listOfUseres
+          .where((element) => element.toString().contains(searchText))
+          .toList();
+}

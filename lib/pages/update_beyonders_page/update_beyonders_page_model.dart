@@ -31,6 +31,19 @@ class UpdateBeyondersPageModel
   void updateListOfUseresAtIndex(int index, Function(dynamic) updateFn) =>
       listOfUseres[index] = updateFn(listOfUseres[index]);
 
+  List<dynamic> originalListOfUseres = [];
+  void addToOriginalListOfUseres(dynamic item) =>
+      originalListOfUseres.add(item);
+  void removeFromOriginalListOfUseres(dynamic item) =>
+      originalListOfUseres.remove(item);
+  void removeAtIndexFromOriginalListOfUseres(int index) =>
+      originalListOfUseres.removeAt(index);
+  void insertAtIndexInOriginalListOfUseres(int index, dynamic item) =>
+      originalListOfUseres.insert(index, item);
+  void updateOriginalListOfUseresAtIndex(
+          int index, Function(dynamic) updateFn) =>
+      originalListOfUseres[index] = updateFn(originalListOfUseres[index]);
+
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();

@@ -51,6 +51,13 @@ class _UpdateBeyondersPageWidgetState extends State<UpdateBeyondersPageWidget> {
           )!
               .toList()
               .cast<dynamic>();
+          _model.originalListOfUseres = getJsonField(
+            (_model.apiResultAllUseresCall?.jsonBody ?? ''),
+            r'''$.data''',
+            true,
+          )!
+              .toList()
+              .cast<dynamic>();
         });
       }
     });
@@ -126,29 +133,36 @@ class _UpdateBeyondersPageWidgetState extends State<UpdateBeyondersPageWidget> {
                                           '_model.textController',
                                           Duration(milliseconds: 400),
                                           () async {
-                                            if (functions
-                                                .filterListByTextSearch(
-                                                    _model.listOfUseres
-                                                        .where(
-                                                            (e) => getJsonField(
-                                                                  e,
-                                                                  r'''$.fisrtName''',
-                                                                ))
-                                                        .toList()
-                                                        .length
-                                                        .toString(),
-                                                    _model
-                                                        .textController.text)) {
+                                            if (_model.textController.text !=
+                                                    null &&
+                                                _model.textController.text !=
+                                                    '') {
                                               setState(() {
-                                                _model.removeFromListOfUseres(
-                                                    _model.listOfUseres
-                                                        .where(
-                                                            (e) => getJsonField(
-                                                                  e,
-                                                                  r'''$.firstName''',
-                                                                ))
-                                                        .toList()
-                                                        .first);
+                                                _model.listOfUseres = functions
+                                                    .filterListAndReturnByTextSearch(
+                                                        _model
+                                                            .originalListOfUseres
+                                                            .toList(),
+                                                        _model.listOfUseres
+                                                            .toList(),
+                                                        _model.textController
+                                                            .text)
+                                                    .toList()
+                                                    .cast<dynamic>();
+                                              });
+                                            } else {
+                                              setState(() {
+                                                _model.listOfUseres = functions
+                                                    .filterListAndReturnByTextSearch(
+                                                        _model
+                                                            .originalListOfUseres
+                                                            .toList(),
+                                                        _model.listOfUseres
+                                                            .toList(),
+                                                        _model.textController
+                                                            .text)
+                                                    .toList()
+                                                    .cast<dynamic>();
                                               });
                                             }
                                           },
