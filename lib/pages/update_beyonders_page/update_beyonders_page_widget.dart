@@ -265,8 +265,12 @@ class _UpdateBeyondersPageWidgetState extends State<UpdateBeyondersPageWidget> {
                                     Expanded(
                                       child: Builder(
                                         builder: (context) {
-                                          final listLocals =
-                                              _model.listOfUseres.toList();
+                                          final listLocals = _model.listOfUseres
+                                              .map((e) => getJsonField(
+                                                    e,
+                                                    r'''$''',
+                                                  ))
+                                              .toList();
                                           return DataTable2(
                                             columns: [
                                               DataColumn2(
@@ -417,7 +421,7 @@ class _UpdateBeyondersPageWidgetState extends State<UpdateBeyondersPageWidget> {
                                                               child: Text(
                                                             getJsonField(
                                                               listLocalsItem,
-                                                              r'''$''',
+                                                              r'''$.firstName''',
                                                             ).toString(),
                                                             style: FlutterFlowTheme
                                                                     .of(context)
