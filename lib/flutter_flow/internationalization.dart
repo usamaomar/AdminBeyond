@@ -123,25 +123,13 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'First Name',
       'ar': 'الاسم الاول',
     },
-    'sr11yulf': {
-      'en': '',
-      'ar': '',
-    },
     'ogxbxqmg': {
       'en': 'Last Name',
       'ar': 'الاسم الاخير',
     },
-    'tbtkzzfz': {
-      'en': '',
-      'ar': '',
-    },
     'szp1goev': {
       'en': 'Email',
       'ar': 'البريد الالكتروني',
-    },
-    '419ssh9m': {
-      'en': '',
-      'ar': '',
     },
     'zktprh6b': {
       'en': 'Activate User',
@@ -151,17 +139,9 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Access Role',
       'ar': 'دور الوصول',
     },
-    'n87n6bs9': {
-      'en': '',
-      'ar': '',
-    },
     'igjz2jp6': {
       'en': 'Phone Number',
       'ar': 'رقم الهاتف',
-    },
-    'uplzm21r': {
-      'en': '',
-      'ar': '',
     },
     '9ypxnj08': {
       'en': 'Update Beyonder',

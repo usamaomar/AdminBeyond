@@ -7,6 +7,7 @@ import '/pages/components/add_beyonder_component/add_beyonder_component_widget.d
 import '/pages/components/set_supervisor_component/set_supervisor_component_widget.dart';
 import '/pages/components/side/side_widget.dart';
 import '/pages/components/update_beyonder_component/update_beyonder_component_widget.dart';
+import '/flutter_flow/custom_functions.dart' as functions;
 import 'update_beyonders_page_widget.dart' show UpdateBeyondersPageWidget;
 import 'package:aligned_dialog/aligned_dialog.dart';
 import 'package:data_table_2/data_table_2.dart';

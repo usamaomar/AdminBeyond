@@ -7,6 +7,7 @@ import '/pages/components/add_beyonder_component/add_beyonder_component_widget.d
 import '/pages/components/set_supervisor_component/set_supervisor_component_widget.dart';
 import '/pages/components/side/side_widget.dart';
 import '/pages/components/update_beyonder_component/update_beyonder_component_widget.dart';
+import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:aligned_dialog/aligned_dialog.dart';
 import 'package:data_table_2/data_table_2.dart';
 import 'package:easy_debounce/easy_debounce.dart';
@@ -45,7 +46,7 @@ class _UpdateBeyondersPageWidgetState extends State<UpdateBeyondersPageWidget> {
         setState(() {
           _model.listOfUseres = getJsonField(
             (_model.apiResultAllUseresCall?.jsonBody ?? ''),
-            r'''$''',
+            r'''$.data''',
             true,
           )!
               .toList()
@@ -124,7 +125,33 @@ class _UpdateBeyondersPageWidgetState extends State<UpdateBeyondersPageWidget> {
                                         onChanged: (_) => EasyDebounce.debounce(
                                           '_model.textController',
                                           Duration(milliseconds: 400),
-                                          () => setState(() {}),
+                                          () async {
+                                            if (functions
+                                                .filterListByTextSearch(
+                                                    _model.listOfUseres
+                                                        .where(
+                                                            (e) => getJsonField(
+                                                                  e,
+                                                                  r'''$.fisrtName''',
+                                                                ))
+                                                        .toList()
+                                                        .length
+                                                        .toString(),
+                                                    _model
+                                                        .textController.text)) {
+                                              setState(() {
+                                                _model.removeFromListOfUseres(
+                                                    _model.listOfUseres
+                                                        .where(
+                                                            (e) => getJsonField(
+                                                                  e,
+                                                                  r'''$.firstName''',
+                                                                ))
+                                                        .toList()
+                                                        .first);
+                                              });
+                                            }
+                                          },
                                         ),
                                         obscureText: false,
                                         decoration: InputDecoration(
@@ -408,11 +435,8 @@ class _UpdateBeyondersPageWidgetState extends State<UpdateBeyondersPageWidget> {
                                                         [
                                                           SelectionArea(
                                                               child: Text(
-                                                            FFLocalizations.of(
-                                                                    context)
-                                                                .getText(
-                                                              'sr11yulf' /*  */,
-                                                            ),
+                                                            listLocalsIndex
+                                                                .toString(),
                                                             style: FlutterFlowTheme
                                                                     .of(context)
                                                                 .bodyMedium,
@@ -429,22 +453,24 @@ class _UpdateBeyondersPageWidgetState extends State<UpdateBeyondersPageWidget> {
                                                           )),
                                                           SelectionArea(
                                                               child: Text(
-                                                            FFLocalizations.of(
-                                                                    context)
-                                                                .getText(
-                                                              'tbtkzzfz' /*  */,
-                                                            ),
+                                                            getJsonField(
+                                                              listLocalsItem,
+                                                              r'''$.lastName''',
+                                                            ).toString(),
                                                             style: FlutterFlowTheme
                                                                     .of(context)
                                                                 .bodyMedium,
                                                           )),
                                                           SelectionArea(
                                                               child: Text(
-                                                            FFLocalizations.of(
-                                                                    context)
-                                                                .getText(
-                                                              '419ssh9m' /*  */,
-                                                            ),
+                                                            getJsonField(
+                                                              listLocalsItem,
+                                                              r'''$.email''',
+                                                            )
+                                                                .toString()
+                                                                .maybeHandleOverflow(
+                                                                    maxChars:
+                                                                        100),
                                                             style: FlutterFlowTheme
                                                                     .of(context)
                                                                 .bodyMedium,
@@ -455,7 +481,10 @@ class _UpdateBeyondersPageWidgetState extends State<UpdateBeyondersPageWidget> {
                                                                     .max,
                                                             children: [
                                                               Text(
-                                                                '',
+                                                                getJsonField(
+                                                                  listLocalsItem,
+                                                                  r'''$.isActive''',
+                                                                ).toString(),
                                                                 style: FlutterFlowTheme.of(
                                                                         context)
                                                                     .bodyMedium,
@@ -464,22 +493,22 @@ class _UpdateBeyondersPageWidgetState extends State<UpdateBeyondersPageWidget> {
                                                           ),
                                                           SelectionArea(
                                                               child: Text(
-                                                            FFLocalizations.of(
-                                                                    context)
-                                                                .getText(
-                                                              'n87n6bs9' /*  */,
-                                                            ),
+                                                            functions
+                                                                .newCustomFunction(
+                                                                    getJsonField(
+                                                              listLocalsItem,
+                                                              r'''$.accessRole''',
+                                                            )),
                                                             style: FlutterFlowTheme
                                                                     .of(context)
                                                                 .bodyMedium,
                                                           )),
                                                           SelectionArea(
                                                               child: Text(
-                                                            FFLocalizations.of(
-                                                                    context)
-                                                                .getText(
-                                                              'uplzm21r' /*  */,
-                                                            ),
+                                                            getJsonField(
+                                                              listLocalsItem,
+                                                              r'''$.phoneNumber''',
+                                                            ).toString(),
                                                             style: FlutterFlowTheme
                                                                     .of(context)
                                                                 .bodyMedium,
