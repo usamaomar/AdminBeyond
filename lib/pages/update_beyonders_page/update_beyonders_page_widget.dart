@@ -39,7 +39,7 @@ class _UpdateBeyondersPageWidgetState extends State<UpdateBeyondersPageWidget> {
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       _model.apiResultAllUseresCall = await GetAllUseresCall.call(
-        token: FFAppState().userModel.hasToken().toString(),
+        token: FFAppState().userModel.token,
       );
       if ((_model.apiResultAllUseresCall?.succeeded ?? true)) {
         setState(() {
@@ -415,11 +415,10 @@ class _UpdateBeyondersPageWidgetState extends State<UpdateBeyondersPageWidget> {
                                                           )),
                                                           SelectionArea(
                                                               child: Text(
-                                                            FFLocalizations.of(
-                                                                    context)
-                                                                .getText(
-                                                              'agvh5kzg' /* usama */,
-                                                            ),
+                                                            getJsonField(
+                                                              listLocalsItem,
+                                                              r'''$''',
+                                                            ).toString(),
                                                             style: FlutterFlowTheme
                                                                     .of(context)
                                                                 .bodyMedium,

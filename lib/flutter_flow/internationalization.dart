@@ -127,10 +127,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': '',
       'ar': '',
     },
-    'agvh5kzg': {
-      'en': 'usama',
-      'ar': '',
-    },
     'ogxbxqmg': {
       'en': 'Last Name',
       'ar': 'الاسم الاخير',
