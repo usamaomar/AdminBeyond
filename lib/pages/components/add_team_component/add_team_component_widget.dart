@@ -1,3 +1,4 @@
+import '/backend/api_requests/api_calls.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -207,8 +208,35 @@ class _AddTeamComponentWidgetState extends State<AddTeamComponentWidget> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             FFButtonWidget(
-                              onPressed: () {
-                                print('Button pressed ...');
+                              onPressed: () async {
+                                _model.addTeamResponse =
+                                    await AddTeamNameCall.call(
+                                  name: _model.textController.text,
+                                  token: FFAppState().userModel.token,
+                                );
+                                if ((_model.addTeamResponse?.succeeded ??
+                                    true)) {
+                                  _model.updatePage(() {});
+                                  context.safePop();
+                                } else {
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    SnackBar(
+                                      content: Text(
+                                        'Errorr',
+                                        style: TextStyle(
+                                          color: FlutterFlowTheme.of(context)
+                                              .error,
+                                        ),
+                                      ),
+                                      duration: Duration(milliseconds: 4000),
+                                      backgroundColor:
+                                          FlutterFlowTheme.of(context)
+                                              .secondary,
+                                    ),
+                                  );
+                                }
+
+                                setState(() {});
                               },
                               text: FFLocalizations.of(context).getText(
                                 '82ngdvj0' /* Add */,

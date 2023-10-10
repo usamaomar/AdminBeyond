@@ -37,6 +37,7 @@ class _SetSupervisorComponentWidgetState
     _model = createModel(context, () => SetSupervisorComponentModel());
 
     _model.textController ??= TextEditingController();
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override

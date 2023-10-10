@@ -1,3 +1,4 @@
+import '/backend/api_requests/api_calls.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -15,6 +16,8 @@ class AddTeamComponentModel extends FlutterFlowModel<AddTeamComponentWidget> {
   // State field(s) for TextField widget.
   TextEditingController? textController;
   String? Function(BuildContext, String?)? textControllerValidator;
+  // Stores action output result for [Backend Call - API (addTeamName)] action in Button widget.
+  ApiCallResponse? addTeamResponse;
 
   /// Initialization and disposal methods.
 
