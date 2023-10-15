@@ -159,16 +159,28 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': 'BC',
     },
     'vryrc7ik': {
-      'en': '',
+      'en': 'usamaomarsoftware@gmail.com',
       'ar': '',
     },
     'hozih48i': {
       'en': 'Email',
       'ar': 'البريد الألكتروني',
     },
+    '3m1tncrl': {
+      'en': 'usamaomarsoftware@gmail.com',
+      'ar': '',
+    },
+    'xwx1oww4': {
+      'en': 'password',
+      'ar': '',
+    },
     'bqk9giez': {
       'en': 'Password',
       'ar': 'كلمة السر',
+    },
+    'o3k8bzqk': {
+      'en': 'password',
+      'ar': '',
     },
     'i7fxagal': {
       'en': 'Login',

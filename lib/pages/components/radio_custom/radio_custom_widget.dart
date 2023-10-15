@@ -1,4 +1,3 @@
-import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
@@ -45,37 +44,17 @@ class _RadioCustomWidgetState extends State<RadioCustomWidget> {
 
     return Stack(
       children: [
-        if (_model.isSelected == false)
-          FlutterFlowIconButton(
-            borderColor: FlutterFlowTheme.of(context).primary,
-            borderRadius: 20.0,
-            borderWidth: 1.0,
-            buttonSize: 40.0,
-            fillColor: Color(0xFFFBFEFC),
-            icon: Icon(
-              Icons.radio_button_off,
-              color: FlutterFlowTheme.of(context).primaryText,
-              size: 24.0,
-            ),
-            onPressed: () {
-              print('IconButton pressed ...');
-            },
-          ),
         if (_model.isSelected == true)
-          FlutterFlowIconButton(
-            borderColor: FlutterFlowTheme.of(context).primary,
-            borderRadius: 20.0,
-            borderWidth: 1.0,
-            buttonSize: 40.0,
-            fillColor: Color(0xFFFBFEFC),
-            icon: Icon(
-              Icons.radio_button_checked,
-              color: FlutterFlowTheme.of(context).primaryText,
-              size: 24.0,
-            ),
-            onPressed: () {
-              print('IconButton pressed ...');
-            },
+          Icon(
+            Icons.radio_button_checked,
+            color: FlutterFlowTheme.of(context).secondaryText,
+            size: 24.0,
+          ),
+        if (_model.isSelected == false)
+          Icon(
+            Icons.radio_button_off,
+            color: FlutterFlowTheme.of(context).secondaryText,
+            size: 24.0,
           ),
       ],
     );
