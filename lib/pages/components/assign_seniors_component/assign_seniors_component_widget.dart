@@ -176,16 +176,20 @@ class _AssignSeniorsComponentWidgetState
                                         hoverColor: Colors.transparent,
                                         highlightColor: Colors.transparent,
                                         onTap: () async {
+                                          setState(() {
+                                            _model.listOfSelectedVars = [];
+                                          });
+                                          setState(() {
+                                            _model.listOfSelectedVars =
+                                                functions
+                                                    .addBoolsList(_model
+                                                        .listOfLocalJsons
+                                                        .length)
+                                                    .toList()
+                                                    .cast<bool>();
+                                          });
                                           if (_model.listOfSelectedVars[
                                               listOfLocalItemsIndex]) {
-                                            setState(() {
-                                              _model
-                                                  .updateListOfSelectedVarsAtIndex(
-                                                listOfLocalItemsIndex,
-                                                (_) => false,
-                                              );
-                                            });
-                                          } else {
                                             setState(() {
                                               _model
                                                   .updateListOfSelectedVarsAtIndex(
@@ -193,11 +197,21 @@ class _AssignSeniorsComponentWidgetState
                                                 (_) => true,
                                               );
                                             });
+                                          } else {
+                                            setState(() {
+                                              _model
+                                                  .updateListOfSelectedVarsAtIndex(
+                                                listOfLocalItemsIndex,
+                                                (_) => false,
+                                              );
+                                            });
                                           }
                                         },
                                         child: RadioCustomWidget(
                                           key: Key(
                                               'Key4rb_${listOfLocalItemsIndex}_of_${listOfLocalItems.length}'),
+                                          isSelected: _model.listOfSelectedVars[
+                                              listOfLocalItemsIndex],
                                         ),
                                       ),
                                     ].map((c) => DataCell(c)).toList())

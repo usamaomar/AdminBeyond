@@ -8,7 +8,13 @@ import 'radio_custom_model.dart';
 export 'radio_custom_model.dart';
 
 class RadioCustomWidget extends StatefulWidget {
-  const RadioCustomWidget({Key? key}) : super(key: key);
+  const RadioCustomWidget({
+    Key? key,
+    bool? isSelected,
+  })  : this.isSelected = isSelected ?? false,
+        super(key: key);
+
+  final bool isSelected;
 
   @override
   _RadioCustomWidgetState createState() => _RadioCustomWidgetState();
@@ -42,21 +48,32 @@ class _RadioCustomWidgetState extends State<RadioCustomWidget> {
   Widget build(BuildContext context) {
     context.watch<FFAppState>();
 
-    return Stack(
-      children: [
-        if (_model.isSelected == true)
-          Icon(
-            Icons.radio_button_checked,
-            color: FlutterFlowTheme.of(context).secondaryText,
-            size: 24.0,
+    return Container(
+      width: 25.0,
+      height: 25.0,
+      decoration: BoxDecoration(
+        color: FlutterFlowTheme.of(context).secondaryBackground,
+        shape: BoxShape.circle,
+        border: Border.all(
+          color: Color(0xFF343434),
+          width: 2.0,
+        ),
+      ),
+      child: Row(
+        mainAxisSize: MainAxisSize.max,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Container(
+            width: 15.0,
+            height: 15.0,
+            decoration: BoxDecoration(
+              color:
+                  widget.isSelected == true ? Color(0xFF120900) : Colors.white,
+              shape: BoxShape.circle,
+            ),
           ),
-        if (_model.isSelected == false)
-          Icon(
-            Icons.radio_button_off,
-            color: FlutterFlowTheme.of(context).secondaryText,
-            size: 24.0,
-          ),
-      ],
+        ],
+      ),
     );
   }
 }
