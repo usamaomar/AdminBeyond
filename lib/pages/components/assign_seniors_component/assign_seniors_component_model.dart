@@ -38,10 +38,14 @@ class AssignSeniorsComponentModel
   void updateListOfSelectedVarsAtIndex(int index, Function(bool) updateFn) =>
       listOfSelectedVars[index] = updateFn(listOfSelectedVars[index]);
 
+  String selectedUserId = '';
+
   ///  State fields for stateful widgets in this component.
 
   // Stores action output result for [Backend Call - API (getAllUseres)] action in AssignSeniorsComponent widget.
   ApiCallResponse? getAllUsersJsonList;
+  // Stores action output result for [Backend Call - API (SetSeniorTeamApi)] action in Button widget.
+  ApiCallResponse? apiResult08f;
 
   /// Initialization and disposal methods.
 

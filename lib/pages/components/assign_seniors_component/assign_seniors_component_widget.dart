@@ -50,7 +50,7 @@ class _AssignSeniorsComponentWidgetState
         setState(() {
           _model.listOfLocalJsons = getJsonField(
             (_model.getAllUsersJsonList?.jsonBody ?? ''),
-            r'''$.data''',
+            r'''$.data[?(@.accessRole == 2)]''',
             true,
           )!
               .toList()
@@ -170,49 +170,65 @@ class _AssignSeniorsComponentWidgetState
                                         style: FlutterFlowTheme.of(context)
                                             .bodyMedium,
                                       ),
-                                      InkWell(
-                                        splashColor: Colors.transparent,
-                                        focusColor: Colors.transparent,
-                                        hoverColor: Colors.transparent,
-                                        highlightColor: Colors.transparent,
-                                        onTap: () async {
-                                          setState(() {
-                                            _model.listOfSelectedVars = [];
-                                          });
-                                          setState(() {
-                                            _model.listOfSelectedVars =
-                                                functions
-                                                    .addBoolsList(_model
-                                                        .listOfLocalJsons
-                                                        .length)
-                                                    .toList()
-                                                    .cast<bool>();
-                                          });
-                                          if (_model.listOfSelectedVars[
-                                              listOfLocalItemsIndex]) {
-                                            setState(() {
-                                              _model
-                                                  .updateListOfSelectedVarsAtIndex(
-                                                listOfLocalItemsIndex,
-                                                (_) => false,
-                                              );
-                                            });
-                                          } else {
-                                            setState(() {
-                                              _model
-                                                  .updateListOfSelectedVarsAtIndex(
-                                                listOfLocalItemsIndex,
-                                                (_) => true,
-                                              );
-                                            });
-                                          }
-                                        },
-                                        child: RadioCustomWidget(
-                                          key: Key(
-                                              'Key4rb_${listOfLocalItemsIndex}_of_${listOfLocalItems.length}'),
-                                          isSelected: _model.listOfSelectedVars[
-                                              listOfLocalItemsIndex],
-                                        ),
+                                      Row(
+                                        mainAxisSize: MainAxisSize.max,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          InkWell(
+                                            splashColor: Colors.transparent,
+                                            focusColor: Colors.transparent,
+                                            hoverColor: Colors.transparent,
+                                            highlightColor: Colors.transparent,
+                                            onTap: () async {
+                                              setState(() {
+                                                _model.listOfSelectedVars = [];
+                                              });
+                                              setState(() {
+                                                _model.listOfSelectedVars =
+                                                    functions
+                                                        .addBoolsList(_model
+                                                            .listOfLocalJsons
+                                                            .length)
+                                                        .toList()
+                                                        .cast<bool>();
+                                              });
+                                              if (_model.listOfSelectedVars[
+                                                  listOfLocalItemsIndex]) {
+                                                setState(() {
+                                                  _model
+                                                      .updateListOfSelectedVarsAtIndex(
+                                                    listOfLocalItemsIndex,
+                                                    (_) => false,
+                                                  );
+                                                });
+                                              } else {
+                                                setState(() {
+                                                  _model
+                                                      .updateListOfSelectedVarsAtIndex(
+                                                    listOfLocalItemsIndex,
+                                                    (_) => true,
+                                                  );
+                                                });
+                                              }
+
+                                              setState(() {
+                                                _model.selectedUserId =
+                                                    getJsonField(
+                                                  listOfLocalItemsItem,
+                                                  r'''$.id''',
+                                                ).toString();
+                                              });
+                                            },
+                                            child: RadioCustomWidget(
+                                              key: Key(
+                                                  'Key4rb_${listOfLocalItemsIndex}_of_${listOfLocalItems.length}'),
+                                              isSelected:
+                                                  _model.listOfSelectedVars[
+                                                      listOfLocalItemsIndex],
+                                            ),
+                                          ),
+                                        ],
                                       ),
                                     ].map((c) => DataCell(c)).toList())
                                 .map((e) => DataRow(cells: e))
@@ -243,9 +259,23 @@ class _AssignSeniorsComponentWidgetState
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           FFButtonWidget(
-                            onPressed: () {
-                              print('Button pressed ...');
-                            },
+                            onPressed: _model.selectedUserId == null ||
+                                    _model.selectedUserId == ''
+                                ? null
+                                : () async {
+                                    _model.apiResult08f =
+                                        await SetSeniorTeamApiCall.call(
+                                      seniorId: _model.selectedUserId,
+                                      teamId: widget.teamId,
+                                      token: FFAppState().userModel.token,
+                                    );
+                                    if ((_model.apiResult08f?.succeeded ??
+                                        true)) {
+                                      context.safePop();
+                                    }
+
+                                    setState(() {});
+                                  },
                             text: FFLocalizations.of(context).getText(
                               'uw9bx7o0' /* Save */,
                             ),
@@ -268,6 +298,7 @@ class _AssignSeniorsComponentWidgetState
                                 width: 1.0,
                               ),
                               borderRadius: BorderRadius.circular(8.0),
+                              disabledColor: Color(0xFFD9D4D4),
                             ),
                           ),
                         ],

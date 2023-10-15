@@ -166,11 +166,11 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Email',
       'ar': 'البريد الألكتروني',
     },
-    'cchdcalt': {
+    '90u0mke0': {
       'en': 'usamaomarsoftware@gmail.com',
       'ar': '',
     },
-    'qft055eu': {
+    'j0fviso3': {
       'en': 'password',
       'ar': '',
     },
@@ -178,7 +178,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Password',
       'ar': 'كلمة السر',
     },
-    '3h4gmqjl': {
+    'qftaf8cx': {
       'en': 'password',
       'ar': '',
     },
