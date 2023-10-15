@@ -4,6 +4,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/pages/components/add_team_component/add_team_component_widget.dart';
+import '/pages/components/assign_seniors_component/assign_seniors_component_widget.dart';
 import '/pages/components/edit_team_component/edit_team_component_widget.dart';
 import '/pages/components/side/side_widget.dart';
 import '/pages/components/view_team_component/view_team_component_widget.dart';
@@ -417,6 +418,33 @@ class _TeamsWidgetState extends State<TeamsWidget> {
                                                   ),
                                                 ),
                                               ),
+                                              DataColumn2(
+                                                label: DefaultTextStyle.merge(
+                                                  softWrap: true,
+                                                  child: Row(
+                                                    mainAxisSize:
+                                                        MainAxisSize.min,
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .center,
+                                                    children: [
+                                                      Text(
+                                                        FFLocalizations.of(
+                                                                context)
+                                                            .getText(
+                                                          '6ecit707' /* Assign Senior */,
+                                                        ),
+                                                        textAlign:
+                                                            TextAlign.start,
+                                                        style:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .labelLarge,
+                                                      ),
+                                                    ],
+                                                  ),
+                                                ),
+                                              ),
                                             ],
                                             rows: (listLocal as Iterable)
                                                 .mapIndexed(
@@ -642,6 +670,86 @@ class _TeamsWidgetState extends State<TeamsWidget> {
                                                                 size: 24.0,
                                                               ),
                                                             ),
+                                                          ),
+                                                          Row(
+                                                            mainAxisSize:
+                                                                MainAxisSize
+                                                                    .min,
+                                                            mainAxisAlignment:
+                                                                MainAxisAlignment
+                                                                    .center,
+                                                            children: [
+                                                              Builder(
+                                                                builder:
+                                                                    (context) =>
+                                                                        InkWell(
+                                                                  splashColor:
+                                                                      Colors
+                                                                          .transparent,
+                                                                  focusColor: Colors
+                                                                      .transparent,
+                                                                  hoverColor: Colors
+                                                                      .transparent,
+                                                                  highlightColor:
+                                                                      Colors
+                                                                          .transparent,
+                                                                  onTap:
+                                                                      () async {
+                                                                    await showAlignedDialog(
+                                                                      context:
+                                                                          context,
+                                                                      isGlobal:
+                                                                          true,
+                                                                      avoidOverflow:
+                                                                          false,
+                                                                      targetAnchor: AlignmentDirectional(
+                                                                              0.0,
+                                                                              0.0)
+                                                                          .resolve(
+                                                                              Directionality.of(context)),
+                                                                      followerAnchor: AlignmentDirectional(
+                                                                              0.0,
+                                                                              0.0)
+                                                                          .resolve(
+                                                                              Directionality.of(context)),
+                                                                      builder:
+                                                                          (dialogContext) {
+                                                                        return Material(
+                                                                          color:
+                                                                              Colors.transparent,
+                                                                          child:
+                                                                              GestureDetector(
+                                                                            onTap: () => _model.unfocusNode.canRequestFocus
+                                                                                ? FocusScope.of(context).requestFocus(_model.unfocusNode)
+                                                                                : FocusScope.of(context).unfocus(),
+                                                                            child:
+                                                                                Container(
+                                                                              height: 800.0,
+                                                                              child: AssignSeniorsComponentWidget(
+                                                                                teamId: getJsonField(
+                                                                                  listLocalItem,
+                                                                                  r'''$.id''',
+                                                                                ),
+                                                                              ),
+                                                                            ),
+                                                                          ),
+                                                                        );
+                                                                      },
+                                                                    ).then((value) =>
+                                                                        setState(
+                                                                            () {}));
+                                                                  },
+                                                                  child: Icon(
+                                                                    Icons
+                                                                        .assignment_ind,
+                                                                    color: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .secondaryText,
+                                                                    size: 24.0,
+                                                                  ),
+                                                                ),
+                                                              ),
+                                                            ],
                                                           ),
                                                         ]
                                                             .map((c) =>

@@ -18,6 +18,10 @@ class LoginPageModel extends FlutterFlowModel<LoginPageWidget> {
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
+  // Stores action output result for [Backend Call - API (LoginApi)] action in Text widget.
+  ApiCallResponse? callsCopy;
+  // Stores action output result for [Backend Call - API (GetMyUser)] action in Text widget.
+  ApiCallResponse? getMyUserCallCopy;
   // State field(s) for TextField widget.
   TextEditingController? textController1;
   String? Function(BuildContext, String?)? textController1Validator;

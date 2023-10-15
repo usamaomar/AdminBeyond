@@ -4,6 +4,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/pages/components/add_team_component/add_team_component_widget.dart';
+import '/pages/components/assign_seniors_component/assign_seniors_component_widget.dart';
 import '/pages/components/edit_team_component/edit_team_component_widget.dart';
 import '/pages/components/side/side_widget.dart';
 import '/pages/components/view_team_component/view_team_component_widget.dart';
