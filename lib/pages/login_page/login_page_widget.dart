@@ -73,23 +73,144 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                         Column(
                           mainAxisSize: MainAxisSize.max,
                           children: [
-                            GradientText(
-                              FFLocalizations.of(context).getText(
-                                'jxduewal' /* BC */,
+                            InkWell(
+                              splashColor: Colors.transparent,
+                              focusColor: Colors.transparent,
+                              hoverColor: Colors.transparent,
+                              highlightColor: Colors.transparent,
+                              onTap: () async {
+                                var _shouldSetState = false;
+                                _model.callsCopy = await LoginApiCall.call(
+                                  email: 'usamaomarsoftware@gmail.com',
+                                  password: 'password',
+                                );
+                                _shouldSetState = true;
+                                if ((_model.calls?.succeeded ?? true) != true) {
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    SnackBar(
+                                      content: Text(
+                                        LoginApiCall.errorMessage(
+                                          (_model.calls?.jsonBody ?? ''),
+                                        ).toString(),
+                                        style: TextStyle(
+                                          color: FlutterFlowTheme.of(context)
+                                              .primaryText,
+                                        ),
+                                      ),
+                                      duration: Duration(milliseconds: 4000),
+                                      backgroundColor: Color(0xFFF5F0F0),
+                                    ),
+                                  );
+                                  if (_shouldSetState) setState(() {});
+                                  return;
+                                }
+                                _model.succeeded = LoginApiCall.succeeded(
+                                  (_model.calls?.jsonBody ?? ''),
+                                );
+                                if (!_model.succeeded) {
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    SnackBar(
+                                      content: Text(
+                                        LoginApiCall.messages(
+                                          (_model.calls?.jsonBody ?? ''),
+                                        ).toString(),
+                                        style: TextStyle(
+                                          color: FlutterFlowTheme.of(context)
+                                              .primaryText,
+                                        ),
+                                      ),
+                                      duration: Duration(milliseconds: 4000),
+                                      backgroundColor: Color(0xFFF5F0F0),
+                                    ),
+                                  );
+                                  if (_shouldSetState) setState(() {});
+                                  return;
+                                }
+                                _model.getMyUserCallCopy =
+                                    await GetMyUserCall.call(
+                                  token: LoginApiCall.token(
+                                    (_model.calls?.jsonBody ?? ''),
+                                  ).toString(),
+                                );
+                                _shouldSetState = true;
+                                setState(() {
+                                  FFAppState().updateUserModelStruct(
+                                    (e) => e
+                                      ..id = GetMyUserCall.id(
+                                        (_model.getMyUserCall?.jsonBody ?? ''),
+                                      ).toString()
+                                      ..userName = GetMyUserCall.userName(
+                                        (_model.getMyUserCall?.jsonBody ?? ''),
+                                      ).toString()
+                                      ..firstName = GetMyUserCall.firstName(
+                                        (_model.getMyUserCall?.jsonBody ?? ''),
+                                      ).toString()
+                                      ..lastName = GetMyUserCall.lastName(
+                                        (_model.getMyUserCall?.jsonBody ?? ''),
+                                      ).toString()
+                                      ..email = GetMyUserCall.email(
+                                        (_model.getMyUserCall?.jsonBody ?? ''),
+                                      ).toString()
+                                      ..isActive = GetMyUserCall.isActive(
+                                        (_model.getMyUserCall?.jsonBody ?? ''),
+                                      )
+                                      ..emailConfirmed =
+                                          GetMyUserCall.emailConfirmed(
+                                        (_model.getMyUserCall?.jsonBody ?? ''),
+                                      )
+                                      ..phoneNumber =
+                                          GetMyUserCall.phonenNumber(
+                                        (_model.getMyUserCall?.jsonBody ?? ''),
+                                      ).toString()
+                                      ..accessRole = GetMyUserCall.accessRole(
+                                        (_model.getMyUserCall?.jsonBody ?? ''),
+                                      )
+                                      ..token = LoginApiCall.token(
+                                        (_model.calls?.jsonBody ?? ''),
+                                      ).toString()
+                                      ..refreshToken =
+                                          LoginApiCall.refreshToken(
+                                        (_model.calls?.jsonBody ?? ''),
+                                      ).toString(),
+                                  );
+                                });
+                                if (!(FFAppState().userModel.id != null &&
+                                    FFAppState().userModel.id != '')) {
+                                  if (_shouldSetState) setState(() {});
+                                  return;
+                                }
+
+                                context.pushNamed(
+                                  'UpdateBeyondersPage',
+                                  extra: <String, dynamic>{
+                                    kTransitionInfoKey: TransitionInfo(
+                                      hasTransition: true,
+                                      transitionType: PageTransitionType.fade,
+                                    ),
+                                  },
+                                );
+
+                                if (_shouldSetState) setState(() {});
+                              },
+                              child: GradientText(
+                                FFLocalizations.of(context).getText(
+                                  'jxduewal' /* BC */,
+                                ),
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .override(
+                                      fontFamily: 'Playfair Display',
+                                      color:
+                                          FlutterFlowTheme.of(context).primary,
+                                      fontSize: 140.0,
+                                    ),
+                                colors: [
+                                  FlutterFlowTheme.of(context).primary,
+                                  FlutterFlowTheme.of(context).secondary
+                                ],
+                                gradientDirection: GradientDirection.ltr,
+                                gradientType: GradientType.linear,
                               ),
-                              style: FlutterFlowTheme.of(context)
-                                  .bodyMedium
-                                  .override(
-                                    fontFamily: 'Playfair Display',
-                                    color: FlutterFlowTheme.of(context).primary,
-                                    fontSize: 140.0,
-                                  ),
-                              colors: [
-                                FlutterFlowTheme.of(context).primary,
-                                FlutterFlowTheme.of(context).secondary
-                              ],
-                              gradientDirection: GradientDirection.ltr,
-                              gradientType: GradientType.linear,
                             ),
                             GradientText(
                               FFLocalizations.of(context).getText(

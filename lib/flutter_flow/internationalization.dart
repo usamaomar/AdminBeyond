@@ -220,6 +220,10 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Edit',
       'ar': 'تعديل',
     },
+    '6ecit707': {
+      'en': 'Assign Senior',
+      'ar': 'تعيين سينير',
+    },
     '4p2e6gn9': {
       'en': 'Home',
       'ar': '',
@@ -512,6 +516,25 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     'j8dlyoa2': {
       'en': 'Close',
       'ar': 'اغلاق',
+    },
+  },
+  // AssignSeniorsComponent
+  {
+    'mmuc9wx3': {
+      'en': 'UserName',
+      'ar': 'اسم المستخدم',
+    },
+    '8u1zlige': {
+      'en': 'Email',
+      'ar': 'بريد إلكتروني',
+    },
+    'b6aku17k': {
+      'en': 'Assign To Team',
+      'ar': 'تعيين للفريق',
+    },
+    'uw9bx7o0': {
+      'en': 'Save',
+      'ar': 'يحفظ',
     },
   },
   // Miscellaneous
