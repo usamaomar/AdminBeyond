@@ -3,6 +3,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/pages/components/radio_custom/radio_custom_widget.dart';
+import '/flutter_flow/custom_functions.dart' as functions;
 import 'assign_seniors_component_widget.dart' show AssignSeniorsComponentWidget;
 import 'package:data_table_2/data_table_2.dart';
 import 'package:flutter/material.dart';

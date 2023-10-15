@@ -32,10 +32,10 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
     _model.textController2 ??= TextEditingController();
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {
           _model.textController1?.text = FFLocalizations.of(context).getText(
-            '3m1tncrl' /* usamaomarsoftware@gmail.com */,
+            'c2lk9wua' /* usamaomarsoftware@gmail.com */,
           );
           _model.textController2?.text = FFLocalizations.of(context).getText(
-            'o3k8bzqk' /* password */,
+            'b8p70w2y' /* password */,
           );
         }));
   }
@@ -326,7 +326,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                               obscureText: !_model.passwordVisibility,
                               decoration: InputDecoration(
                                 labelText: FFLocalizations.of(context).getText(
-                                  'xwx1oww4' /* password */,
+                                  'sly7tsif' /* password */,
                                 ),
                                 labelStyle:
                                     FlutterFlowTheme.of(context).labelMedium,

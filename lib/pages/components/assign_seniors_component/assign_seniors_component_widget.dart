@@ -3,6 +3,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/pages/components/radio_custom/radio_custom_widget.dart';
+import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:data_table_2/data_table_2.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -54,7 +55,10 @@ class _AssignSeniorsComponentWidgetState
           )!
               .toList()
               .cast<dynamic>();
-          _model.addToListOfSelectedVars(false);
+          _model.listOfSelectedVars = functions
+              .addBoolsList(_model.listOfLocalJsons.length)
+              .toList()
+              .cast<bool>();
         });
       }
     });

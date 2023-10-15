@@ -61,3 +61,11 @@ List<dynamic> filterListAndReturnByTextSearch(
           .where((element) => element.toString().contains(searchText))
           .toList();
 }
+
+List<dynamic> addBoolsList(int size) {
+  List<dynamic> listOfBools = [];
+  for (int i = 0; i <= size; i++) {
+    listOfBools.add(false);
+  }
+  return listOfBools;
+}
