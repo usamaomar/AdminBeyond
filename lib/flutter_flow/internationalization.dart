@@ -158,6 +158,10 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Admin',
       'ar': 'BC',
     },
+    'vryrc7ik': {
+      'en': '',
+      'ar': '',
+    },
     'hozih48i': {
       'en': 'Email',
       'ar': 'البريد الألكتروني',
