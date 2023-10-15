@@ -194,7 +194,7 @@ class _AssignSeniorsComponentWidgetState
                                               _model
                                                   .updateListOfSelectedVarsAtIndex(
                                                 listOfLocalItemsIndex,
-                                                (_) => true,
+                                                (_) => false,
                                               );
                                             });
                                           } else {
@@ -202,7 +202,7 @@ class _AssignSeniorsComponentWidgetState
                                               _model
                                                   .updateListOfSelectedVarsAtIndex(
                                                 listOfLocalItemsIndex,
-                                                (_) => false,
+                                                (_) => true,
                                               );
                                             });
                                           }
