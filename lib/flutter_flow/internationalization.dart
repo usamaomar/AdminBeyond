@@ -151,6 +151,10 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Update User',
       'ar': 'تحديث المستخدم',
     },
+    'w7w57xnw': {
+      'en': 'Assign To Mid',
+      'ar': 'تعيين إلى منتصف',
+    },
     'wa8ey22l': {
       'en': 'Home',
       'ar': '',
@@ -249,6 +253,49 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': '',
     },
   },
+  // ClientsPage
+  {
+    'bah7pp58': {
+      'en': 'Search',
+      'ar': 'بحث',
+    },
+    'mdcwo646': {
+      'en': '',
+      'ar': '',
+    },
+    'fmiqpt43': {
+      'en': 'Name',
+      'ar': 'اسم',
+    },
+    '497b96g4': {
+      'en': 'Email',
+      'ar': 'بريد إلكتروني',
+    },
+    'jtly6a0h': {
+      'en': 'Phone Number',
+      'ar': 'رقم التليفون',
+    },
+    'qhq8nvgd': {
+      'en': 'Address',
+      'ar': 'عنوان',
+    },
+    '1vv5rbri': {
+      'en': 'Contact Name',
+      'ar': 'اسم جهة الاتصال',
+    },
+    'cysuwp4j': {
+      'en': 'Alternative Phone',
+      'ar': 'هاتف بديل',
+    },
+    'jwu20m07': {
+      'en': 'Logo',
+      'ar': 'شعار',
+    },
+    'naacsh5p': {
+      'en': 'Home',
+      'ar': '',
+    },
+  },
   // Side
   {
     '58g39pze': {
@@ -262,6 +309,10 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     '5ogcyy9t': {
       'en': 'Teams',
       'ar': '',
+    },
+    '8f2quyvu': {
+      'en': 'Clients',
+      'ar': 'العملاء',
     },
     'uxipiqzd': {
       'en': 'Update Beyonders',
@@ -534,6 +585,88 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     'eatb61ht': {
       'en': 'Save',
       'ar': 'يحفظ',
+    },
+  },
+  // AddToMidComponent
+  {
+    'xl80rgs1': {
+      'en': 'Assign To Senior',
+      'ar': 'تعيين سينير',
+    },
+    'dokfodds': {
+      'en': 'UserName',
+      'ar': 'اسم المستخدم',
+    },
+    '0g9hjez7': {
+      'en': 'Email',
+      'ar': 'بريد إلكتروني',
+    },
+    'ojlpszky': {
+      'en': 'Assign To Senior',
+      'ar': 'تعيين للفريق',
+    },
+    'a3r7lf2h': {
+      'en': 'Save',
+      'ar': 'يحفظ',
+    },
+  },
+  // AddClientComponent
+  {
+    '98ff7jf8': {
+      'en': 'Add Client',
+      'ar': 'إضافة عميل',
+    },
+    '6nbehrnr': {
+      'en': 'Name',
+      'ar': 'الاسم',
+    },
+    'int1sgy1': {
+      'en': '',
+      'ar': '',
+    },
+    'valysuvq': {
+      'en': 'Email',
+      'ar': 'البريد الألكتروي',
+    },
+    'np3gulw9': {
+      'en': '',
+      'ar': '',
+    },
+    '9h4m7s5g': {
+      'en': 'Phone Number',
+      'ar': 'رقم الهاتف',
+    },
+    'd22u3kgg': {
+      'en': '',
+      'ar': '',
+    },
+    'le663ihi': {
+      'en': 'Address',
+      'ar': 'عنوان',
+    },
+    '3miuzxe2': {
+      'en': '',
+      'ar': '',
+    },
+    'x6n8d9mf': {
+      'en': 'Contact Name',
+      'ar': 'اسم جهة الاتصال',
+    },
+    'olpa72pr': {
+      'en': '',
+      'ar': '',
+    },
+    '7hjt5osh': {
+      'en': 'Alternative Phone ',
+      'ar': 'هاتف بديل',
+    },
+    'ggqfpqcx': {
+      'en': '',
+      'ar': '',
+    },
+    '0opuvtcq': {
+      'en': 'Add',
+      'ar': 'اضافة',
     },
   },
   // Miscellaneous

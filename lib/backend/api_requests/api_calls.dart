@@ -294,6 +294,71 @@ class AddTeamNameCall {
       );
 }
 
+class AddClientApiCall {
+  static Future<ApiCallResponse> call({
+    String? name = '',
+    String? token = '',
+    String? email = '',
+    String? phoneNumber = '',
+    String? address = '',
+    String? contactName = '',
+    String? alternativePhoneNumber = '',
+    String? logoImageUrl = '',
+  }) {
+    final ffApiRequestBody = '''
+{
+  "name": "${name}",
+  "email": "${email}",
+  "phoneNumber": "${phoneNumber}",
+  "address": "${address}",
+  "contactName": "${contactName}",
+  "alternativePhoneNumber": "${alternativePhoneNumber}",
+  "logoImageUrl": "${logoImageUrl}"
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'AddClientApi',
+      apiUrl:
+          'https://beyond.api.matterhr.com/api/v1/Clients/Post?token=${token}',
+      callType: ApiCallType.POST,
+      headers: {
+        'Authorization': 'Bearer  ${token}',
+      },
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+    );
+  }
+
+  static dynamic refreshToken(dynamic response) => getJsonField(
+        response,
+        r'''$.data.refreshToken''',
+      );
+  static dynamic token(dynamic response) => getJsonField(
+        response,
+        r'''$.data.token''',
+      );
+  static dynamic status(dynamic response) => getJsonField(
+        response,
+        r'''$.status''',
+      );
+  static dynamic succeeded(dynamic response) => getJsonField(
+        response,
+        r'''$.succeeded''',
+      );
+  static dynamic messages(dynamic response) => getJsonField(
+        response,
+        r'''$.messages''',
+      );
+  static dynamic errorMessage(dynamic response) => getJsonField(
+        response,
+        r'''$.errors''',
+      );
+}
+
 class SetSupervisorApiCall {
   static Future<ApiCallResponse> call({
     String? userId = '',
@@ -477,6 +542,89 @@ class GetAllUseresCall {
     return ApiManager.instance.makeApiCall(
       callName: 'getAllUseres',
       apiUrl: 'https://beyond.api.matterhr.com/api/v1/User/GetAll',
+      callType: ApiCallType.GET,
+      headers: {
+        'Authorization': 'Bearer  ${token}',
+      },
+      params: {
+        'token': token,
+      },
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+    );
+  }
+
+  static dynamic ids(dynamic response) => getJsonField(
+        response,
+        r'''$.data[:].id''',
+        true,
+      );
+  static dynamic userNams(dynamic response) => getJsonField(
+        response,
+        r'''$.data[:].userName''',
+        true,
+      );
+  static dynamic firstNames(dynamic response) => getJsonField(
+        response,
+        r'''$.data[:].firstName''',
+        true,
+      );
+  static dynamic lastNames(dynamic response) => getJsonField(
+        response,
+        r'''$.data[:].lastName''',
+        true,
+      );
+  static dynamic emails(dynamic response) => getJsonField(
+        response,
+        r'''$.data[:].email''',
+        true,
+      );
+  static dynamic isActives(dynamic response) => getJsonField(
+        response,
+        r'''$.data[:].isActive''',
+        true,
+      );
+  static dynamic emailConfirmeds(dynamic response) => getJsonField(
+        response,
+        r'''$.data[:].emailConfirmed''',
+        true,
+      );
+  static dynamic phoneNumbers(dynamic response) => getJsonField(
+        response,
+        r'''$.data[:].phoneNumber''',
+        true,
+      );
+  static dynamic profilePictureDataUrls(dynamic response) => getJsonField(
+        response,
+        r'''$.data[:].profilePictureDataUrl''',
+        true,
+      );
+  static dynamic accessRoles(dynamic response) => getJsonField(
+        response,
+        r'''$.data[:].accessRole''',
+        true,
+      );
+  static dynamic dataListObject(dynamic response) => getJsonField(
+        response,
+        r'''$.data''',
+        true,
+      );
+  static dynamic succeeded(dynamic response) => getJsonField(
+        response,
+        r'''$.succeeded''',
+      );
+}
+
+class GetAllClientsApiCall {
+  static Future<ApiCallResponse> call({
+    String? token = '',
+    String? searchText = '',
+  }) {
+    return ApiManager.instance.makeApiCall(
+      callName: 'GetAllClientsApi',
+      apiUrl: 'https://beyond.api.matterhr.com/api/v1/Clients/GetAllClients',
       callType: ApiCallType.GET,
       headers: {
         'Authorization': 'Bearer  ${token}',

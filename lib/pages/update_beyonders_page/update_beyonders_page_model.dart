@@ -5,6 +5,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/pages/components/add_beyonder_component/add_beyonder_component_widget.dart';
 import '/pages/components/add_supervisor_component/add_supervisor_component_widget.dart';
+import '/pages/components/add_to_mid_component/add_to_mid_component_widget.dart';
 import '/pages/components/side/side_widget.dart';
 import '/pages/components/update_beyonder_component/update_beyonder_component_widget.dart';
 import '/flutter_flow/custom_functions.dart' as functions;

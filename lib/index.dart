@@ -5,3 +5,4 @@ export '/pages/login_page/login_page_widget.dart' show LoginPageWidget;
 export '/pages/dash_board_page/dash_board_page_widget.dart'
     show DashBoardPageWidget;
 export '/pages/teams/teams_widget.dart' show TeamsWidget;
+export '/pages/clients_page/clients_page_widget.dart' show ClientsPageWidget;

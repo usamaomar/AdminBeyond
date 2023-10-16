@@ -5,6 +5,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/pages/components/add_beyonder_component/add_beyonder_component_widget.dart';
 import '/pages/components/add_supervisor_component/add_supervisor_component_widget.dart';
+import '/pages/components/add_to_mid_component/add_to_mid_component_widget.dart';
 import '/pages/components/side/side_widget.dart';
 import '/pages/components/update_beyonder_component/update_beyonder_component_widget.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
@@ -455,6 +456,20 @@ class _UpdateBeyondersPageWidgetState extends State<UpdateBeyondersPageWidget> {
                                                   ),
                                                 ),
                                               ),
+                                              DataColumn2(
+                                                label: DefaultTextStyle.merge(
+                                                  softWrap: true,
+                                                  child: Text(
+                                                    FFLocalizations.of(context)
+                                                        .getText(
+                                                      'w7w57xnw' /* Assign To Mid */,
+                                                    ),
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .labelLarge,
+                                                  ),
+                                                ),
+                                              ),
                                             ],
                                             rows: (listLocals as Iterable)
                                                 .mapIndexed(
@@ -545,7 +560,7 @@ class _UpdateBeyondersPageWidgetState extends State<UpdateBeyondersPageWidget> {
                                                             visible: _model
                                                                         .listOfAccessRole[
                                                                     listLocalsIndex] ==
-                                                                4,
+                                                                3,
                                                             child: Builder(
                                                               builder:
                                                                   (context) =>
@@ -697,6 +712,79 @@ class _UpdateBeyondersPageWidgetState extends State<UpdateBeyondersPageWidget> {
                                                                         context)
                                                                     .secondaryText,
                                                                 size: 24.0,
+                                                              ),
+                                                            ),
+                                                          ),
+                                                          Visibility(
+                                                            visible: _model
+                                                                        .listOfAccessRole[
+                                                                    listLocalsIndex] ==
+                                                                4,
+                                                            child: Builder(
+                                                              builder:
+                                                                  (context) =>
+                                                                      InkWell(
+                                                                splashColor: Colors
+                                                                    .transparent,
+                                                                focusColor: Colors
+                                                                    .transparent,
+                                                                hoverColor: Colors
+                                                                    .transparent,
+                                                                highlightColor:
+                                                                    Colors
+                                                                        .transparent,
+                                                                onTap:
+                                                                    () async {
+                                                                  await showAlignedDialog(
+                                                                    context:
+                                                                        context,
+                                                                    isGlobal:
+                                                                        true,
+                                                                    avoidOverflow:
+                                                                        false,
+                                                                    targetAnchor: AlignmentDirectional(
+                                                                            0.0,
+                                                                            0.0)
+                                                                        .resolve(
+                                                                            Directionality.of(context)),
+                                                                    followerAnchor: AlignmentDirectional(
+                                                                            0.0,
+                                                                            0.0)
+                                                                        .resolve(
+                                                                            Directionality.of(context)),
+                                                                    builder:
+                                                                        (dialogContext) {
+                                                                      return Material(
+                                                                        color: Colors
+                                                                            .transparent,
+                                                                        child:
+                                                                            GestureDetector(
+                                                                          onTap: () => _model.unfocusNode.canRequestFocus
+                                                                              ? FocusScope.of(context).requestFocus(_model.unfocusNode)
+                                                                              : FocusScope.of(context).unfocus(),
+                                                                          child:
+                                                                              AddToMidComponentWidget(
+                                                                            teamId:
+                                                                                getJsonField(
+                                                                              listLocalsItem,
+                                                                              r'''$.id''',
+                                                                            ).toString(),
+                                                                          ),
+                                                                        ),
+                                                                      );
+                                                                    },
+                                                                  ).then((value) =>
+                                                                      setState(
+                                                                          () {}));
+                                                                },
+                                                                child: Icon(
+                                                                  Icons
+                                                                      .assignment_ind,
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .secondaryText,
+                                                                  size: 24.0,
+                                                                ),
                                                               ),
                                                             ),
                                                           ),

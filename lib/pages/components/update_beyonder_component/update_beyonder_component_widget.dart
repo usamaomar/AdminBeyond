@@ -185,7 +185,6 @@ class _UpdateBeyonderComponentWidgetState
                                   controller: _model.textController1,
                                   obscureText: false,
                                   decoration: InputDecoration(
-                                    labelText: widget.firstName,
                                     labelStyle: FlutterFlowTheme.of(context)
                                         .labelMedium,
                                     hintText:
@@ -257,7 +256,6 @@ class _UpdateBeyonderComponentWidgetState
                                   controller: _model.textController2,
                                   obscureText: false,
                                   decoration: InputDecoration(
-                                    labelText: widget.lastName,
                                     labelStyle: FlutterFlowTheme.of(context)
                                         .labelMedium,
                                     hintText:
@@ -329,7 +327,6 @@ class _UpdateBeyonderComponentWidgetState
                                   controller: _model.textController3,
                                   obscureText: false,
                                   decoration: InputDecoration(
-                                    labelText: widget.phoneNumber,
                                     labelStyle: FlutterFlowTheme.of(context)
                                         .labelMedium,
                                     hintText:

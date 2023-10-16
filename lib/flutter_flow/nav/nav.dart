@@ -65,6 +65,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: 'Teams',
           path: '/teams',
           builder: (context, params) => TeamsWidget(),
+        ),
+        FFRoute(
+          name: 'ClientsPage',
+          path: '/clientsPage',
+          builder: (context, params) => ClientsPageWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );
