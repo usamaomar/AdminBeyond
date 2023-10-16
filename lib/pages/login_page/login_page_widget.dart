@@ -30,14 +30,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
 
     _model.textController1 ??= TextEditingController();
     _model.textController2 ??= TextEditingController();
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {
-          _model.textController1?.text = FFLocalizations.of(context).getText(
-            '90u0mke0' /* usamaomarsoftware@gmail.com */,
-          );
-          _model.textController2?.text = FFLocalizations.of(context).getText(
-            'qftaf8cx' /* password */,
-          );
-        }));
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
@@ -260,7 +253,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                               obscureText: false,
                               decoration: InputDecoration(
                                 labelText: FFLocalizations.of(context).getText(
-                                  'vryrc7ik' /* usamaomarsoftware@gmail.com */,
+                                  'vryrc7ik' /* Email */,
                                 ),
                                 labelStyle:
                                     FlutterFlowTheme.of(context).labelMedium,
@@ -326,7 +319,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                               obscureText: !_model.passwordVisibility,
                               decoration: InputDecoration(
                                 labelText: FFLocalizations.of(context).getText(
-                                  'j0fviso3' /* password */,
+                                  'j0fviso3' /* Password */,
                                 ),
                                 labelStyle:
                                     FlutterFlowTheme.of(context).labelMedium,
