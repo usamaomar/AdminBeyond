@@ -4,6 +4,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/pages/components/add_beyonder_component/add_beyonder_component_widget.dart';
+import '/pages/components/add_supervisor_component/add_supervisor_component_widget.dart';
 import '/pages/components/side/side_widget.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'update_beyonders_page_widget.dart' show UpdateBeyondersPageWidget;
@@ -41,6 +42,16 @@ class UpdateBeyondersPageModel
   void updateOriginalListOfUseresAtIndex(
           int index, Function(dynamic) updateFn) =>
       originalListOfUseres[index] = updateFn(originalListOfUseres[index]);
+
+  List<int> listOfAccessRole = [];
+  void addToListOfAccessRole(int item) => listOfAccessRole.add(item);
+  void removeFromListOfAccessRole(int item) => listOfAccessRole.remove(item);
+  void removeAtIndexFromListOfAccessRole(int index) =>
+      listOfAccessRole.removeAt(index);
+  void insertAtIndexInListOfAccessRole(int index, int item) =>
+      listOfAccessRole.insert(index, item);
+  void updateListOfAccessRoleAtIndex(int index, Function(int) updateFn) =>
+      listOfAccessRole[index] = updateFn(listOfAccessRole[index]);
 
   ///  State fields for stateful widgets in this page.
 

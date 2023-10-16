@@ -143,6 +143,10 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Phone Number',
       'ar': 'رقم الهاتف',
     },
+    'mwa7l1jj': {
+      'en': 'Assign To Senior',
+      'ar': 'تعيين لسينير',
+    },
     'wa8ey22l': {
       'en': 'Home',
       'ar': '',
@@ -532,6 +536,10 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // AssignSeniorsComponent
   {
+    'en8h3pqe': {
+      'en': 'Assign To Team',
+      'ar': 'تعيين للفريق',
+    },
     'mmuc9wx3': {
       'en': 'UserName',
       'ar': 'اسم المستخدم',
@@ -545,6 +553,29 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': 'تعيين للفريق',
     },
     'uw9bx7o0': {
+      'en': 'Save',
+      'ar': 'يحفظ',
+    },
+  },
+  // AddSupervisorComponent
+  {
+    'eelhmsmk': {
+      'en': 'Assign To Senior',
+      'ar': 'تعيين سينير',
+    },
+    'osg9rkr3': {
+      'en': 'UserName',
+      'ar': 'اسم المستخدم',
+    },
+    '937o9vyq': {
+      'en': 'Email',
+      'ar': 'بريد إلكتروني',
+    },
+    '46vowboz': {
+      'en': 'Assign To Senior',
+      'ar': 'تعيين للفريق',
+    },
+    'eatb61ht': {
       'en': 'Save',
       'ar': 'يحفظ',
     },

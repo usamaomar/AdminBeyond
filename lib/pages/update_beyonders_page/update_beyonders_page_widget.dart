@@ -4,6 +4,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/pages/components/add_beyonder_component/add_beyonder_component_widget.dart';
+import '/pages/components/add_supervisor_component/add_supervisor_component_widget.dart';
 import '/pages/components/side/side_widget.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:aligned_dialog/aligned_dialog.dart';
@@ -56,6 +57,12 @@ class _UpdateBeyondersPageWidgetState extends State<UpdateBeyondersPageWidget> {
           )!
               .toList()
               .cast<dynamic>();
+          _model.listOfAccessRole = GetAllUseresCall.accessRoles(
+            (_model.apiResultAllUseresCall?.jsonBody ?? ''),
+          )!
+              .cast<int>()
+              .toList()
+              .cast<int>();
         });
       }
     });
@@ -410,6 +417,20 @@ class _UpdateBeyondersPageWidgetState extends State<UpdateBeyondersPageWidget> {
                                                   ),
                                                 ),
                                               ),
+                                              DataColumn2(
+                                                label: DefaultTextStyle.merge(
+                                                  softWrap: true,
+                                                  child: Text(
+                                                    FFLocalizations.of(context)
+                                                        .getText(
+                                                      'mwa7l1jj' /* Assign To Senior */,
+                                                    ),
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .labelLarge,
+                                                  ),
+                                                ),
+                                              ),
                                             ],
                                             rows: (listLocals as Iterable)
                                                 .mapIndexed((listLocalsIndex,
@@ -499,6 +520,82 @@ class _UpdateBeyondersPageWidgetState extends State<UpdateBeyondersPageWidget> {
                                                                     context)
                                                                 .bodyMedium,
                                                       )),
+                                                      Visibility(
+                                                        visible: _model
+                                                                    .listOfAccessRole[
+                                                                listLocalsIndex] ==
+                                                            4,
+                                                        child: Builder(
+                                                          builder: (context) =>
+                                                              InkWell(
+                                                            splashColor: Colors
+                                                                .transparent,
+                                                            focusColor: Colors
+                                                                .transparent,
+                                                            hoverColor: Colors
+                                                                .transparent,
+                                                            highlightColor:
+                                                                Colors
+                                                                    .transparent,
+                                                            onTap: () async {
+                                                              await showAlignedDialog(
+                                                                context:
+                                                                    context,
+                                                                isGlobal: true,
+                                                                avoidOverflow:
+                                                                    false,
+                                                                targetAnchor:
+                                                                    AlignmentDirectional(
+                                                                            0.0,
+                                                                            0.0)
+                                                                        .resolve(
+                                                                            Directionality.of(context)),
+                                                                followerAnchor:
+                                                                    AlignmentDirectional(
+                                                                            0.0,
+                                                                            0.0)
+                                                                        .resolve(
+                                                                            Directionality.of(context)),
+                                                                builder:
+                                                                    (dialogContext) {
+                                                                  return Material(
+                                                                    color: Colors
+                                                                        .transparent,
+                                                                    child:
+                                                                        GestureDetector(
+                                                                      onTap: () => _model
+                                                                              .unfocusNode
+                                                                              .canRequestFocus
+                                                                          ? FocusScope.of(context).requestFocus(_model
+                                                                              .unfocusNode)
+                                                                          : FocusScope.of(context)
+                                                                              .unfocus(),
+                                                                      child:
+                                                                          AddSupervisorComponentWidget(
+                                                                        teamId:
+                                                                            getJsonField(
+                                                                          listLocalsItem,
+                                                                          r'''$.id''',
+                                                                        ).toString(),
+                                                                      ),
+                                                                    ),
+                                                                  );
+                                                                },
+                                                              ).then((value) =>
+                                                                  setState(
+                                                                      () {}));
+                                                            },
+                                                            child: Icon(
+                                                              Icons
+                                                                  .assignment_ind,
+                                                              color: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .secondaryText,
+                                                              size: 24.0,
+                                                            ),
+                                                          ),
+                                                        ),
+                                                      ),
                                                     ]
                                                         .map((c) => DataCell(c))
                                                         .toList())
