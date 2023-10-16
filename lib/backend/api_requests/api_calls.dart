@@ -234,6 +234,61 @@ class AddTeamNameCall {
       );
 }
 
+class SetSupervisorApiCall {
+  static Future<ApiCallResponse> call({
+    String? userId = '',
+    String? token = '',
+    String? supervisorId = '',
+  }) {
+    final ffApiRequestBody = '''
+{
+  "userId": "${userId}",
+  "supervisorId": "${supervisorId}"
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'SetSupervisorApi',
+      apiUrl:
+          'https://beyond.api.matterhr.com/api/v1/User/SetSupervisor?token=${token}',
+      callType: ApiCallType.POST,
+      headers: {
+        'Authorization': 'Bearer  ${token}',
+      },
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+    );
+  }
+
+  static dynamic refreshToken(dynamic response) => getJsonField(
+        response,
+        r'''$.data.refreshToken''',
+      );
+  static dynamic token(dynamic response) => getJsonField(
+        response,
+        r'''$.data.token''',
+      );
+  static dynamic status(dynamic response) => getJsonField(
+        response,
+        r'''$.status''',
+      );
+  static dynamic succeeded(dynamic response) => getJsonField(
+        response,
+        r'''$.succeeded''',
+      );
+  static dynamic messages(dynamic response) => getJsonField(
+        response,
+        r'''$.messages''',
+      );
+  static dynamic errorMessage(dynamic response) => getJsonField(
+        response,
+        r'''$.errors''',
+      );
+}
+
 class SetSeniorTeamApiCall {
   static Future<ApiCallResponse> call({
     String? seniorId = '',

@@ -46,7 +46,7 @@ class AddSupervisorComponentModel
 
   // Stores action output result for [Backend Call - API (getAllUseres)] action in AddSupervisorComponent widget.
   ApiCallResponse? getAllUsersJsonList;
-  // Stores action output result for [Backend Call - API (SetSeniorTeamApi)] action in Button widget.
+  // Stores action output result for [Backend Call - API (SetSupervisorApi)] action in Button widget.
   ApiCallResponse? apiResult08f;
 
   /// Initialization and disposal methods.

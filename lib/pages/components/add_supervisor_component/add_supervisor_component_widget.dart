@@ -48,9 +48,7 @@ class _AddSupervisorComponentWidgetState
       _model.getAllUsersJsonList = await GetAllUseresCall.call(
         token: FFAppState().userModel.token,
       );
-      if (SetSeniorTeamApiCall.succeeded(
-        (_model.apiResult08f?.jsonBody ?? ''),
-      )) {
+      if ((_model.getAllUsersJsonList?.succeeded ?? true)) {
         setState(() {
           _model.listOfLocalJsons = getJsonField(
             (_model.getAllUsersJsonList?.jsonBody ?? ''),
@@ -321,8 +319,9 @@ class _AddSupervisorComponentWidgetState
                                 ? null
                                 : () async {
                                     _model.apiResult08f =
-                                        await SetSeniorTeamApiCall.call(
-                                      seniorId: _model.selectedUserId,
+                                        await SetSupervisorApiCall.call(
+                                      userId: widget.teamId,
+                                      supervisorId: _model.selectedUserId,
                                       token: FFAppState().userModel.token,
                                     );
                                     if ((_model.apiResult08f?.succeeded ??
