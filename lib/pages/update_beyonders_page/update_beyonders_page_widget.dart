@@ -6,6 +6,7 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/pages/components/add_beyonder_component/add_beyonder_component_widget.dart';
 import '/pages/components/add_supervisor_component/add_supervisor_component_widget.dart';
 import '/pages/components/side/side_widget.dart';
+import '/pages/components/update_beyonder_component/update_beyonder_component_widget.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:aligned_dialog/aligned_dialog.dart';
 import 'package:data_table_2/data_table_2.dart';
@@ -63,6 +64,15 @@ class _UpdateBeyondersPageWidgetState extends State<UpdateBeyondersPageWidget> {
               .cast<int>()
               .toList()
               .cast<int>();
+          _model.listOfIdes = (GetAllUseresCall.ids(
+            (_model.apiResultAllUseresCall?.jsonBody ?? ''),
+          ) as List)
+              .map<String>((s) => s.toString())
+              .toList()!
+              .map((e) => e.toString())
+              .toList()
+              .toList()
+              .cast<String>();
         });
       }
     });
@@ -431,174 +441,269 @@ class _UpdateBeyondersPageWidgetState extends State<UpdateBeyondersPageWidget> {
                                                   ),
                                                 ),
                                               ),
+                                              DataColumn2(
+                                                label: DefaultTextStyle.merge(
+                                                  softWrap: true,
+                                                  child: Text(
+                                                    FFLocalizations.of(context)
+                                                        .getText(
+                                                      '43i9zljb' /* Update User */,
+                                                    ),
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .labelLarge,
+                                                  ),
+                                                ),
+                                              ),
                                             ],
                                             rows: (listLocals as Iterable)
-                                                .mapIndexed((listLocalsIndex,
-                                                        listLocalsItem) =>
-                                                    [
-                                                      SelectionArea(
-                                                          child: Text(
-                                                        listLocalsIndex
-                                                            .toString(),
-                                                        style:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
+                                                .mapIndexed(
+                                                    (listLocalsIndex,
+                                                            listLocalsItem) =>
+                                                        [
+                                                          SelectionArea(
+                                                              child: Text(
+                                                            listLocalsIndex
+                                                                .toString(),
+                                                            style: FlutterFlowTheme
+                                                                    .of(context)
                                                                 .bodyMedium,
-                                                      )),
-                                                      SelectionArea(
-                                                          child: Text(
-                                                        getJsonField(
-                                                          listLocalsItem,
-                                                          r'''$.firstName''',
-                                                        ).toString(),
-                                                        style:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .bodyMedium,
-                                                      )),
-                                                      SelectionArea(
-                                                          child: Text(
-                                                        getJsonField(
-                                                          listLocalsItem,
-                                                          r'''$.lastName''',
-                                                        ).toString(),
-                                                        style:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .bodyMedium,
-                                                      )),
-                                                      SelectionArea(
-                                                          child: Text(
-                                                        getJsonField(
-                                                          listLocalsItem,
-                                                          r'''$.email''',
-                                                        )
-                                                            .toString()
-                                                            .maybeHandleOverflow(
-                                                                maxChars: 100),
-                                                        style:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .bodyMedium,
-                                                      )),
-                                                      Row(
-                                                        mainAxisSize:
-                                                            MainAxisSize.max,
-                                                        children: [
-                                                          Text(
+                                                          )),
+                                                          SelectionArea(
+                                                              child: Text(
                                                             getJsonField(
                                                               listLocalsItem,
-                                                              r'''$.isActive''',
+                                                              r'''$.firstName''',
                                                             ).toString(),
                                                             style: FlutterFlowTheme
                                                                     .of(context)
                                                                 .bodyMedium,
-                                                          ),
-                                                        ],
-                                                      ),
-                                                      SelectionArea(
-                                                          child: Text(
-                                                        functions
-                                                            .newCustomFunction(
+                                                          )),
+                                                          SelectionArea(
+                                                              child: Text(
+                                                            getJsonField(
+                                                              listLocalsItem,
+                                                              r'''$.lastName''',
+                                                            ).toString(),
+                                                            style: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .bodyMedium,
+                                                          )),
+                                                          SelectionArea(
+                                                              child: Text(
+                                                            getJsonField(
+                                                              listLocalsItem,
+                                                              r'''$.email''',
+                                                            )
+                                                                .toString()
+                                                                .maybeHandleOverflow(
+                                                                    maxChars:
+                                                                        100),
+                                                            style: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .bodyMedium,
+                                                          )),
+                                                          Row(
+                                                            mainAxisSize:
+                                                                MainAxisSize
+                                                                    .max,
+                                                            children: [
+                                                              Text(
                                                                 getJsonField(
-                                                          listLocalsItem,
-                                                          r'''$.accessRole''',
-                                                        )),
-                                                        style:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
+                                                                  listLocalsItem,
+                                                                  r'''$.isActive''',
+                                                                ).toString(),
+                                                                style: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium,
+                                                              ),
+                                                            ],
+                                                          ),
+                                                          SelectionArea(
+                                                              child: Text(
+                                                            functions
+                                                                .newCustomFunction(
+                                                                    getJsonField(
+                                                              listLocalsItem,
+                                                              r'''$.accessRole''',
+                                                            )),
+                                                            style: FlutterFlowTheme
+                                                                    .of(context)
                                                                 .bodyMedium,
-                                                      )),
-                                                      SelectionArea(
-                                                          child: Text(
-                                                        getJsonField(
-                                                          listLocalsItem,
-                                                          r'''$.phoneNumber''',
-                                                        ).toString(),
-                                                        style:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
+                                                          )),
+                                                          SelectionArea(
+                                                              child: Text(
+                                                            getJsonField(
+                                                              listLocalsItem,
+                                                              r'''$.phoneNumber''',
+                                                            ).toString(),
+                                                            style: FlutterFlowTheme
+                                                                    .of(context)
                                                                 .bodyMedium,
-                                                      )),
-                                                      Visibility(
-                                                        visible: _model
-                                                                    .listOfAccessRole[
-                                                                listLocalsIndex] ==
-                                                            4,
-                                                        child: Builder(
-                                                          builder: (context) =>
-                                                              InkWell(
-                                                            splashColor: Colors
-                                                                .transparent,
-                                                            focusColor: Colors
-                                                                .transparent,
-                                                            hoverColor: Colors
-                                                                .transparent,
-                                                            highlightColor:
-                                                                Colors
+                                                          )),
+                                                          Visibility(
+                                                            visible: _model
+                                                                        .listOfAccessRole[
+                                                                    listLocalsIndex] ==
+                                                                4,
+                                                            child: Builder(
+                                                              builder:
+                                                                  (context) =>
+                                                                      InkWell(
+                                                                splashColor: Colors
                                                                     .transparent,
-                                                            onTap: () async {
-                                                              await showAlignedDialog(
-                                                                context:
-                                                                    context,
-                                                                isGlobal: true,
-                                                                avoidOverflow:
-                                                                    false,
-                                                                targetAnchor:
-                                                                    AlignmentDirectional(
-                                                                            0.0,
-                                                                            0.0)
-                                                                        .resolve(
-                                                                            Directionality.of(context)),
-                                                                followerAnchor:
-                                                                    AlignmentDirectional(
-                                                                            0.0,
-                                                                            0.0)
-                                                                        .resolve(
-                                                                            Directionality.of(context)),
-                                                                builder:
-                                                                    (dialogContext) {
-                                                                  return Material(
-                                                                    color: Colors
+                                                                focusColor: Colors
+                                                                    .transparent,
+                                                                hoverColor: Colors
+                                                                    .transparent,
+                                                                highlightColor:
+                                                                    Colors
                                                                         .transparent,
-                                                                    child:
-                                                                        GestureDetector(
-                                                                      onTap: () => _model
-                                                                              .unfocusNode
-                                                                              .canRequestFocus
-                                                                          ? FocusScope.of(context).requestFocus(_model
-                                                                              .unfocusNode)
-                                                                          : FocusScope.of(context)
-                                                                              .unfocus(),
-                                                                      child:
-                                                                          AddSupervisorComponentWidget(
-                                                                        teamId:
-                                                                            getJsonField(
-                                                                          listLocalsItem,
-                                                                          r'''$.id''',
-                                                                        ).toString(),
-                                                                      ),
-                                                                    ),
-                                                                  );
+                                                                onTap:
+                                                                    () async {
+                                                                  await showAlignedDialog(
+                                                                    context:
+                                                                        context,
+                                                                    isGlobal:
+                                                                        true,
+                                                                    avoidOverflow:
+                                                                        false,
+                                                                    targetAnchor: AlignmentDirectional(
+                                                                            0.0,
+                                                                            0.0)
+                                                                        .resolve(
+                                                                            Directionality.of(context)),
+                                                                    followerAnchor: AlignmentDirectional(
+                                                                            0.0,
+                                                                            0.0)
+                                                                        .resolve(
+                                                                            Directionality.of(context)),
+                                                                    builder:
+                                                                        (dialogContext) {
+                                                                      return Material(
+                                                                        color: Colors
+                                                                            .transparent,
+                                                                        child:
+                                                                            GestureDetector(
+                                                                          onTap: () => _model.unfocusNode.canRequestFocus
+                                                                              ? FocusScope.of(context).requestFocus(_model.unfocusNode)
+                                                                              : FocusScope.of(context).unfocus(),
+                                                                          child:
+                                                                              AddSupervisorComponentWidget(
+                                                                            teamId:
+                                                                                getJsonField(
+                                                                              listLocalsItem,
+                                                                              r'''$.id''',
+                                                                            ).toString(),
+                                                                          ),
+                                                                        ),
+                                                                      );
+                                                                    },
+                                                                  ).then((value) =>
+                                                                      setState(
+                                                                          () {}));
                                                                 },
-                                                              ).then((value) =>
-                                                                  setState(
-                                                                      () {}));
-                                                            },
-                                                            child: Icon(
-                                                              Icons
-                                                                  .assignment_ind,
-                                                              color: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .secondaryText,
-                                                              size: 24.0,
+                                                                child: Icon(
+                                                                  Icons
+                                                                      .assignment_ind,
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .secondaryText,
+                                                                  size: 24.0,
+                                                                ),
+                                                              ),
                                                             ),
                                                           ),
-                                                        ),
-                                                      ),
-                                                    ]
-                                                        .map((c) => DataCell(c))
-                                                        .toList())
+                                                          Builder(
+                                                            builder:
+                                                                (context) =>
+                                                                    InkWell(
+                                                              splashColor: Colors
+                                                                  .transparent,
+                                                              focusColor: Colors
+                                                                  .transparent,
+                                                              hoverColor: Colors
+                                                                  .transparent,
+                                                              highlightColor:
+                                                                  Colors
+                                                                      .transparent,
+                                                              onTap: () async {
+                                                                await showAlignedDialog(
+                                                                  context:
+                                                                      context,
+                                                                  isGlobal:
+                                                                      true,
+                                                                  avoidOverflow:
+                                                                      false,
+                                                                  targetAnchor: AlignmentDirectional(
+                                                                          0.0,
+                                                                          0.0)
+                                                                      .resolve(
+                                                                          Directionality.of(
+                                                                              context)),
+                                                                  followerAnchor: AlignmentDirectional(
+                                                                          0.0,
+                                                                          0.0)
+                                                                      .resolve(
+                                                                          Directionality.of(
+                                                                              context)),
+                                                                  builder:
+                                                                      (dialogContext) {
+                                                                    return Material(
+                                                                      color: Colors
+                                                                          .transparent,
+                                                                      child:
+                                                                          GestureDetector(
+                                                                        onTap: () => _model.unfocusNode.canRequestFocus
+                                                                            ? FocusScope.of(context).requestFocus(_model.unfocusNode)
+                                                                            : FocusScope.of(context).unfocus(),
+                                                                        child:
+                                                                            UpdateBeyonderComponentWidget(
+                                                                          userId:
+                                                                              _model.listOfIdes[listLocalsIndex],
+                                                                          firstName: (GetAllUseresCall.firstNames(
+                                                                            (_model.apiResultAllUseresCall?.jsonBody ??
+                                                                                ''),
+                                                                          ) as List)
+                                                                              .map<String>((s) => s.toString())
+                                                                              .toList()[listLocalsIndex]
+                                                                              .toString(),
+                                                                          lastName: (GetAllUseresCall.lastNames(
+                                                                            (_model.apiResultAllUseresCall?.jsonBody ??
+                                                                                ''),
+                                                                          ) as List)
+                                                                              .map<String>((s) => s.toString())
+                                                                              .toList()[listLocalsIndex]
+                                                                              .toString(),
+                                                                          phoneNumber: (GetAllUseresCall.phoneNumbers(
+                                                                            (_model.apiResultAllUseresCall?.jsonBody ??
+                                                                                ''),
+                                                                          ) as List)
+                                                                              .map<String>((s) => s.toString())
+                                                                              .toList()[listLocalsIndex]
+                                                                              .toString(),
+                                                                        ),
+                                                                      ),
+                                                                    );
+                                                                  },
+                                                                ).then((value) =>
+                                                                    setState(
+                                                                        () {}));
+                                                              },
+                                                              child: Icon(
+                                                                Icons
+                                                                    .edit_square,
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .secondaryText,
+                                                                size: 24.0,
+                                                              ),
+                                                            ),
+                                                          ),
+                                                        ]
+                                                            .map((c) =>
+                                                                DataCell(c))
+                                                            .toList())
                                                 .map((e) => DataRow(cells: e))
                                                 .toList(),
                                             headingRowColor:

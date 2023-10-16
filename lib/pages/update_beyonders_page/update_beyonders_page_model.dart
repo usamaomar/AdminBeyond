@@ -6,6 +6,7 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/pages/components/add_beyonder_component/add_beyonder_component_widget.dart';
 import '/pages/components/add_supervisor_component/add_supervisor_component_widget.dart';
 import '/pages/components/side/side_widget.dart';
+import '/pages/components/update_beyonder_component/update_beyonder_component_widget.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'update_beyonders_page_widget.dart' show UpdateBeyondersPageWidget;
 import 'package:aligned_dialog/aligned_dialog.dart';
@@ -52,6 +53,15 @@ class UpdateBeyondersPageModel
       listOfAccessRole.insert(index, item);
   void updateListOfAccessRoleAtIndex(int index, Function(int) updateFn) =>
       listOfAccessRole[index] = updateFn(listOfAccessRole[index]);
+
+  List<String> listOfIdes = [];
+  void addToListOfIdes(String item) => listOfIdes.add(item);
+  void removeFromListOfIdes(String item) => listOfIdes.remove(item);
+  void removeAtIndexFromListOfIdes(int index) => listOfIdes.removeAt(index);
+  void insertAtIndexInListOfIdes(int index, String item) =>
+      listOfIdes.insert(index, item);
+  void updateListOfIdesAtIndex(int index, Function(String) updateFn) =>
+      listOfIdes[index] = updateFn(listOfIdes[index]);
 
   ///  State fields for stateful widgets in this page.
 

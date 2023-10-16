@@ -147,6 +147,10 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Assign To Senior',
       'ar': 'تعيين لسينير',
     },
+    '43i9zljb': {
+      'en': 'Update User',
+      'ar': 'تحديث المستخدم',
+    },
     'wa8ey22l': {
       'en': 'Home',
       'ar': '',
@@ -361,61 +365,13 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'First Name',
       'ar': 'الاسم الاول',
     },
-    'tmhhjhrx': {
-      'en': '',
-      'ar': '',
-    },
     'ey3in0ou': {
       'en': 'Last Name',
       'ar': 'الاسم الاخير',
     },
-    'z9qmzzep': {
-      'en': '',
-      'ar': '',
-    },
-    'ft4iqtpe': {
-      'en': 'Email',
-      'ar': 'البريد الألكتروي',
-    },
-    '82ys83x5': {
-      'en': '',
-      'ar': '',
-    },
     'udiq8hva': {
       'en': 'Phone Number',
       'ar': 'رقم الهاتف',
-    },
-    '9siocviq': {
-      'en': '',
-      'ar': '',
-    },
-    'k5nzd6jc': {
-      'en': 'Activate User',
-      'ar': 'تفعيل المستخدم',
-    },
-    'fqjmued9': {
-      'en': 'Associate',
-      'ar': 'معاون',
-    },
-    '9qidirjw': {
-      'en': 'Mid Manager',
-      'ar': 'مدير',
-    },
-    'a7yfa8k0': {
-      'en': 'Senior',
-      'ar': 'سينير',
-    },
-    'vge81re4': {
-      'en': 'General Manager',
-      'ar': 'مدير عام',
-    },
-    '1e4gj1m0': {
-      'en': 'Please select...',
-      'ar': '',
-    },
-    'xso19f5u': {
-      'en': 'Search for an item...',
-      'ar': '',
     },
     'dx1fbv22': {
       'en': 'Update',
