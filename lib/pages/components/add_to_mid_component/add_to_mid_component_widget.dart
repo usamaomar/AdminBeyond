@@ -120,7 +120,7 @@ class _AddToMidComponentWidgetState extends State<AddToMidComponentWidget> {
                           ),
                           Text(
                             FFLocalizations.of(context).getText(
-                              'xl80rgs1' /* Assign To Senior */,
+                              'xl80rgs1' /* Assign To Mid */,
                             ),
                             style: FlutterFlowTheme.of(context)
                                 .titleLarge

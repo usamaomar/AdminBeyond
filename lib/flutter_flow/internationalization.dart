@@ -582,8 +582,8 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   // AddToMidComponent
   {
     'xl80rgs1': {
-      'en': 'Assign To Senior',
-      'ar': 'تعيين سينير',
+      'en': 'Assign To Mid',
+      'ar': 'تعيين إلى ميد',
     },
     'dokfodds': {
       'en': 'UserName',
