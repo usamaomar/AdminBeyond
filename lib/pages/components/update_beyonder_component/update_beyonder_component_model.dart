@@ -1,9 +1,8 @@
-import '/flutter_flow/flutter_flow_drop_down.dart';
+import '/backend/api_requests/api_calls.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import '/flutter_flow/form_field_controller.dart';
 import 'update_beyonder_component_widget.dart'
     show UpdateBeyonderComponentWidget;
 import 'package:flutter/material.dart';
@@ -26,14 +25,8 @@ class UpdateBeyonderComponentModel
   // State field(s) for TextField widget.
   TextEditingController? textController3;
   String? Function(BuildContext, String?)? textController3Validator;
-  // State field(s) for TextField widget.
-  TextEditingController? textController4;
-  String? Function(BuildContext, String?)? textController4Validator;
-  // State field(s) for Switch widget.
-  bool? switchValue;
-  // State field(s) for DropDown widget.
-  String? dropDownValue;
-  FormFieldController<String>? dropDownValueController;
+  // Stores action output result for [Backend Call - API (UpdateUserProfileApi)] action in Button widget.
+  ApiCallResponse? apiResultm7o;
 
   /// Initialization and disposal methods.
 
@@ -43,7 +36,6 @@ class UpdateBeyonderComponentModel
     textController1?.dispose();
     textController2?.dispose();
     textController3?.dispose();
-    textController4?.dispose();
   }
 
   /// Action blocks are added here.

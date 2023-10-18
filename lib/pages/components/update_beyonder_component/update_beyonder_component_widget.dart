@@ -1,9 +1,8 @@
-import '/flutter_flow/flutter_flow_drop_down.dart';
+import '/backend/api_requests/api_calls.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import '/flutter_flow/form_field_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -14,7 +13,18 @@ import 'update_beyonder_component_model.dart';
 export 'update_beyonder_component_model.dart';
 
 class UpdateBeyonderComponentWidget extends StatefulWidget {
-  const UpdateBeyonderComponentWidget({Key? key}) : super(key: key);
+  const UpdateBeyonderComponentWidget({
+    Key? key,
+    required this.userId,
+    required this.firstName,
+    required this.lastName,
+    required this.phoneNumber,
+  }) : super(key: key);
+
+  final String? userId;
+  final String? firstName;
+  final String? lastName;
+  final String? phoneNumber;
 
   @override
   _UpdateBeyonderComponentWidgetState createState() =>
@@ -36,24 +46,10 @@ class _UpdateBeyonderComponentWidgetState
     super.initState();
     _model = createModel(context, () => UpdateBeyonderComponentModel());
 
-    _model.textController1 ??= TextEditingController();
-    _model.textController2 ??= TextEditingController();
-    _model.textController3 ??= TextEditingController();
-    _model.textController4 ??= TextEditingController();
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {
-          _model.textController1?.text = FFLocalizations.of(context).getText(
-            'tmhhjhrx' /*  */,
-          );
-          _model.textController2?.text = FFLocalizations.of(context).getText(
-            'z9qmzzep' /*  */,
-          );
-          _model.textController3?.text = FFLocalizations.of(context).getText(
-            '82ys83x5' /*  */,
-          );
-          _model.textController4?.text = FFLocalizations.of(context).getText(
-            '9siocviq' /*  */,
-          );
-        }));
+    _model.textController1 ??= TextEditingController(text: widget.firstName);
+    _model.textController2 ??= TextEditingController(text: widget.lastName);
+    _model.textController3 ??= TextEditingController(text: widget.phoneNumber);
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
@@ -72,10 +68,11 @@ class _UpdateBeyonderComponentWidgetState
       child: Row(
         mainAxisSize: MainAxisSize.max,
         mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Container(
             width: 500.0,
-            height: 670.0,
+            height: 470.0,
             decoration: BoxDecoration(),
             child: Card(
               clipBehavior: Clip.antiAliasWithSaveLayer,
@@ -91,39 +88,12 @@ class _UpdateBeyonderComponentWidgetState
                     mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Row(
-                        mainAxisSize: MainAxisSize.max,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Stack(
-                            children: [
-                              ClipRRect(
-                                borderRadius: BorderRadius.circular(100.0),
-                                child: SvgPicture.asset(
-                                  'assets/images/Group_2128.svg',
-                                  width: 100.0,
-                                  height: 100.0,
-                                  fit: BoxFit.cover,
-                                ),
-                              ),
-                              Align(
-                                alignment: AlignmentDirectional(0.00, 0.00),
-                                child: Icon(
-                                  Icons.add_circle_sharp,
-                                  color: FlutterFlowTheme.of(context)
-                                      .secondaryText,
-                                  size: 24.0,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
                       Padding(
                         padding: EdgeInsetsDirectional.fromSTEB(
                             20.0, 0.0, 20.0, 8.0),
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
+                          mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Padding(
                               padding: EdgeInsetsDirectional.fromSTEB(
@@ -171,6 +141,34 @@ class _UpdateBeyonderComponentWidgetState
                             ),
                           ],
                         ),
+                      ),
+                      Row(
+                        mainAxisSize: MainAxisSize.max,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Stack(
+                            children: [
+                              ClipRRect(
+                                borderRadius: BorderRadius.circular(100.0),
+                                child: SvgPicture.asset(
+                                  'assets/images/Group_2128.svg',
+                                  width: 100.0,
+                                  height: 100.0,
+                                  fit: BoxFit.cover,
+                                ),
+                              ),
+                              Align(
+                                alignment: AlignmentDirectional(0.00, 0.00),
+                                child: Icon(
+                                  Icons.add_circle_sharp,
+                                  color: FlutterFlowTheme.of(context)
+                                      .secondaryText,
+                                  size: 24.0,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
                       ),
                       Padding(
                         padding:
@@ -333,7 +331,7 @@ class _UpdateBeyonderComponentWidgetState
                                         .labelMedium,
                                     hintText:
                                         FFLocalizations.of(context).getText(
-                                      'ft4iqtpe' /* Email */,
+                                      'udiq8hva' /* Phone Number */,
                                     ),
                                     hintStyle: FlutterFlowTheme.of(context)
                                         .labelMedium,
@@ -386,181 +384,6 @@ class _UpdateBeyonderComponentWidgetState
                         ),
                       ),
                       Padding(
-                        padding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 15.0, 0.0, 0.0),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.max,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Expanded(
-                              child: Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    20.0, 0.0, 20.0, 0.0),
-                                child: TextFormField(
-                                  controller: _model.textController4,
-                                  obscureText: false,
-                                  decoration: InputDecoration(
-                                    labelStyle: FlutterFlowTheme.of(context)
-                                        .labelMedium,
-                                    hintText:
-                                        FFLocalizations.of(context).getText(
-                                      'udiq8hva' /* Phone Number */,
-                                    ),
-                                    hintStyle: FlutterFlowTheme.of(context)
-                                        .labelMedium,
-                                    enabledBorder: OutlineInputBorder(
-                                      borderSide: BorderSide(
-                                        color: FlutterFlowTheme.of(context)
-                                            .alternate,
-                                        width: 2.0,
-                                      ),
-                                      borderRadius: BorderRadius.circular(8.0),
-                                    ),
-                                    focusedBorder: OutlineInputBorder(
-                                      borderSide: BorderSide(
-                                        color: FlutterFlowTheme.of(context)
-                                            .primary,
-                                        width: 2.0,
-                                      ),
-                                      borderRadius: BorderRadius.circular(8.0),
-                                    ),
-                                    errorBorder: OutlineInputBorder(
-                                      borderSide: BorderSide(
-                                        color:
-                                            FlutterFlowTheme.of(context).error,
-                                        width: 2.0,
-                                      ),
-                                      borderRadius: BorderRadius.circular(8.0),
-                                    ),
-                                    focusedErrorBorder: OutlineInputBorder(
-                                      borderSide: BorderSide(
-                                        color:
-                                            FlutterFlowTheme.of(context).error,
-                                        width: 2.0,
-                                      ),
-                                      borderRadius: BorderRadius.circular(8.0),
-                                    ),
-                                  ),
-                                  style: FlutterFlowTheme.of(context)
-                                      .bodyMedium
-                                      .override(
-                                        fontFamily: 'Readex Pro',
-                                        fontWeight: FontWeight.w500,
-                                      ),
-                                  keyboardType: TextInputType.emailAddress,
-                                  validator: _model.textController4Validator
-                                      .asValidator(context),
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
-                            20.0, 15.0, 20.0, 0.0),
-                        child: Container(
-                          decoration: BoxDecoration(
-                            color: FlutterFlowTheme.of(context)
-                                .secondaryBackground,
-                            borderRadius: BorderRadius.circular(8.0),
-                            border: Border.all(
-                              color: FlutterFlowTheme.of(context).alternate,
-                              width: 1.0,
-                            ),
-                          ),
-                          child: Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                10.0, 5.0, 10.0, 5.0),
-                            child: Row(
-                              mainAxisSize: MainAxisSize.max,
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(
-                                  FFLocalizations.of(context).getText(
-                                    'k5nzd6jc' /* Activate User */,
-                                  ),
-                                  style:
-                                      FlutterFlowTheme.of(context).bodyMedium,
-                                ),
-                                Switch.adaptive(
-                                  value: _model.switchValue ??= true,
-                                  onChanged: (newValue) async {
-                                    setState(
-                                        () => _model.switchValue = newValue!);
-                                  },
-                                  activeColor:
-                                      FlutterFlowTheme.of(context).primary,
-                                  activeTrackColor:
-                                      FlutterFlowTheme.of(context).accent1,
-                                  inactiveTrackColor:
-                                      FlutterFlowTheme.of(context).alternate,
-                                  inactiveThumbColor:
-                                      FlutterFlowTheme.of(context)
-                                          .secondaryText,
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                      ),
-                      Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
-                            20.0, 15.0, 20.0, 0.0),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.max,
-                          children: [
-                            Expanded(
-                              child: FlutterFlowDropDown<String>(
-                                controller: _model.dropDownValueController ??=
-                                    FormFieldController<String>(null),
-                                options: [
-                                  FFLocalizations.of(context).getText(
-                                    'fqjmued9' /* Associate */,
-                                  ),
-                                  FFLocalizations.of(context).getText(
-                                    '9qidirjw' /* Mid Manager */,
-                                  ),
-                                  FFLocalizations.of(context).getText(
-                                    'a7yfa8k0' /* Senior */,
-                                  ),
-                                  FFLocalizations.of(context).getText(
-                                    'vge81re4' /* General Manager */,
-                                  )
-                                ],
-                                onChanged: (val) =>
-                                    setState(() => _model.dropDownValue = val),
-                                width: 300.0,
-                                height: 50.0,
-                                textStyle:
-                                    FlutterFlowTheme.of(context).bodyMedium,
-                                hintText: FFLocalizations.of(context).getText(
-                                  '1e4gj1m0' /* Please select... */,
-                                ),
-                                icon: Icon(
-                                  Icons.keyboard_arrow_down_rounded,
-                                  color: FlutterFlowTheme.of(context)
-                                      .secondaryText,
-                                  size: 24.0,
-                                ),
-                                fillColor: FlutterFlowTheme.of(context)
-                                    .secondaryBackground,
-                                elevation: 2.0,
-                                borderColor:
-                                    FlutterFlowTheme.of(context).alternate,
-                                borderWidth: 2.0,
-                                borderRadius: 8.0,
-                                margin: EdgeInsetsDirectional.fromSTEB(
-                                    16.0, 4.0, 16.0, 4.0),
-                                hidesUnderline: true,
-                                isSearchable: false,
-                                isMultiSelect: false,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      Padding(
                         padding: EdgeInsetsDirectional.fromSTEB(
                             0.0, 15.0, 0.0, 15.0),
                         child: Row(
@@ -568,8 +391,37 @@ class _UpdateBeyonderComponentWidgetState
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             FFButtonWidget(
-                              onPressed: () {
-                                print('Button pressed ...');
+                              onPressed: () async {
+                                _model.apiResultm7o =
+                                    await UpdateUserProfileApiCall.call(
+                                  firstName: _model.textController1.text,
+                                  lastName: _model.textController2.text,
+                                  phoneNumber: _model.textController3.text,
+                                  userId: widget.userId,
+                                  token: FFAppState().userModel.token,
+                                );
+                                if ((_model.apiResultm7o?.succeeded ?? true)) {
+                                  _model.updatePage(() {});
+                                  Navigator.pop(context);
+                                } else {
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    SnackBar(
+                                      content: Text(
+                                        (_model.apiResultm7o?.bodyText ?? ''),
+                                        style: TextStyle(
+                                          color: FlutterFlowTheme.of(context)
+                                              .primaryText,
+                                        ),
+                                      ),
+                                      duration: Duration(milliseconds: 4000),
+                                      backgroundColor:
+                                          FlutterFlowTheme.of(context)
+                                              .secondary,
+                                    ),
+                                  );
+                                }
+
+                                setState(() {});
                               },
                               text: FFLocalizations.of(context).getText(
                                 'dx1fbv22' /* Update */,

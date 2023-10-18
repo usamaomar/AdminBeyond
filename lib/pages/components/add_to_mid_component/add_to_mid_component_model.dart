@@ -5,7 +5,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/pages/components/radio_custom/radio_custom_widget.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
-import 'assign_seniors_component_widget.dart' show AssignSeniorsComponentWidget;
+import 'add_to_mid_component_widget.dart' show AddToMidComponentWidget;
 import 'package:data_table_2/data_table_2.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -14,8 +14,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
-class AssignSeniorsComponentModel
-    extends FlutterFlowModel<AssignSeniorsComponentWidget> {
+class AddToMidComponentModel extends FlutterFlowModel<AddToMidComponentWidget> {
   ///  Local state fields for this component.
 
   List<dynamic> listOfLocalJsons = [];
@@ -44,10 +43,10 @@ class AssignSeniorsComponentModel
 
   ///  State fields for stateful widgets in this component.
 
-  // Stores action output result for [Backend Call - API (getAllUseres)] action in AssignSeniorsComponent widget.
+  // Stores action output result for [Backend Call - API (getAllUseres)] action in AddToMidComponent widget.
   ApiCallResponse? getAllUsersJsonList;
-  // Stores action output result for [Backend Call - API (SetSeniorTeamApi)] action in Button widget.
-  ApiCallResponse? apiResult08f;
+  // Stores action output result for [Backend Call - API (SetSupervisorApi)] action in Button widget.
+  ApiCallResponse? apiResult123456;
 
   /// Initialization and disposal methods.
 

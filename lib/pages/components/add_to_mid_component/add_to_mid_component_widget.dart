@@ -12,25 +12,24 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'assign_seniors_component_model.dart';
-export 'assign_seniors_component_model.dart';
+import 'add_to_mid_component_model.dart';
+export 'add_to_mid_component_model.dart';
 
-class AssignSeniorsComponentWidget extends StatefulWidget {
-  const AssignSeniorsComponentWidget({
+class AddToMidComponentWidget extends StatefulWidget {
+  const AddToMidComponentWidget({
     Key? key,
     required this.teamId,
   }) : super(key: key);
 
-  final int? teamId;
+  final String? teamId;
 
   @override
-  _AssignSeniorsComponentWidgetState createState() =>
-      _AssignSeniorsComponentWidgetState();
+  _AddToMidComponentWidgetState createState() =>
+      _AddToMidComponentWidgetState();
 }
 
-class _AssignSeniorsComponentWidgetState
-    extends State<AssignSeniorsComponentWidget> {
-  late AssignSeniorsComponentModel _model;
+class _AddToMidComponentWidgetState extends State<AddToMidComponentWidget> {
+  late AddToMidComponentModel _model;
 
   @override
   void setState(VoidCallback callback) {
@@ -41,7 +40,7 @@ class _AssignSeniorsComponentWidgetState
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => AssignSeniorsComponentModel());
+    _model = createModel(context, () => AddToMidComponentModel());
 
     // On component load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
@@ -52,7 +51,7 @@ class _AssignSeniorsComponentWidgetState
         setState(() {
           _model.listOfLocalJsons = getJsonField(
             (_model.getAllUsersJsonList?.jsonBody ?? ''),
-            r'''$.data[?(@.accessRole == 2)]''',
+            r'''$.data[?(@.accessRole == 3)]''',
             true,
           )!
               .toList()
@@ -121,7 +120,7 @@ class _AssignSeniorsComponentWidgetState
                           ),
                           Text(
                             FFLocalizations.of(context).getText(
-                              'en8h3pqe' /* Assign To Team */,
+                              'xl80rgs1' /* Assign To Mid */,
                             ),
                             style: FlutterFlowTheme.of(context)
                                 .titleLarge
@@ -173,7 +172,7 @@ class _AssignSeniorsComponentWidgetState
                                   softWrap: true,
                                   child: Text(
                                     FFLocalizations.of(context).getText(
-                                      'mmuc9wx3' /* UserName */,
+                                      'dokfodds' /* UserName */,
                                     ),
                                     style:
                                         FlutterFlowTheme.of(context).labelLarge,
@@ -185,7 +184,7 @@ class _AssignSeniorsComponentWidgetState
                                   softWrap: true,
                                   child: Text(
                                     FFLocalizations.of(context).getText(
-                                      '8u1zlige' /* Email */,
+                                      '0g9hjez7' /* Email */,
                                     ),
                                     style:
                                         FlutterFlowTheme.of(context).labelLarge,
@@ -197,7 +196,7 @@ class _AssignSeniorsComponentWidgetState
                                   softWrap: true,
                                   child: Text(
                                     FFLocalizations.of(context).getText(
-                                      'b6aku17k' /* Assign To Team */,
+                                      'ojlpszky' /* Assign To Senior */,
                                     ),
                                     style:
                                         FlutterFlowTheme.of(context).labelLarge,
@@ -277,7 +276,7 @@ class _AssignSeniorsComponentWidgetState
                                             },
                                             child: RadioCustomWidget(
                                               key: Key(
-                                                  'Key4rb_${listOfLocalItemsIndex}_of_${listOfLocalItems.length}'),
+                                                  'Keyvki_${listOfLocalItemsIndex}_of_${listOfLocalItems.length}'),
                                               isSelected:
                                                   _model.listOfSelectedVars[
                                                       listOfLocalItemsIndex],
@@ -318,21 +317,41 @@ class _AssignSeniorsComponentWidgetState
                                     _model.selectedUserId == ''
                                 ? null
                                 : () async {
-                                    _model.apiResult08f =
-                                        await SetSeniorTeamApiCall.call(
-                                      seniorId: _model.selectedUserId,
-                                      teamId: widget.teamId,
+                                    _model.apiResult123456 =
+                                        await SetSupervisorApiCall.call(
+                                      userId: widget.teamId,
+                                      supervisorId: _model.selectedUserId,
                                       token: FFAppState().userModel.token,
                                     );
-                                    if ((_model.apiResult08f?.succeeded ??
+                                    if ((_model.apiResult123456?.succeeded ??
                                         true)) {
                                       context.safePop();
+                                    } else {
+                                      await showDialog(
+                                        context: context,
+                                        builder: (alertDialogContext) {
+                                          return AlertDialog(
+                                            title: Text('Error'),
+                                            content: Text((_model
+                                                    .apiResult123456
+                                                    ?.bodyText ??
+                                                '')),
+                                            actions: [
+                                              TextButton(
+                                                onPressed: () => Navigator.pop(
+                                                    alertDialogContext),
+                                                child: Text('Ok'),
+                                              ),
+                                            ],
+                                          );
+                                        },
+                                      );
                                     }
 
                                     setState(() {});
                                   },
                             text: FFLocalizations.of(context).getText(
-                              'uw9bx7o0' /* Save */,
+                              'a3r7lf2h' /* Save */,
                             ),
                             options: FFButtonOptions(
                               height: 40.0,

@@ -252,6 +252,9 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                               textInputAction: TextInputAction.next,
                               obscureText: false,
                               decoration: InputDecoration(
+                                labelText: FFLocalizations.of(context).getText(
+                                  'vryrc7ik' /* Email */,
+                                ),
                                 labelStyle:
                                     FlutterFlowTheme.of(context).labelMedium,
                                 hintText: FFLocalizations.of(context).getText(
@@ -315,6 +318,9 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                               controller: _model.textController2,
                               obscureText: !_model.passwordVisibility,
                               decoration: InputDecoration(
+                                labelText: FFLocalizations.of(context).getText(
+                                  'j0fviso3' /* Password */,
+                                ),
                                 labelStyle:
                                     FlutterFlowTheme.of(context).labelMedium,
                                 hintText: FFLocalizations.of(context).getText(

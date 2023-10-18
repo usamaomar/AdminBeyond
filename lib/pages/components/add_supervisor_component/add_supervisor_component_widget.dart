@@ -12,25 +12,25 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'assign_seniors_component_model.dart';
-export 'assign_seniors_component_model.dart';
+import 'add_supervisor_component_model.dart';
+export 'add_supervisor_component_model.dart';
 
-class AssignSeniorsComponentWidget extends StatefulWidget {
-  const AssignSeniorsComponentWidget({
+class AddSupervisorComponentWidget extends StatefulWidget {
+  const AddSupervisorComponentWidget({
     Key? key,
     required this.teamId,
   }) : super(key: key);
 
-  final int? teamId;
+  final String? teamId;
 
   @override
-  _AssignSeniorsComponentWidgetState createState() =>
-      _AssignSeniorsComponentWidgetState();
+  _AddSupervisorComponentWidgetState createState() =>
+      _AddSupervisorComponentWidgetState();
 }
 
-class _AssignSeniorsComponentWidgetState
-    extends State<AssignSeniorsComponentWidget> {
-  late AssignSeniorsComponentModel _model;
+class _AddSupervisorComponentWidgetState
+    extends State<AddSupervisorComponentWidget> {
+  late AddSupervisorComponentModel _model;
 
   @override
   void setState(VoidCallback callback) {
@@ -41,7 +41,7 @@ class _AssignSeniorsComponentWidgetState
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => AssignSeniorsComponentModel());
+    _model = createModel(context, () => AddSupervisorComponentModel());
 
     // On component load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
@@ -121,7 +121,7 @@ class _AssignSeniorsComponentWidgetState
                           ),
                           Text(
                             FFLocalizations.of(context).getText(
-                              'en8h3pqe' /* Assign To Team */,
+                              'eelhmsmk' /* Assign To Senior */,
                             ),
                             style: FlutterFlowTheme.of(context)
                                 .titleLarge
@@ -173,7 +173,7 @@ class _AssignSeniorsComponentWidgetState
                                   softWrap: true,
                                   child: Text(
                                     FFLocalizations.of(context).getText(
-                                      'mmuc9wx3' /* UserName */,
+                                      'osg9rkr3' /* UserName */,
                                     ),
                                     style:
                                         FlutterFlowTheme.of(context).labelLarge,
@@ -185,7 +185,7 @@ class _AssignSeniorsComponentWidgetState
                                   softWrap: true,
                                   child: Text(
                                     FFLocalizations.of(context).getText(
-                                      '8u1zlige' /* Email */,
+                                      '937o9vyq' /* Email */,
                                     ),
                                     style:
                                         FlutterFlowTheme.of(context).labelLarge,
@@ -197,7 +197,7 @@ class _AssignSeniorsComponentWidgetState
                                   softWrap: true,
                                   child: Text(
                                     FFLocalizations.of(context).getText(
-                                      'b6aku17k' /* Assign To Team */,
+                                      '46vowboz' /* Assign To Senior */,
                                     ),
                                     style:
                                         FlutterFlowTheme.of(context).labelLarge,
@@ -277,7 +277,7 @@ class _AssignSeniorsComponentWidgetState
                                             },
                                             child: RadioCustomWidget(
                                               key: Key(
-                                                  'Key4rb_${listOfLocalItemsIndex}_of_${listOfLocalItems.length}'),
+                                                  'Keys3b_${listOfLocalItemsIndex}_of_${listOfLocalItems.length}'),
                                               isSelected:
                                                   _model.listOfSelectedVars[
                                                       listOfLocalItemsIndex],
@@ -319,9 +319,9 @@ class _AssignSeniorsComponentWidgetState
                                 ? null
                                 : () async {
                                     _model.apiResult08f =
-                                        await SetSeniorTeamApiCall.call(
-                                      seniorId: _model.selectedUserId,
-                                      teamId: widget.teamId,
+                                        await SetSupervisorApiCall.call(
+                                      userId: widget.teamId,
+                                      supervisorId: _model.selectedUserId,
                                       token: FFAppState().userModel.token,
                                     );
                                     if ((_model.apiResult08f?.succeeded ??
@@ -332,7 +332,7 @@ class _AssignSeniorsComponentWidgetState
                                     setState(() {});
                                   },
                             text: FFLocalizations.of(context).getText(
-                              'uw9bx7o0' /* Save */,
+                              'eatb61ht' /* Save */,
                             ),
                             options: FFButtonOptions(
                               height: 40.0,

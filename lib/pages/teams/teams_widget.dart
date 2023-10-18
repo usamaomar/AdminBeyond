@@ -695,7 +695,7 @@ class _TeamsWidgetState extends State<TeamsWidget> {
                                                                           .transparent,
                                                                   onTap:
                                                                       () async {
-                                                                    await showAlignedDialog(
+                                                                    showAlignedDialog(
                                                                       context:
                                                                           context,
                                                                       isGlobal:
