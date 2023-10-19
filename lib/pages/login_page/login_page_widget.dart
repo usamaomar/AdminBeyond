@@ -448,6 +448,29 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                 ).toString(),
                               );
                               _shouldSetState = true;
+                              if (GetMyUserCall.accessRole(
+                                    (_model.getMyUserCall?.jsonBody ?? ''),
+                                  ) >
+                                  1) {
+                                await showDialog(
+                                  context: context,
+                                  builder: (alertDialogContext) {
+                                    return AlertDialog(
+                                      title: Text('Error'),
+                                      content: Text('You Dont Have Access'),
+                                      actions: [
+                                        TextButton(
+                                          onPressed: () =>
+                                              Navigator.pop(alertDialogContext),
+                                          child: Text('Ok'),
+                                        ),
+                                      ],
+                                    );
+                                  },
+                                );
+                                if (_shouldSetState) setState(() {});
+                                return;
+                              }
                               setState(() {
                                 FFAppState().updateUserModelStruct(
                                   (e) => e
