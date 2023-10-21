@@ -10,6 +10,7 @@ import '/flutter_flow/upload_data.dart';
 import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -41,11 +42,17 @@ class _AddBeyonderComponentWidgetState
     _model = createModel(context, () => AddBeyonderComponentModel());
 
     _model.textController1 ??= TextEditingController();
+    _model.textFieldFocusNode1 ??= FocusNode();
     _model.textController2 ??= TextEditingController();
+    _model.textFieldFocusNode2 ??= FocusNode();
     _model.textController3 ??= TextEditingController();
+    _model.textFieldFocusNode3 ??= FocusNode();
     _model.textController4 ??= TextEditingController();
+    _model.textFieldFocusNode4 ??= FocusNode();
     _model.textController5 ??= TextEditingController();
+    _model.textFieldFocusNode5 ??= FocusNode();
     _model.textController6 ??= TextEditingController();
+    _model.textFieldFocusNode6 ??= FocusNode();
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {
           _model.textController1?.text = FFLocalizations.of(context).getText(
             '1tmpniha' /*  */,
@@ -321,6 +328,7 @@ class _AddBeyonderComponentWidgetState
                                     20.0, 0.0, 20.0, 0.0),
                                 child: TextFormField(
                                   controller: _model.textController1,
+                                  focusNode: _model.textFieldFocusNode1,
                                   obscureText: false,
                                   decoration: InputDecoration(
                                     labelStyle: FlutterFlowTheme.of(context)
@@ -392,6 +400,7 @@ class _AddBeyonderComponentWidgetState
                                     20.0, 0.0, 20.0, 0.0),
                                 child: TextFormField(
                                   controller: _model.textController2,
+                                  focusNode: _model.textFieldFocusNode2,
                                   obscureText: false,
                                   decoration: InputDecoration(
                                     labelStyle: FlutterFlowTheme.of(context)
@@ -463,6 +472,7 @@ class _AddBeyonderComponentWidgetState
                                     20.0, 0.0, 20.0, 0.0),
                                 child: TextFormField(
                                   controller: _model.textController3,
+                                  focusNode: _model.textFieldFocusNode3,
                                   obscureText: false,
                                   decoration: InputDecoration(
                                     labelStyle: FlutterFlowTheme.of(context)
@@ -534,6 +544,7 @@ class _AddBeyonderComponentWidgetState
                                     20.0, 0.0, 20.0, 0.0),
                                 child: TextFormField(
                                   controller: _model.textController4,
+                                  focusNode: _model.textFieldFocusNode4,
                                   obscureText: false,
                                   decoration: InputDecoration(
                                     labelStyle: FlutterFlowTheme.of(context)
@@ -605,6 +616,7 @@ class _AddBeyonderComponentWidgetState
                                     20.0, 0.0, 20.0, 0.0),
                                 child: TextFormField(
                                   controller: _model.textController5,
+                                  focusNode: _model.textFieldFocusNode5,
                                   obscureText: false,
                                   decoration: InputDecoration(
                                     labelStyle: FlutterFlowTheme.of(context)
@@ -676,6 +688,7 @@ class _AddBeyonderComponentWidgetState
                                     20.0, 0.0, 20.0, 0.0),
                                 child: TextFormField(
                                   controller: _model.textController6,
+                                  focusNode: _model.textFieldFocusNode6,
                                   obscureText: false,
                                   decoration: InputDecoration(
                                     labelStyle: FlutterFlowTheme.of(context)

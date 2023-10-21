@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'dart:typed_data';
 
-import '../../flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_util.dart';
 import 'api_manager.dart';
 
 export 'api_manager.dart' show ApiCallResponse;
@@ -12,7 +12,7 @@ class LoginApiCall {
   static Future<ApiCallResponse> call({
     String? email = '',
     String? password = '',
-  }) {
+  }) async {
     final ffApiRequestBody = '''
 {
   "email": "${email}",
@@ -71,7 +71,7 @@ class RegisterUserApiCall {
     bool? activateUser,
     int? accessRole = 4,
     String? token = '',
-  }) {
+  }) async {
     final ffApiRequestBody = '''
 {
   "email": "${email}",
@@ -132,7 +132,7 @@ class UpdateTeamNameApiCall {
     String? name = '',
     int? id,
     String? token = '',
-  }) {
+  }) async {
     final ffApiRequestBody = '''
 {
 "id": ${id} ,
@@ -189,7 +189,7 @@ class UpdateUserProfileApiCall {
     String? phoneNumber = '',
     String? profilePictureUrl = '',
     String? userId = '',
-  }) {
+  }) async {
     final ffApiRequestBody = '''
 {
   "firstName": "${firstName}",
@@ -245,7 +245,7 @@ class AddTeamNameCall {
   static Future<ApiCallResponse> call({
     String? name = '',
     String? token = '',
-  }) {
+  }) async {
     final ffApiRequestBody = '''
 {
 "name": "${name}"  
@@ -304,7 +304,7 @@ class AddClientApiCall {
     String? contactName = '',
     String? alternativePhoneNumber = '',
     String? logoImageUrl = '',
-  }) {
+  }) async {
     final ffApiRequestBody = '''
 {
   "name": "${name}",
@@ -364,7 +364,7 @@ class SetSupervisorApiCall {
     String? userId = '',
     String? token = '',
     String? supervisorId = '',
-  }) {
+  }) async {
     final ffApiRequestBody = '''
 {
   "userId": "${userId}",
@@ -419,7 +419,7 @@ class SetSeniorTeamApiCall {
     String? seniorId = '',
     String? token = '',
     int? teamId,
-  }) {
+  }) async {
     final ffApiRequestBody = '''
 {
   "seniorId": "${seniorId}",
@@ -472,7 +472,7 @@ class SetSeniorTeamApiCall {
 class GetMyUserCall {
   static Future<ApiCallResponse> call({
     String? token = '',
-  }) {
+  }) async {
     return ApiManager.instance.makeApiCall(
       callName: 'GetMyUser',
       apiUrl: 'https://beyond.api.matterhr.com/api/v1/User/GetMy',
@@ -536,7 +536,7 @@ class GetAllUseresCall {
   static Future<ApiCallResponse> call({
     String? token = '',
     List<String>? idsList,
-  }) {
+  }) async {
     final ids = _serializeList(idsList);
 
     return ApiManager.instance.makeApiCall(
@@ -621,7 +621,7 @@ class GetAllClientsApiCall {
   static Future<ApiCallResponse> call({
     String? token = '',
     String? searchText = '',
-  }) {
+  }) async {
     return ApiManager.instance.makeApiCall(
       callName: 'GetAllClientsApi',
       apiUrl: 'https://beyond.api.matterhr.com/api/v1/Clients/GetAllClients',
@@ -704,7 +704,7 @@ class GetAllTeamsApiCall {
   static Future<ApiCallResponse> call({
     String? token = '',
     int? pageSize = 10000,
-  }) {
+  }) async {
     return ApiManager.instance.makeApiCall(
       callName: 'GetAllTeamsApi',
       apiUrl: 'https://beyond.api.matterhr.com/api/v1/Teams/GetAllTeams',

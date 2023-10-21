@@ -4,6 +4,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -47,8 +48,11 @@ class _UpdateBeyonderComponentWidgetState
     _model = createModel(context, () => UpdateBeyonderComponentModel());
 
     _model.textController1 ??= TextEditingController(text: widget.firstName);
+    _model.textFieldFocusNode1 ??= FocusNode();
     _model.textController2 ??= TextEditingController(text: widget.lastName);
+    _model.textFieldFocusNode2 ??= FocusNode();
     _model.textController3 ??= TextEditingController(text: widget.phoneNumber);
+    _model.textFieldFocusNode3 ??= FocusNode();
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
@@ -183,6 +187,7 @@ class _UpdateBeyonderComponentWidgetState
                                     20.0, 0.0, 20.0, 0.0),
                                 child: TextFormField(
                                   controller: _model.textController1,
+                                  focusNode: _model.textFieldFocusNode1,
                                   obscureText: false,
                                   decoration: InputDecoration(
                                     labelStyle: FlutterFlowTheme.of(context)
@@ -254,6 +259,7 @@ class _UpdateBeyonderComponentWidgetState
                                     20.0, 0.0, 20.0, 0.0),
                                 child: TextFormField(
                                   controller: _model.textController2,
+                                  focusNode: _model.textFieldFocusNode2,
                                   obscureText: false,
                                   decoration: InputDecoration(
                                     labelStyle: FlutterFlowTheme.of(context)
@@ -325,6 +331,7 @@ class _UpdateBeyonderComponentWidgetState
                                     20.0, 0.0, 20.0, 0.0),
                                 child: TextFormField(
                                   controller: _model.textController3,
+                                  focusNode: _model.textFieldFocusNode3,
                                   obscureText: false,
                                   decoration: InputDecoration(
                                     labelStyle: FlutterFlowTheme.of(context)

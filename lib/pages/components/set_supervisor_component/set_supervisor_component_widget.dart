@@ -6,6 +6,7 @@ import '/flutter_flow/random_data_util.dart' as random_data;
 import 'package:data_table_2/data_table_2.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -37,6 +38,7 @@ class _SetSupervisorComponentWidgetState
     _model = createModel(context, () => SetSupervisorComponentModel());
 
     _model.textController ??= TextEditingController();
+    _model.textFieldFocusNode ??= FocusNode();
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
@@ -170,6 +172,8 @@ class _SetSupervisorComponentWidgetState
                                               child: TextFormField(
                                                 controller:
                                                     _model.textController,
+                                                focusNode:
+                                                    _model.textFieldFocusNode,
                                                 onChanged: (_) =>
                                                     EasyDebounce.debounce(
                                                   '_model.textController',
