@@ -11,6 +11,7 @@ import 'package:data_table_2/data_table_2.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -39,6 +40,7 @@ class ClientsPageModel extends FlutterFlowModel<ClientsPageWidget> {
   // Model for Side component.
   late SideModel sideModel;
   // State field(s) for TextField widget.
+  FocusNode? textFieldFocusNode;
   TextEditingController? textController;
   String? Function(BuildContext, String?)? textControllerValidator;
   // Stores action output result for [Backend Call - API (GetAllClientsApi)] action in TextField widget.
@@ -54,6 +56,7 @@ class ClientsPageModel extends FlutterFlowModel<ClientsPageWidget> {
   void dispose() {
     unfocusNode.dispose();
     sideModel.dispose();
+    textFieldFocusNode?.dispose();
     textController?.dispose();
   }
 

@@ -4,6 +4,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'view_team_component_widget.dart' show ViewTeamComponentWidget;
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -13,6 +14,7 @@ class ViewTeamComponentModel extends FlutterFlowModel<ViewTeamComponentWidget> {
   ///  State fields for stateful widgets in this component.
 
   // State field(s) for TextField widget.
+  FocusNode? textFieldFocusNode;
   TextEditingController? textController;
   String? Function(BuildContext, String?)? textControllerValidator;
 
@@ -21,6 +23,7 @@ class ViewTeamComponentModel extends FlutterFlowModel<ViewTeamComponentWidget> {
   void initState(BuildContext context) {}
 
   void dispose() {
+    textFieldFocusNode?.dispose();
     textController?.dispose();
   }
 

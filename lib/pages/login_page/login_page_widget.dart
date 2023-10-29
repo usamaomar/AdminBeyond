@@ -4,6 +4,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -29,7 +30,9 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
     _model = createModel(context, () => LoginPageModel());
 
     _model.textController1 ??= TextEditingController();
+    _model.textFieldFocusNode1 ??= FocusNode();
     _model.textController2 ??= TextEditingController();
+    _model.textFieldFocusNode2 ??= FocusNode();
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
@@ -42,6 +45,15 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
 
   @override
   Widget build(BuildContext context) {
+    if (isiOS) {
+      SystemChrome.setSystemUIOverlayStyle(
+        SystemUiOverlayStyle(
+          statusBarBrightness: Theme.of(context).brightness,
+          systemStatusBarContrastEnforced: true,
+        ),
+      );
+    }
+
     context.watch<FFAppState>();
 
     return GestureDetector(
@@ -249,6 +261,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                           Flexible(
                             child: TextFormField(
                               controller: _model.textController1,
+                              focusNode: _model.textFieldFocusNode1,
                               textInputAction: TextInputAction.next,
                               obscureText: false,
                               decoration: InputDecoration(
@@ -316,6 +329,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                           Expanded(
                             child: TextFormField(
                               controller: _model.textController2,
+                              focusNode: _model.textFieldFocusNode2,
                               obscureText: !_model.passwordVisibility,
                               decoration: InputDecoration(
                                 labelText: FFLocalizations.of(context).getText(
