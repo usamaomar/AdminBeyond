@@ -9,7 +9,6 @@ import '/pages/components/add_to_mid_component/add_to_mid_component_widget.dart'
 import '/pages/components/side/side_widget.dart';
 import '/pages/components/update_beyonder_component/update_beyonder_component_widget.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
-import 'package:aligned_dialog/aligned_dialog.dart';
 import 'package:data_table_2/data_table_2.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
@@ -81,6 +80,7 @@ class _UpdateBeyondersPageWidgetState extends State<UpdateBeyondersPageWidget> {
 
     _model.textController ??= TextEditingController();
     _model.textFieldFocusNode ??= FocusNode();
+
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {
           _model.textController?.text = FFLocalizations.of(context).getText(
             '9z2ts7kv' /*  */,
@@ -283,21 +283,17 @@ class _UpdateBeyondersPageWidgetState extends State<UpdateBeyondersPageWidget> {
                                           size: 24.0,
                                         ),
                                         onPressed: () async {
-                                          await showAlignedDialog(
+                                          await showDialog(
                                             context: context,
-                                            isGlobal: true,
-                                            avoidOverflow: false,
-                                            targetAnchor: AlignmentDirectional(
-                                                    0.0, 0.0)
-                                                .resolve(
-                                                    Directionality.of(context)),
-                                            followerAnchor:
-                                                AlignmentDirectional(0.0, 0.0)
+                                            builder: (dialogContext) {
+                                              return Dialog(
+                                                insetPadding: EdgeInsets.zero,
+                                                backgroundColor:
+                                                    Colors.transparent,
+                                                alignment: AlignmentDirectional(
+                                                        0.0, 0.0)
                                                     .resolve(Directionality.of(
                                                         context)),
-                                            builder: (dialogContext) {
-                                              return Material(
-                                                color: Colors.transparent,
                                                 child: GestureDetector(
                                                   onTap: () => _model
                                                           .unfocusNode
@@ -588,28 +584,18 @@ class _UpdateBeyondersPageWidgetState extends State<UpdateBeyondersPageWidget> {
                                                                         .transparent,
                                                                 onTap:
                                                                     () async {
-                                                                  await showAlignedDialog(
+                                                                  await showDialog(
                                                                     context:
                                                                         context,
-                                                                    isGlobal:
-                                                                        true,
-                                                                    avoidOverflow:
-                                                                        false,
-                                                                    targetAnchor: AlignmentDirectional(
-                                                                            0.0,
-                                                                            0.0)
-                                                                        .resolve(
-                                                                            Directionality.of(context)),
-                                                                    followerAnchor: AlignmentDirectional(
-                                                                            0.0,
-                                                                            0.0)
-                                                                        .resolve(
-                                                                            Directionality.of(context)),
                                                                     builder:
                                                                         (dialogContext) {
-                                                                      return Material(
-                                                                        color: Colors
-                                                                            .transparent,
+                                                                      return Dialog(
+                                                                        insetPadding:
+                                                                            EdgeInsets.zero,
+                                                                        backgroundColor:
+                                                                            Colors.transparent,
+                                                                        alignment:
+                                                                            AlignmentDirectional(0.0, 0.0).resolve(Directionality.of(context)),
                                                                         child:
                                                                             GestureDetector(
                                                                           onTap: () => _model.unfocusNode.canRequestFocus
@@ -655,30 +641,23 @@ class _UpdateBeyondersPageWidgetState extends State<UpdateBeyondersPageWidget> {
                                                                   Colors
                                                                       .transparent,
                                                               onTap: () async {
-                                                                await showAlignedDialog(
+                                                                await showDialog(
                                                                   context:
                                                                       context,
-                                                                  isGlobal:
-                                                                      true,
-                                                                  avoidOverflow:
-                                                                      false,
-                                                                  targetAnchor: AlignmentDirectional(
-                                                                          0.0,
-                                                                          0.0)
-                                                                      .resolve(
-                                                                          Directionality.of(
-                                                                              context)),
-                                                                  followerAnchor: AlignmentDirectional(
-                                                                          0.0,
-                                                                          0.0)
-                                                                      .resolve(
-                                                                          Directionality.of(
-                                                                              context)),
                                                                   builder:
                                                                       (dialogContext) {
-                                                                    return Material(
-                                                                      color: Colors
-                                                                          .transparent,
+                                                                    return Dialog(
+                                                                      insetPadding:
+                                                                          EdgeInsets
+                                                                              .zero,
+                                                                      backgroundColor:
+                                                                          Colors
+                                                                              .transparent,
+                                                                      alignment: AlignmentDirectional(
+                                                                              0.0,
+                                                                              0.0)
+                                                                          .resolve(
+                                                                              Directionality.of(context)),
                                                                       child:
                                                                           GestureDetector(
                                                                         onTap: () => _model.unfocusNode.canRequestFocus
@@ -688,26 +667,26 @@ class _UpdateBeyondersPageWidgetState extends State<UpdateBeyondersPageWidget> {
                                                                             UpdateBeyonderComponentWidget(
                                                                           userId:
                                                                               _model.listOfIdes[listLocalsIndex],
-                                                                          firstName: (GetAllUseresCall.firstNames(
+                                                                          firstName: ((GetAllUseresCall.firstNames(
                                                                             (_model.apiResultAllUseresCall?.jsonBody ??
                                                                                 ''),
                                                                           ) as List)
-                                                                              .map<String>((s) => s.toString())
-                                                                              .toList()[listLocalsIndex]
+                                                                                  .map<String>((s) => s.toString())
+                                                                                  .toList()![listLocalsIndex])
                                                                               .toString(),
-                                                                          lastName: (GetAllUseresCall.lastNames(
+                                                                          lastName: ((GetAllUseresCall.lastNames(
                                                                             (_model.apiResultAllUseresCall?.jsonBody ??
                                                                                 ''),
                                                                           ) as List)
-                                                                              .map<String>((s) => s.toString())
-                                                                              .toList()[listLocalsIndex]
+                                                                                  .map<String>((s) => s.toString())
+                                                                                  .toList()![listLocalsIndex])
                                                                               .toString(),
-                                                                          phoneNumber: (GetAllUseresCall.phoneNumbers(
+                                                                          phoneNumber: ((GetAllUseresCall.phoneNumbers(
                                                                             (_model.apiResultAllUseresCall?.jsonBody ??
                                                                                 ''),
                                                                           ) as List)
-                                                                              .map<String>((s) => s.toString())
-                                                                              .toList()[listLocalsIndex]
+                                                                                  .map<String>((s) => s.toString())
+                                                                                  .toList()![listLocalsIndex])
                                                                               .toString(),
                                                                         ),
                                                                       ),
@@ -747,28 +726,18 @@ class _UpdateBeyondersPageWidgetState extends State<UpdateBeyondersPageWidget> {
                                                                         .transparent,
                                                                 onTap:
                                                                     () async {
-                                                                  await showAlignedDialog(
+                                                                  await showDialog(
                                                                     context:
                                                                         context,
-                                                                    isGlobal:
-                                                                        true,
-                                                                    avoidOverflow:
-                                                                        false,
-                                                                    targetAnchor: AlignmentDirectional(
-                                                                            0.0,
-                                                                            0.0)
-                                                                        .resolve(
-                                                                            Directionality.of(context)),
-                                                                    followerAnchor: AlignmentDirectional(
-                                                                            0.0,
-                                                                            0.0)
-                                                                        .resolve(
-                                                                            Directionality.of(context)),
                                                                     builder:
                                                                         (dialogContext) {
-                                                                      return Material(
-                                                                        color: Colors
-                                                                            .transparent,
+                                                                      return Dialog(
+                                                                        insetPadding:
+                                                                            EdgeInsets.zero,
+                                                                        backgroundColor:
+                                                                            Colors.transparent,
+                                                                        alignment:
+                                                                            AlignmentDirectional(0.0, 0.0).resolve(Directionality.of(context)),
                                                                         child:
                                                                             GestureDetector(
                                                                           onTap: () => _model.unfocusNode.canRequestFocus

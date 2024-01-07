@@ -39,6 +39,7 @@ class _SetSupervisorComponentWidgetState
 
     _model.textController ??= TextEditingController();
     _model.textFieldFocusNode ??= FocusNode();
+
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
@@ -309,7 +310,7 @@ class _SetSupervisorComponentWidgetState
                                                   // PartnerID header
                                                   Align(
                                                 alignment: AlignmentDirectional(
-                                                    -1.00, 0.00),
+                                                    -1.0, 0.0),
                                                 child: Padding(
                                                   padding: EdgeInsetsDirectional
                                                       .fromSTEB(
@@ -334,7 +335,7 @@ class _SetSupervisorComponentWidgetState
                                                   // Name header
                                                   Align(
                                                 alignment: AlignmentDirectional(
-                                                    -1.00, 0.00),
+                                                    -1.0, 0.0),
                                                 child: Padding(
                                                   padding: EdgeInsetsDirectional
                                                       .fromSTEB(
@@ -357,7 +358,7 @@ class _SetSupervisorComponentWidgetState
                                               softWrap: true,
                                               child: Align(
                                                 alignment: AlignmentDirectional(
-                                                    0.00, 0.00),
+                                                    0.0, 0.0),
                                                 child: Padding(
                                                   padding: EdgeInsetsDirectional
                                                       .fromSTEB(
@@ -384,7 +385,7 @@ class _SetSupervisorComponentWidgetState
                                                   Align(
                                                     alignment:
                                                         AlignmentDirectional(
-                                                            -1.00, 0.00),
+                                                            -1.0, 0.0),
                                                     child: Text(
                                                       FFLocalizations.of(
                                                               context)
@@ -409,7 +410,7 @@ class _SetSupervisorComponentWidgetState
                                                   Align(
                                                     alignment:
                                                         AlignmentDirectional(
-                                                            -1.00, 0.00),
+                                                            -1.0, 0.0),
                                                     child: Text(
                                                       FFLocalizations.of(
                                                               context)
@@ -432,7 +433,7 @@ class _SetSupervisorComponentWidgetState
                                                   Align(
                                                     alignment:
                                                         AlignmentDirectional(
-                                                            0.00, 0.00),
+                                                            0.0, 0.0),
                                                     child: Theme(
                                                       data: ThemeData(
                                                         checkboxTheme:
@@ -441,8 +442,21 @@ class _SetSupervisorComponentWidgetState
                                                               RoundedRectangleBorder(
                                                             borderRadius:
                                                                 BorderRadius
-                                                                    .circular(
-                                                                        0.0),
+                                                                    .only(
+                                                              bottomLeft: Radius
+                                                                  .circular(
+                                                                      0.0),
+                                                              bottomRight:
+                                                                  Radius
+                                                                      .circular(
+                                                                          0.0),
+                                                              topLeft: Radius
+                                                                  .circular(
+                                                                      0.0),
+                                                              topRight: Radius
+                                                                  .circular(
+                                                                      0.0),
+                                                            ),
                                                           ),
                                                         ),
                                                         unselectedWidgetColor:
@@ -642,8 +656,8 @@ class _SetSupervisorComponentWidgetState
                                           child:
                                               // PartnerID header
                                               Align(
-                                            alignment: AlignmentDirectional(
-                                                -1.00, 0.00),
+                                            alignment:
+                                                AlignmentDirectional(-1.0, 0.0),
                                             child: Padding(
                                               padding: EdgeInsetsDirectional
                                                   .fromSTEB(0.0, 4.0, 0.0, 0.0),
@@ -666,8 +680,8 @@ class _SetSupervisorComponentWidgetState
                                           child:
                                               // Name header
                                               Align(
-                                            alignment: AlignmentDirectional(
-                                                -1.00, 0.00),
+                                            alignment:
+                                                AlignmentDirectional(-1.0, 0.0),
                                             child: Padding(
                                               padding: EdgeInsetsDirectional
                                                   .fromSTEB(0.0, 4.0, 0.0, 0.0),
@@ -688,8 +702,8 @@ class _SetSupervisorComponentWidgetState
                                         label: DefaultTextStyle.merge(
                                           softWrap: true,
                                           child: Align(
-                                            alignment: AlignmentDirectional(
-                                                0.00, 0.00),
+                                            alignment:
+                                                AlignmentDirectional(0.0, 0.0),
                                             child: Padding(
                                               padding: EdgeInsetsDirectional
                                                   .fromSTEB(0.0, 4.0, 0.0, 0.0),
@@ -713,7 +727,7 @@ class _SetSupervisorComponentWidgetState
                                               // Name data row
                                               Align(
                                                 alignment: AlignmentDirectional(
-                                                    -1.00, 0.00),
+                                                    -1.0, 0.0),
                                                 child: Text(
                                                   FFLocalizations.of(context)
                                                       .getText(
@@ -736,7 +750,7 @@ class _SetSupervisorComponentWidgetState
                                               // Type data row
                                               Align(
                                                 alignment: AlignmentDirectional(
-                                                    -1.00, 0.00),
+                                                    -1.0, 0.0),
                                                 child: Text(
                                                   FFLocalizations.of(context)
                                                       .getText(
@@ -757,7 +771,7 @@ class _SetSupervisorComponentWidgetState
                                               ),
                                               Align(
                                                 alignment: AlignmentDirectional(
-                                                    0.00, 0.00),
+                                                    0.0, 0.0),
                                                 child: Theme(
                                                   data: ThemeData(
                                                     checkboxTheme:
@@ -765,8 +779,20 @@ class _SetSupervisorComponentWidgetState
                                                       shape:
                                                           RoundedRectangleBorder(
                                                         borderRadius:
-                                                            BorderRadius
-                                                                .circular(0.0),
+                                                            BorderRadius.only(
+                                                          bottomLeft:
+                                                              Radius.circular(
+                                                                  0.0),
+                                                          bottomRight:
+                                                              Radius.circular(
+                                                                  0.0),
+                                                          topLeft:
+                                                              Radius.circular(
+                                                                  0.0),
+                                                          topRight:
+                                                              Radius.circular(
+                                                                  0.0),
+                                                        ),
                                                       ),
                                                     ),
                                                     unselectedWidgetColor:

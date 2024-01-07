@@ -356,8 +356,7 @@ class _SideWidgetState extends State<SideWidget> {
                         ),
                       ),
                       child: Padding(
-                        padding:
-                            EdgeInsetsDirectional.fromSTEB(2.0, 2.0, 2.0, 2.0),
+                        padding: EdgeInsets.all(2.0),
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(8.0),
                           child: SvgPicture.asset(

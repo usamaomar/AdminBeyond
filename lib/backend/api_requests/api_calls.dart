@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'dart:typed_data';
+import '../schema/structs/index.dart';
 
 import '/flutter_flow/flutter_flow_util.dart';
 import 'api_manager.dart';
@@ -21,7 +22,7 @@ class LoginApiCall {
     return ApiManager.instance.makeApiCall(
       callName: 'LoginApi',
       apiUrl:
-          'https://beyond.api.matterhr.com/api/v1/Auth/Login?email=${email}&&password=${password}',
+          'https://api.beyond.matterhr.com/api/v1/Auth/Login?email=${email}&&password=${password}',
       callType: ApiCallType.POST,
       headers: {},
       params: {},
@@ -31,6 +32,7 @@ class LoginApiCall {
       encodeBodyUtf8: false,
       decodeUtf8: false,
       cache: false,
+      alwaysAllowBody: false,
     );
   }
 
@@ -86,7 +88,7 @@ class RegisterUserApiCall {
     return ApiManager.instance.makeApiCall(
       callName: 'RegisterUserApi',
       apiUrl:
-          'https://beyond.api.matterhr.com/api/v1/User/Register?token=${token}',
+          'https://api.beyond.matterhr.com/api/v1/User/Register?token=${token}',
       callType: ApiCallType.POST,
       headers: {
         'Authorization': 'Bearer  ${token}',
@@ -98,6 +100,7 @@ class RegisterUserApiCall {
       encodeBodyUtf8: false,
       decodeUtf8: false,
       cache: false,
+      alwaysAllowBody: false,
     );
   }
 
@@ -140,7 +143,7 @@ class UpdateTeamNameApiCall {
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'UpdateTeamNameApi',
-      apiUrl: 'https://beyond.api.matterhr.com/api/v1/Teams/Put?token=${token}',
+      apiUrl: 'https://api.beyond.matterhr.com/api/v1/Teams/Put?token=${token}',
       callType: ApiCallType.PUT,
       headers: {
         'Authorization': 'Bearer  ${token}',
@@ -152,6 +155,7 @@ class UpdateTeamNameApiCall {
       encodeBodyUtf8: false,
       decodeUtf8: false,
       cache: false,
+      alwaysAllowBody: false,
     );
   }
 
@@ -200,7 +204,7 @@ class UpdateUserProfileApiCall {
     return ApiManager.instance.makeApiCall(
       callName: 'UpdateUserProfileApi',
       apiUrl:
-          'https://beyond.api.matterhr.com/api/v1/Account/UpdateUserProfile?token=${token}&&userId=${userId}',
+          'https://api.beyond.matterhr.com/api/v1/Account/UpdateUserProfile?token=${token}&&userId=${userId}',
       callType: ApiCallType.PUT,
       headers: {
         'Authorization': 'Bearer  ${token}',
@@ -212,6 +216,7 @@ class UpdateUserProfileApiCall {
       encodeBodyUtf8: false,
       decodeUtf8: false,
       cache: false,
+      alwaysAllowBody: false,
     );
   }
 
@@ -253,7 +258,7 @@ class AddTeamNameCall {
     return ApiManager.instance.makeApiCall(
       callName: 'addTeamName',
       apiUrl:
-          'https://beyond.api.matterhr.com/api/v1/Teams/Post?token=${token}',
+          'https://api.beyond.matterhr.com/api/v1/Teams/Post?token=${token}',
       callType: ApiCallType.POST,
       headers: {
         'Authorization': 'Bearer  ${token}',
@@ -265,6 +270,7 @@ class AddTeamNameCall {
       encodeBodyUtf8: false,
       decodeUtf8: false,
       cache: false,
+      alwaysAllowBody: false,
     );
   }
 
@@ -318,7 +324,7 @@ class AddClientApiCall {
     return ApiManager.instance.makeApiCall(
       callName: 'AddClientApi',
       apiUrl:
-          'https://beyond.api.matterhr.com/api/v1/Clients/Post?token=${token}',
+          'https://api.beyond.matterhr.com/api/v1/Clients/Post?token=${token}',
       callType: ApiCallType.POST,
       headers: {
         'Authorization': 'Bearer  ${token}',
@@ -330,6 +336,7 @@ class AddClientApiCall {
       encodeBodyUtf8: false,
       decodeUtf8: false,
       cache: false,
+      alwaysAllowBody: false,
     );
   }
 
@@ -373,7 +380,7 @@ class SetSupervisorApiCall {
     return ApiManager.instance.makeApiCall(
       callName: 'SetSupervisorApi',
       apiUrl:
-          'https://beyond.api.matterhr.com/api/v1/User/SetSupervisor?token=${token}',
+          'https://api.beyond.matterhr.com/api/v1/User/SetSupervisor?token=${token}',
       callType: ApiCallType.POST,
       headers: {
         'Authorization': 'Bearer  ${token}',
@@ -385,6 +392,7 @@ class SetSupervisorApiCall {
       encodeBodyUtf8: false,
       decodeUtf8: false,
       cache: false,
+      alwaysAllowBody: false,
     );
   }
 
@@ -428,7 +436,7 @@ class SetSeniorTeamApiCall {
     return ApiManager.instance.makeApiCall(
       callName: 'SetSeniorTeamApi',
       apiUrl:
-          'https://beyond.api.matterhr.com/api/v1/Teams/SetSeniorTeam?token=${token}',
+          'https://api.beyond.matterhr.com/api/v1/Teams/SetSeniorTeam?token=${token}',
       callType: ApiCallType.POST,
       headers: {
         'Authorization': 'Bearer  ${token}',
@@ -440,6 +448,7 @@ class SetSeniorTeamApiCall {
       encodeBodyUtf8: false,
       decodeUtf8: false,
       cache: false,
+      alwaysAllowBody: false,
     );
   }
 
@@ -475,7 +484,7 @@ class GetMyUserCall {
   }) async {
     return ApiManager.instance.makeApiCall(
       callName: 'GetMyUser',
-      apiUrl: 'https://beyond.api.matterhr.com/api/v1/User/GetMy',
+      apiUrl: 'https://api.beyond.matterhr.com/api/v1/User/GetMy',
       callType: ApiCallType.GET,
       headers: {
         'Authorization': 'Bearer  ${token}',
@@ -487,46 +496,49 @@ class GetMyUserCall {
       encodeBodyUtf8: false,
       decodeUtf8: false,
       cache: false,
+      alwaysAllowBody: false,
     );
   }
 
-  static dynamic id(dynamic response) => getJsonField(
+  static String? id(dynamic response) => castToType<String>(getJsonField(
         response,
         r'''$.data.id''',
-      );
-  static dynamic userName(dynamic response) => getJsonField(
+      ));
+  static String? userName(dynamic response) => castToType<String>(getJsonField(
         response,
         r'''$.data.userName''',
-      );
-  static dynamic firstName(dynamic response) => getJsonField(
+      ));
+  static String? firstName(dynamic response) => castToType<String>(getJsonField(
         response,
         r'''$.data.firstName''',
-      );
-  static dynamic lastName(dynamic response) => getJsonField(
+      ));
+  static String? lastName(dynamic response) => castToType<String>(getJsonField(
         response,
         r'''$.data.lastName''',
-      );
-  static dynamic email(dynamic response) => getJsonField(
+      ));
+  static String? email(dynamic response) => castToType<String>(getJsonField(
         response,
         r'''$.data.email''',
-      );
-  static dynamic isActive(dynamic response) => getJsonField(
+      ));
+  static bool? isActive(dynamic response) => castToType<bool>(getJsonField(
         response,
         r'''$.data.isActive''',
-      );
-  static dynamic emailConfirmed(dynamic response) => getJsonField(
+      ));
+  static bool? emailConfirmed(dynamic response) =>
+      castToType<bool>(getJsonField(
         response,
         r'''$.data.emailConfirmed''',
-      );
-  static dynamic phonenNumber(dynamic response) => getJsonField(
+      ));
+  static String? phonenNumber(dynamic response) =>
+      castToType<String>(getJsonField(
         response,
         r'''$.data.phoneNumber''',
-      );
-  static dynamic accessRole(dynamic response) => getJsonField(
+      ));
+  static int? accessRole(dynamic response) => castToType<int>(getJsonField(
         response,
         r'''$.data.accessRole''',
-      );
-  static dynamic profilePictureDataUrl(dynamic response) => getJsonField(
+      ));
+  static dynamic? profilePictureDataUrl(dynamic response) => getJsonField(
         response,
         r'''$.data.profilePictureDataUrl''',
       );
@@ -541,7 +553,7 @@ class GetAllUseresCall {
 
     return ApiManager.instance.makeApiCall(
       callName: 'getAllUseres',
-      apiUrl: 'https://beyond.api.matterhr.com/api/v1/User/GetAll',
+      apiUrl: 'https://api.beyond.matterhr.com/api/v1/User/GetAll',
       callType: ApiCallType.GET,
       headers: {
         'Authorization': 'Bearer  ${token}',
@@ -553,64 +565,69 @@ class GetAllUseresCall {
       encodeBodyUtf8: false,
       decodeUtf8: false,
       cache: false,
+      alwaysAllowBody: false,
     );
   }
 
-  static dynamic ids(dynamic response) => getJsonField(
+  static List? ids(dynamic response) => getJsonField(
         response,
         r'''$.data[:].id''',
         true,
-      );
-  static dynamic userNams(dynamic response) => getJsonField(
+      ) as List?;
+  static List? userNams(dynamic response) => getJsonField(
         response,
         r'''$.data[:].userName''',
         true,
-      );
-  static dynamic firstNames(dynamic response) => getJsonField(
+      ) as List?;
+  static List? firstNames(dynamic response) => getJsonField(
         response,
         r'''$.data[:].firstName''',
         true,
-      );
-  static dynamic lastNames(dynamic response) => getJsonField(
+      ) as List?;
+  static List? lastNames(dynamic response) => getJsonField(
         response,
         r'''$.data[:].lastName''',
         true,
-      );
-  static dynamic emails(dynamic response) => getJsonField(
+      ) as List?;
+  static List? emails(dynamic response) => getJsonField(
         response,
         r'''$.data[:].email''',
         true,
-      );
-  static dynamic isActives(dynamic response) => getJsonField(
+      ) as List?;
+  static List? isActives(dynamic response) => getJsonField(
         response,
         r'''$.data[:].isActive''',
         true,
-      );
-  static dynamic emailConfirmeds(dynamic response) => getJsonField(
+      ) as List?;
+  static List<bool>? emailConfirmeds(dynamic response) => (getJsonField(
         response,
         r'''$.data[:].emailConfirmed''',
         true,
-      );
-  static dynamic phoneNumbers(dynamic response) => getJsonField(
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<bool>(x))
+          .withoutNulls
+          .toList();
+  static List? phoneNumbers(dynamic response) => getJsonField(
         response,
         r'''$.data[:].phoneNumber''',
         true,
-      );
-  static dynamic profilePictureDataUrls(dynamic response) => getJsonField(
+      ) as List?;
+  static List? profilePictureDataUrls(dynamic response) => getJsonField(
         response,
         r'''$.data[:].profilePictureDataUrl''',
         true,
-      );
-  static dynamic accessRoles(dynamic response) => getJsonField(
+      ) as List?;
+  static List? accessRoles(dynamic response) => getJsonField(
         response,
         r'''$.data[:].accessRole''',
         true,
-      );
-  static dynamic dataListObject(dynamic response) => getJsonField(
+      ) as List?;
+  static List? dataListObject(dynamic response) => getJsonField(
         response,
         r'''$.data''',
         true,
-      );
+      ) as List?;
   static dynamic succeeded(dynamic response) => getJsonField(
         response,
         r'''$.succeeded''',
@@ -624,7 +641,7 @@ class GetAllClientsApiCall {
   }) async {
     return ApiManager.instance.makeApiCall(
       callName: 'GetAllClientsApi',
-      apiUrl: 'https://beyond.api.matterhr.com/api/v1/Clients/GetAllClients',
+      apiUrl: 'https://api.beyond.matterhr.com/api/v1/Clients/GetAllClients',
       callType: ApiCallType.GET,
       headers: {
         'Authorization': 'Bearer  ${token}',
@@ -636,64 +653,69 @@ class GetAllClientsApiCall {
       encodeBodyUtf8: false,
       decodeUtf8: false,
       cache: false,
+      alwaysAllowBody: false,
     );
   }
 
-  static dynamic ids(dynamic response) => getJsonField(
+  static List? ids(dynamic response) => getJsonField(
         response,
         r'''$.data[:].id''',
         true,
-      );
-  static dynamic userNams(dynamic response) => getJsonField(
+      ) as List?;
+  static List? userNams(dynamic response) => getJsonField(
         response,
         r'''$.data[:].userName''',
         true,
-      );
-  static dynamic firstNames(dynamic response) => getJsonField(
+      ) as List?;
+  static List? firstNames(dynamic response) => getJsonField(
         response,
         r'''$.data[:].firstName''',
         true,
-      );
-  static dynamic lastNames(dynamic response) => getJsonField(
+      ) as List?;
+  static List? lastNames(dynamic response) => getJsonField(
         response,
         r'''$.data[:].lastName''',
         true,
-      );
-  static dynamic emails(dynamic response) => getJsonField(
+      ) as List?;
+  static List? emails(dynamic response) => getJsonField(
         response,
         r'''$.data[:].email''',
         true,
-      );
-  static dynamic isActives(dynamic response) => getJsonField(
+      ) as List?;
+  static List? isActives(dynamic response) => getJsonField(
         response,
         r'''$.data[:].isActive''',
         true,
-      );
-  static dynamic emailConfirmeds(dynamic response) => getJsonField(
+      ) as List?;
+  static List<bool>? emailConfirmeds(dynamic response) => (getJsonField(
         response,
         r'''$.data[:].emailConfirmed''',
         true,
-      );
-  static dynamic phoneNumbers(dynamic response) => getJsonField(
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<bool>(x))
+          .withoutNulls
+          .toList();
+  static List? phoneNumbers(dynamic response) => getJsonField(
         response,
         r'''$.data[:].phoneNumber''',
         true,
-      );
-  static dynamic profilePictureDataUrls(dynamic response) => getJsonField(
+      ) as List?;
+  static List? profilePictureDataUrls(dynamic response) => getJsonField(
         response,
         r'''$.data[:].profilePictureDataUrl''',
         true,
-      );
-  static dynamic accessRoles(dynamic response) => getJsonField(
+      ) as List?;
+  static List? accessRoles(dynamic response) => getJsonField(
         response,
         r'''$.data[:].accessRole''',
         true,
-      );
-  static dynamic dataListObject(dynamic response) => getJsonField(
+      ) as List?;
+  static List? dataListObject(dynamic response) => getJsonField(
         response,
         r'''$.data''',
         true,
-      );
+      ) as List?;
   static dynamic succeeded(dynamic response) => getJsonField(
         response,
         r'''$.succeeded''',
@@ -707,7 +729,7 @@ class GetAllTeamsApiCall {
   }) async {
     return ApiManager.instance.makeApiCall(
       callName: 'GetAllTeamsApi',
-      apiUrl: 'https://beyond.api.matterhr.com/api/v1/Teams/GetAllTeams',
+      apiUrl: 'https://api.beyond.matterhr.com/api/v1/Teams/GetAllTeams',
       callType: ApiCallType.GET,
       headers: {
         'Authorization': 'Bearer  ${token}',
@@ -721,37 +743,39 @@ class GetAllTeamsApiCall {
       encodeBodyUtf8: false,
       decodeUtf8: false,
       cache: false,
+      alwaysAllowBody: false,
     );
   }
 
-  static dynamic ids(dynamic response) => getJsonField(
+  static List? ids(dynamic response) => getJsonField(
         response,
         r'''$.data[:].id''',
         true,
-      );
-  static dynamic id(dynamic response) => getJsonField(
+      ) as List?;
+  static List? id(dynamic response) => getJsonField(
         response,
         r'''$.data[:].id''',
         true,
-      );
-  static dynamic name(dynamic response) => getJsonField(
+      ) as List?;
+  static List? name(dynamic response) => getJsonField(
         response,
         r'''$.data[:].name''',
         true,
-      );
-  static dynamic membersCount(dynamic response) => getJsonField(
+      ) as List?;
+  static List? membersCount(dynamic response) => getJsonField(
         response,
         r'''$.data[:].membersCount''',
         true,
-      );
+      ) as List?;
   static dynamic isActives(dynamic response) => getJsonField(
         response,
         r'''$.data[:].isActive''',
       );
-  static dynamic emailConfirmeds(dynamic response) => getJsonField(
+  static bool? emailConfirmeds(dynamic response) =>
+      castToType<bool>(getJsonField(
         response,
         r'''$.data[:].emailConfirmed''',
-      );
+      ));
   static dynamic phoneNumbers(dynamic response) => getJsonField(
         response,
         r'''$.data[:].phoneNumber''',
