@@ -31,8 +31,9 @@ class AccessRoleModelStruct extends BaseStruct {
         id: castToType<int>(data['id']),
       );
 
-  static AccessRoleModelStruct? maybeFromMap(dynamic data) =>
-      data is Map<String, dynamic> ? AccessRoleModelStruct.fromMap(data) : null;
+  static AccessRoleModelStruct? maybeFromMap(dynamic data) => data is Map
+      ? AccessRoleModelStruct.fromMap(data.cast<String, dynamic>())
+      : null;
 
   Map<String, dynamic> toMap() => {
         'name': _name,

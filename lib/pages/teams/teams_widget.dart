@@ -9,7 +9,6 @@ import '/pages/components/edit_team_component/edit_team_component_widget.dart';
 import '/pages/components/side/side_widget.dart';
 import '/pages/components/view_team_component/view_team_component_widget.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
-import 'package:aligned_dialog/aligned_dialog.dart';
 import 'package:data_table_2/data_table_2.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
@@ -66,6 +65,7 @@ class _TeamsWidgetState extends State<TeamsWidget> {
 
     _model.textController ??= TextEditingController();
     _model.textFieldFocusNode ??= FocusNode();
+
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {
           _model.textController?.text = FFLocalizations.of(context).getText(
             'syaum358' /*  */,
@@ -268,21 +268,17 @@ class _TeamsWidgetState extends State<TeamsWidget> {
                                           size: 24.0,
                                         ),
                                         onPressed: () async {
-                                          await showAlignedDialog(
+                                          await showDialog(
                                             context: context,
-                                            isGlobal: true,
-                                            avoidOverflow: false,
-                                            targetAnchor: AlignmentDirectional(
-                                                    0.0, 0.0)
-                                                .resolve(
-                                                    Directionality.of(context)),
-                                            followerAnchor:
-                                                AlignmentDirectional(0.0, 0.0)
+                                            builder: (dialogContext) {
+                                              return Dialog(
+                                                insetPadding: EdgeInsets.zero,
+                                                backgroundColor:
+                                                    Colors.transparent,
+                                                alignment: AlignmentDirectional(
+                                                        0.0, 0.0)
                                                     .resolve(Directionality.of(
                                                         context)),
-                                            builder: (dialogContext) {
-                                              return Material(
-                                                color: Colors.transparent,
                                                 child: GestureDetector(
                                                   onTap: () => _model
                                                           .unfocusNode
@@ -504,30 +500,23 @@ class _TeamsWidgetState extends State<TeamsWidget> {
                                                                   Colors
                                                                       .transparent,
                                                               onTap: () async {
-                                                                await showAlignedDialog(
+                                                                await showDialog(
                                                                   context:
                                                                       context,
-                                                                  isGlobal:
-                                                                      true,
-                                                                  avoidOverflow:
-                                                                      false,
-                                                                  targetAnchor: AlignmentDirectional(
-                                                                          0.0,
-                                                                          0.0)
-                                                                      .resolve(
-                                                                          Directionality.of(
-                                                                              context)),
-                                                                  followerAnchor: AlignmentDirectional(
-                                                                          0.0,
-                                                                          0.0)
-                                                                      .resolve(
-                                                                          Directionality.of(
-                                                                              context)),
                                                                   builder:
                                                                       (dialogContext) {
-                                                                    return Material(
-                                                                      color: Colors
-                                                                          .transparent,
+                                                                    return Dialog(
+                                                                      insetPadding:
+                                                                          EdgeInsets
+                                                                              .zero,
+                                                                      backgroundColor:
+                                                                          Colors
+                                                                              .transparent,
+                                                                      alignment: AlignmentDirectional(
+                                                                              0.0,
+                                                                              0.0)
+                                                                          .resolve(
+                                                                              Directionality.of(context)),
                                                                       child:
                                                                           GestureDetector(
                                                                         onTap: () => _model.unfocusNode.canRequestFocus
@@ -579,30 +568,23 @@ class _TeamsWidgetState extends State<TeamsWidget> {
                                                                   Colors
                                                                       .transparent,
                                                               onTap: () async {
-                                                                await showAlignedDialog(
+                                                                await showDialog(
                                                                   context:
                                                                       context,
-                                                                  isGlobal:
-                                                                      true,
-                                                                  avoidOverflow:
-                                                                      false,
-                                                                  targetAnchor: AlignmentDirectional(
-                                                                          0.0,
-                                                                          0.0)
-                                                                      .resolve(
-                                                                          Directionality.of(
-                                                                              context)),
-                                                                  followerAnchor: AlignmentDirectional(
-                                                                          0.0,
-                                                                          0.0)
-                                                                      .resolve(
-                                                                          Directionality.of(
-                                                                              context)),
                                                                   builder:
                                                                       (dialogContext) {
-                                                                    return Material(
-                                                                      color: Colors
-                                                                          .transparent,
+                                                                    return Dialog(
+                                                                      insetPadding:
+                                                                          EdgeInsets
+                                                                              .zero,
+                                                                      backgroundColor:
+                                                                          Colors
+                                                                              .transparent,
+                                                                      alignment: AlignmentDirectional(
+                                                                              0.0,
+                                                                              0.0)
+                                                                          .resolve(
+                                                                              Directionality.of(context)),
                                                                       child:
                                                                           GestureDetector(
                                                                         onTap: () => _model.unfocusNode.canRequestFocus
@@ -707,28 +689,18 @@ class _TeamsWidgetState extends State<TeamsWidget> {
                                                                           .transparent,
                                                                   onTap:
                                                                       () async {
-                                                                    showAlignedDialog(
+                                                                    showDialog(
                                                                       context:
                                                                           context,
-                                                                      isGlobal:
-                                                                          true,
-                                                                      avoidOverflow:
-                                                                          false,
-                                                                      targetAnchor: AlignmentDirectional(
-                                                                              0.0,
-                                                                              0.0)
-                                                                          .resolve(
-                                                                              Directionality.of(context)),
-                                                                      followerAnchor: AlignmentDirectional(
-                                                                              0.0,
-                                                                              0.0)
-                                                                          .resolve(
-                                                                              Directionality.of(context)),
                                                                       builder:
                                                                           (dialogContext) {
-                                                                        return Material(
-                                                                          color:
+                                                                        return Dialog(
+                                                                          insetPadding:
+                                                                              EdgeInsets.zero,
+                                                                          backgroundColor:
                                                                               Colors.transparent,
+                                                                          alignment:
+                                                                              AlignmentDirectional(0.0, 0.0).resolve(Directionality.of(context)),
                                                                           child:
                                                                               GestureDetector(
                                                                             onTap: () => _model.unfocusNode.canRequestFocus

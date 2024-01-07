@@ -5,7 +5,6 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/pages/components/add_client_component/add_client_component_widget.dart';
 import '/pages/components/side/side_widget.dart';
-import 'package:aligned_dialog/aligned_dialog.dart';
 import 'package:data_table_2/data_table_2.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
@@ -54,6 +53,7 @@ class _ClientsPageWidgetState extends State<ClientsPageWidget> {
 
     _model.textController ??= TextEditingController();
     _model.textFieldFocusNode ??= FocusNode();
+
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {
           _model.textController?.text = FFLocalizations.of(context).getText(
             'mdcwo646' /*  */,
@@ -253,21 +253,17 @@ class _ClientsPageWidgetState extends State<ClientsPageWidget> {
                                           size: 24.0,
                                         ),
                                         onPressed: () async {
-                                          await showAlignedDialog(
+                                          await showDialog(
                                             context: context,
-                                            isGlobal: true,
-                                            avoidOverflow: false,
-                                            targetAnchor: AlignmentDirectional(
-                                                    0.0, 0.0)
-                                                .resolve(
-                                                    Directionality.of(context)),
-                                            followerAnchor:
-                                                AlignmentDirectional(0.0, 0.0)
+                                            builder: (dialogContext) {
+                                              return Dialog(
+                                                insetPadding: EdgeInsets.zero,
+                                                backgroundColor:
+                                                    Colors.transparent,
+                                                alignment: AlignmentDirectional(
+                                                        0.0, 0.0)
                                                     .resolve(Directionality.of(
                                                         context)),
-                                            builder: (dialogContext) {
-                                              return Material(
-                                                color: Colors.transparent,
                                                 child: GestureDetector(
                                                   onTap: () => _model
                                                           .unfocusNode
@@ -483,7 +479,7 @@ class _ClientsPageWidgetState extends State<ClientsPageWidget> {
                                                                   : getJsonField(
                                                                       localDataTableListItem,
                                                                       r'''$.logoImageUrl''',
-                                                                    ),
+                                                                    ).toString(),
                                                               width: 35.0,
                                                               height: 35.0,
                                                               fit: BoxFit.cover,

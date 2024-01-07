@@ -35,6 +35,7 @@ class _AddTeamComponentWidgetState extends State<AddTeamComponentWidget> {
 
     _model.textController ??= TextEditingController();
     _model.textFieldFocusNode ??= FocusNode();
+
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {
           _model.textController?.text = FFLocalizations.of(context).getText(
             '3zuo6e8w' /*  */,

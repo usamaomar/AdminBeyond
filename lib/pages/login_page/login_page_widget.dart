@@ -31,8 +31,10 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
 
     _model.textController1 ??= TextEditingController();
     _model.textFieldFocusNode1 ??= FocusNode();
+
     _model.textController2 ??= TextEditingController();
     _model.textFieldFocusNode2 ??= FocusNode();
+
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
@@ -464,7 +466,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                               _shouldSetState = true;
                               if (GetMyUserCall.accessRole(
                                     (_model.getMyUserCall?.jsonBody ?? ''),
-                                  ) >
+                                  )! >
                                   1) {
                                 await showDialog(
                                   context: context,

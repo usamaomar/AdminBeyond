@@ -92,7 +92,7 @@ class _AddToMidComponentWidgetState extends State<AddToMidComponentWidget> {
             height: 700.0,
             decoration: BoxDecoration(),
             child: Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(5.0, 5.0, 5.0, 5.0),
+              padding: EdgeInsets.all(5.0),
               child: Card(
                 clipBehavior: Clip.antiAliasWithSaveLayer,
                 color: FlutterFlowTheme.of(context).secondaryBackground,
@@ -314,8 +314,8 @@ class _AddToMidComponentWidgetState extends State<AddToMidComponentWidget> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           FFButtonWidget(
-                            onPressed: _model.selectedUserId == null ||
-                                    _model.selectedUserId == ''
+                            onPressed: (_model.selectedUserId == null ||
+                                    _model.selectedUserId == '')
                                 ? null
                                 : () async {
                                     _model.apiResult123456 =

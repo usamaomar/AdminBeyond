@@ -49,10 +49,13 @@ class _UpdateBeyonderComponentWidgetState
 
     _model.textController1 ??= TextEditingController(text: widget.firstName);
     _model.textFieldFocusNode1 ??= FocusNode();
+
     _model.textController2 ??= TextEditingController(text: widget.lastName);
     _model.textFieldFocusNode2 ??= FocusNode();
+
     _model.textController3 ??= TextEditingController(text: widget.phoneNumber);
     _model.textFieldFocusNode3 ??= FocusNode();
+
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
@@ -162,7 +165,7 @@ class _UpdateBeyonderComponentWidgetState
                                 ),
                               ),
                               Align(
-                                alignment: AlignmentDirectional(0.00, 0.00),
+                                alignment: AlignmentDirectional(0.0, 0.0),
                                 child: Icon(
                                   Icons.add_circle_sharp,
                                   color: FlutterFlowTheme.of(context)

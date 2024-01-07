@@ -10,7 +10,6 @@ import '/pages/components/side/side_widget.dart';
 import '/pages/components/view_team_component/view_team_component_widget.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'teams_widget.dart' show TeamsWidget;
-import 'package:aligned_dialog/aligned_dialog.dart';
 import 'package:data_table_2/data_table_2.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';

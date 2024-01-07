@@ -6,7 +6,6 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/pages/components/add_client_component/add_client_component_widget.dart';
 import '/pages/components/side/side_widget.dart';
 import 'clients_page_widget.dart' show ClientsPageWidget;
-import 'package:aligned_dialog/aligned_dialog.dart';
 import 'package:data_table_2/data_table_2.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';

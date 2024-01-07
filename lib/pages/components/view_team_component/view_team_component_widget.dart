@@ -40,6 +40,7 @@ class _ViewTeamComponentWidgetState extends State<ViewTeamComponentWidget> {
 
     _model.textController ??= TextEditingController(text: widget.teamName);
     _model.textFieldFocusNode ??= FocusNode();
+
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
