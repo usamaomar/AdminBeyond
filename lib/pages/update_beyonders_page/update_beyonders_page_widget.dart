@@ -312,7 +312,47 @@ class _UpdateBeyondersPageWidgetState extends State<UpdateBeyondersPageWidget> {
                                                 ),
                                               );
                                             },
-                                          ).then((value) => setState(() {}));
+                                          ).then((value) => setState(() async{
+
+                                            _model.apiResultAllUseresCall = await GetAllUseresCall.call(
+                                              token: FFAppState().userModel.token,
+                                            );
+                                            if ((_model.apiResultAllUseresCall?.succeeded ?? true)) {
+                                              setState(() {
+                                                _model.listOfUseres = getJsonField(
+                                                  (_model.apiResultAllUseresCall?.jsonBody ?? ''),
+                                                  r'''$.data''',
+                                                  true,
+                                                )!
+                                                    .toList()
+                                                    .cast<dynamic>();
+                                                _model.originalListOfUseres = getJsonField(
+                                                  (_model.apiResultAllUseresCall?.jsonBody ?? ''),
+                                                  r'''$.data''',
+                                                  true,
+                                                )!
+                                                    .toList()
+                                                    .cast<dynamic>();
+                                                _model.listOfAccessRole = GetAllUseresCall.accessRoles(
+                                                  (_model.apiResultAllUseresCall?.jsonBody ?? ''),
+                                                )!
+                                                    .cast<int>()
+                                                    .toList()
+                                                    .cast<int>();
+                                                _model.listOfIdes = (GetAllUseresCall.ids(
+                                                  (_model.apiResultAllUseresCall?.jsonBody ?? ''),
+                                                ) as List)
+                                                    .map<String>((s) => s.toString())
+                                                    .toList()!
+                                                    .map((e) => e.toString())
+                                                    .toList()
+                                                    .toList()
+                                                    .cast<String>();
+                                              });
+                                            }
+
+
+                                          }));
                                         },
                                       ),
                                     ),
@@ -338,20 +378,20 @@ class _UpdateBeyondersPageWidgetState extends State<UpdateBeyondersPageWidget> {
                                               .toList();
                                           return DataTable2(
                                             columns: [
-                                              DataColumn2(
-                                                label: DefaultTextStyle.merge(
-                                                  softWrap: true,
-                                                  child: Text(
-                                                    FFLocalizations.of(context)
-                                                        .getText(
-                                                      'pc4q953h' /* Id */,
-                                                    ),
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
-                                                        .labelLarge,
-                                                  ),
-                                                ),
-                                              ),
+                                              // DataColumn2(
+                                              //   label: DefaultTextStyle.merge(
+                                              //     softWrap: true,
+                                              //     child: Text(
+                                              //       FFLocalizations.of(context)
+                                              //           .getText(
+                                              //         'pc4q953h' /* Id */,
+                                              //       ),
+                                              //       style: FlutterFlowTheme.of(
+                                              //               context)
+                                              //           .labelLarge,
+                                              //     ),
+                                              //   ),
+                                              // ),
                                               DataColumn2(
                                                 label: DefaultTextStyle.merge(
                                                   softWrap: true,
@@ -422,20 +462,20 @@ class _UpdateBeyondersPageWidgetState extends State<UpdateBeyondersPageWidget> {
                                                   ),
                                                 ),
                                               ),
-                                              DataColumn2(
-                                                label: DefaultTextStyle.merge(
-                                                  softWrap: true,
-                                                  child: Text(
-                                                    FFLocalizations.of(context)
-                                                        .getText(
-                                                      'igjz2jp6' /* Phone Number */,
-                                                    ),
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
-                                                        .labelLarge,
-                                                  ),
-                                                ),
-                                              ),
+                                              // DataColumn2(
+                                              //   label: DefaultTextStyle.merge(
+                                              //     softWrap: true,
+                                              //     child: Text(
+                                              //       FFLocalizations.of(context)
+                                              //           .getText(
+                                              //         'igjz2jp6' /* Phone Number */,
+                                              //       ),
+                                              //       style: FlutterFlowTheme.of(
+                                              //               context)
+                                              //           .labelLarge,
+                                              //     ),
+                                              //   ),
+                                              // ),
                                               DataColumn2(
                                                 label: DefaultTextStyle.merge(
                                                   softWrap: true,
@@ -484,14 +524,14 @@ class _UpdateBeyondersPageWidgetState extends State<UpdateBeyondersPageWidget> {
                                                     (listLocalsIndex,
                                                             listLocalsItem) =>
                                                         [
-                                                          SelectionArea(
-                                                              child: Text(
-                                                            listLocalsIndex
-                                                                .toString(),
-                                                            style: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .bodyMedium,
-                                                          )),
+                                                          // SelectionArea(
+                                                          //     child: Text(
+                                                          //   listLocalsIndex
+                                                          //       .toString(),
+                                                          //   style: FlutterFlowTheme
+                                                          //           .of(context)
+                                                          //       .bodyMedium,
+                                                          // )),
                                                           SelectionArea(
                                                               child: Text(
                                                             getJsonField(
@@ -554,16 +594,16 @@ class _UpdateBeyondersPageWidgetState extends State<UpdateBeyondersPageWidget> {
                                                                     .of(context)
                                                                 .bodyMedium,
                                                           )),
-                                                          SelectionArea(
-                                                              child: Text(
-                                                            getJsonField(
-                                                              listLocalsItem,
-                                                              r'''$.phoneNumber''',
-                                                            ).toString(),
-                                                            style: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .bodyMedium,
-                                                          )),
+                                                          // SelectionArea(
+                                                          //     child: Text(
+                                                          //   getJsonField(
+                                                          //     listLocalsItem,
+                                                          //     r'''$.phoneNumber''',
+                                                          //   ).toString(),
+                                                          //   style: FlutterFlowTheme
+                                                          //           .of(context)
+                                                          //       .bodyMedium,
+                                                          // )),
                                                           Visibility(
                                                             visible: _model
                                                                         .listOfAccessRole[

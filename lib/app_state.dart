@@ -41,7 +41,9 @@ class FFAppState extends ChangeNotifier {
     AccessRoleModelStruct.fromSerializableMap(
         jsonDecode('{\"name\":\"Senior\",\"id\":\"2\"}')),
     AccessRoleModelStruct.fromSerializableMap(
-        jsonDecode('{\"name\":\"Middle \",\"id\":\"3\"}')),
+        jsonDecode('{\"name\":\"Middle\",\"id\":\"3\"}')),
+    AccessRoleModelStruct.fromSerializableMap(
+        jsonDecode('{\"name\":\"Administrative\",\"id\":\"5\"}')),
     AccessRoleModelStruct.fromSerializableMap(
         jsonDecode('{\"name\":\"Associate\",\"id\":\"4\"}'))
   ];

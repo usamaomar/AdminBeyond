@@ -332,20 +332,20 @@ class _ClientsPageWidgetState extends State<ClientsPageWidget> {
                                                   ),
                                                 ),
                                               ),
-                                              DataColumn2(
-                                                label: DefaultTextStyle.merge(
-                                                  softWrap: true,
-                                                  child: Text(
-                                                    FFLocalizations.of(context)
-                                                        .getText(
-                                                      'jtly6a0h' /* Phone Number */,
-                                                    ),
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
-                                                        .labelLarge,
-                                                  ),
-                                                ),
-                                              ),
+                                              // DataColumn2(
+                                              //   label: DefaultTextStyle.merge(
+                                              //     softWrap: true,
+                                              //     child: Text(
+                                              //       FFLocalizations.of(context)
+                                              //           .getText(
+                                              //         'jtly6a0h' /* Phone Number */,
+                                              //       ),
+                                              //       style: FlutterFlowTheme.of(
+                                              //               context)
+                                              //           .labelLarge,
+                                              //     ),
+                                              //   ),
+                                              // ),
                                               DataColumn2(
                                                 label: DefaultTextStyle.merge(
                                                   softWrap: true,
@@ -427,15 +427,15 @@ class _ClientsPageWidgetState extends State<ClientsPageWidget> {
                                                                     .of(context)
                                                                 .bodyMedium,
                                                           ),
-                                                          Text(
-                                                            getJsonField(
-                                                              localDataTableListItem,
-                                                              r'''$.phoneNumber''',
-                                                            ).toString(),
-                                                            style: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .bodyMedium,
-                                                          ),
+                                                          // Text(
+                                                          //   getJsonField(
+                                                          //     localDataTableListItem,
+                                                          //     r'''$.phoneNumber''',
+                                                          //   ).toString(),
+                                                          //   style: FlutterFlowTheme
+                                                          //           .of(context)
+                                                          //       .bodyMedium,
+                                                          // ),
                                                           Text(
                                                             getJsonField(
                                                               localDataTableListItem,

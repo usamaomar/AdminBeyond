@@ -19,6 +19,8 @@ String newCustomFunction(int accessRole) {
     return "Senior";
   } else if (accessRole == 3) {
     return "Middle";
+  } else if (accessRole == 5) {
+    return "Administrative";
   } else {
     return "Associate";
   }
@@ -39,6 +41,8 @@ int getSelectedIdAccessRoleByStringValue(String value) {
     return 2;
   } else if (value == 'Middle') {
     return 3;
+  } else if (value == 'Administrative') {
+    return 5;
   } else
     return 4;
 }

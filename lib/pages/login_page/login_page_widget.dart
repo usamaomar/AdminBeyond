@@ -1,3 +1,5 @@
+import 'package:flutter/scheduler.dart';
+
 import '/backend/api_requests/api_calls.dart';
 import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -28,6 +30,24 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => LoginPageModel());
+
+
+    // On page load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      setState(() {
+        _model.textController1?.text = 'generalmanager@beyond.com';
+      });
+      setState(() {
+        _model.textController2?.text = '123!Pa\$\$word';
+      });
+      // setState(() {
+      //   _model.textController1?.text = 'Admin@beyond.com';
+      // });
+      // setState(() {
+      //   _model.textController2?.text = '123!Pa\$\$word';
+      // });
+    });
+
 
     _model.textController1 ??= TextEditingController();
     _model.textFieldFocusNode1 ??= FocusNode();
